@@ -1,0 +1,46 @@
+////
+/// this file describe an user notification component
+////
+
+$light-section-color: pick-color(metal, $opacity: divider);
+$link-color: pick-color(primary);
+
+.notification {
+
+  .notification-indicator {
+    position: absolute;
+    top: measure-lines-rhythm(-.5);
+    right: measure-lines-rhythm(.67);
+  }
+
+  // represets a single notification item message from a list of notifications
+  .notification-item {
+    @include padding-rhythm(.5 1);
+    cursor: pointer;
+    border-bottom: rem(1) solid $light-section-color;
+
+    // gives the apparency of clickable item
+    &:hover {
+      background: $light-section-color;
+
+      // apenas realiza hover em title
+      > .notification-item-text > .title {
+        color: $link-color;
+      }
+    }
+
+    // seen icon on notification list item
+    > .notification-seen {
+      @include margin-rhythm(0 .5 0 -.5);
+    }
+
+    > .notification-item-text {
+      flex-grow: 1;
+    }
+
+    > .notification-item-icon {
+      @include margin-rhythm(0 0 0 1);
+    }
+  }
+
+}

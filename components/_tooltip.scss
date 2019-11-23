@@ -1,0 +1,21 @@
+////
+/// Represents a tooltip
+////
+
+$tooltip-background: pick-color(black);
+$tooltip-color: pick-color(light);
+$tooltip-radius: rem(5);
+
+[tooltip] {
+  position: relative;
+
+  &:after {
+    @include padding-rhythm(.5 1);
+    content: '';
+    background: $tooltip-background;
+    border-radius: $tooltip-radius;
+    color: $tooltip-color;
+    position: absolute;
+    top: 0;
+  }
+}

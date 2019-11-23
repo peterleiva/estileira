@@ -1,0 +1,58 @@
+////
+/// Defines form component and its relationships
+///
+////
+
+$bg-color: #f7f6f9;
+$space: 20%;
+
+///
+/// Applies a status to form control, changing its border wich indicates is state
+/// @param {String} $status [brand] - a color name to apply the state
+///
+@mixin control-status($status: brand) {
+  border-color: pick-color($status);
+}
+
+.form {
+  .form-group {
+    @include margin-rhythm(.5 0);
+    display: grid;
+    grid-template-columns: 2fr 8fr;
+    grid-template-row: 1fr 1fr;
+    grid-template-areas: 'label control' '. helper';
+
+    > label {
+      grid-area: label;
+    }
+
+    > .helper {
+      grid-area: helper;
+      display: flex;
+      flex-direction: column;
+    }
+
+    > .form-control {
+      grid-area: control;
+      @include padding-rhythm(.5 1);
+      border: rem(1) solid $shadow-color;
+      border-radius: rem(3);
+
+      &:active, &:focus {
+        @include control-status;
+      }
+
+      &.is-valid { @include control-status(success); }
+      &.is-invalid { @include control-status(danger); }
+
+      &.rounded {
+        border-radius: rem(22);
+      }
+
+      &.filled {
+        border-color: $bg-color;
+        background: $bg-color;
+      }
+    }
+  }
+}

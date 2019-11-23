@@ -1,0 +1,53 @@
+////
+/// A switch ui component defines a checkbox as switch
+///
+////
+
+$background-color: rgb(189, 189, 189);
+$on-color: rgb(39, 173, 95);
+$off-color: #fff;
+
+.switch {
+
+  .label {
+    margin-left: measure-lines-rhythm()
+  }
+  input[type="checkbox"] {
+    display: none;
+
+    &:checked + label { background: $on-color }
+    &:checked + label:after {
+      left: auto;
+      right: 0;
+    }
+  }
+
+  label {
+    width: measure-lines-rhythm(3);
+    height: measure-lines-rhythm(1.7);
+    @include margin-rhythm(.3 0);
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    background: $background-color;
+    border-radius: rem(30);
+
+    transition: background-color 0.4s;
+    -moz-transition: background-color 0.4s;
+    -webkit-transition: background-color 0.4s;
+
+    &:after {
+
+      left: 0;
+      // this 1.1 is for fill 1.7 height
+      width: measure-lines-rhythm(1.1);
+      height: measure-lines-rhythm(1.1);
+      @include margin-rhythm(.3);
+      content: '';
+      position: absolute;
+      background: $off-color;
+      border-radius: 100%;
+    }
+  }
+
+}

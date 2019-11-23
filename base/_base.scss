@@ -1,0 +1,20 @@
+////
+/// This file contains very basic styles
+////
+
+/// the space, in lines, which the header layout occupies
+/// @type Number
+
+a {
+  @include unstyled-link;
+  cursor: pointer;
+}
+
+html, body {
+  @include fill-content;
+  overflow-x: hidden;
+}
+
+input, button {
+  outline: none;
+}

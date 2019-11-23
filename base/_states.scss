@@ -1,0 +1,23 @@
+////
+/// This file describes states rules applies globally, which all elements can
+/// like change component display option
+////
+
+/// show the component as a block
+.is-block {
+  display: block !important;
+}
+
+/// only hides the elemnt
+.is-hidden {
+  opacity: 0 !important;
+}
+
+.is-visible {
+  opacity: 1 !important;
+}
+
+/// hides the components from the dom
+.is-removed {
+  display: none !important;
+}

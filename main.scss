@@ -1,0 +1,50 @@
+////
+/// This file bootstrap the project importing all global styles used by
+/// ng components. The imported order matters, so each submodule knows how to
+/// import and configures it.
+///
+////
+
+@import 'utilities/variables',
+        'utilities/functions',
+        'utilities/mixins';
+
+@import 'vendors/modulescale',
+        '~breakpoint-sass/stylesheets/breakpoint';
+
+@import 'base/reset',
+        'base/base',
+        'base/states',
+        'base/fonts',
+        'base/colors',
+        'base/typography';
+
+@import 'layout/grid',
+        'layout/header',
+        'layout/overlay',
+        'layout/drawer',
+        'layout/content',
+        'layout/login';
+
+@import 'components/icons',
+        'components/list',
+        'components/dropdown',
+        'components/border',
+        'components/notification',
+        'components/alert',
+        'components/tab',
+        'components/button',
+        'components/widget',
+        'components/label',
+        'components/switch',
+        'components/header-item-user',
+        'components/election-selector',
+        'components/tweet-card',
+        'components/timeline',
+        'components/form';
+
+// @import 'pages/users',
+//         'pages/tweets',
+//         'pages/dashboard';
+
+// @import 'themes/theme';

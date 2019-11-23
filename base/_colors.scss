@@ -1,0 +1,64 @@
+////
+/// this files describes basic colors scheme used by whole project
+////
+
+/// project color scheme
+/// @type Map
+$colors: (
+  primary: hsl(233, 66%, 61%),
+  accent: hsl(186, 100%, 43%),
+  secondary: hsl(0, 0, 92%),
+
+  brand: hsl(244, 48%, 60%),
+  metal: hsl(237, 18%, 80%),
+  focus: hsl(275, 91%, 52%),
+
+  success: hsl(168, 57%, 48%),
+  warning: hsl(41, 100%, 57%),
+  info: hsl(206, 92%, 59%),
+  danger: hsl(354, 70%, 54%),
+
+  light: hsl(0, 0, 100),
+  dark: hsl(0, 0, 0)
+) !default;
+
+// steps to be to get shade/tint of colors
+$color-interval: 10% !default;
+
+/// list of feedback colors
+/// @type List
+$feedback-colors: (success warning info danger);
+
+/// The default shadow color
+/// @type Color
+$shadow-color: pick-color(light, 1, $opacity: divider) !default;
+
+///
+/// applies a color to text element
+///
+@mixin theme($foreground: brand, $background: secondary, $border: secondary) {
+  color: pick-color($color);
+  background: pick-color($background);
+  border-color: dark($background);
+}
+
+// define all text colors
+@each $color in map-keys($colors) {
+  .text-#{$color} {
+    color: pick-color($color);
+  }
+}
+
+.content a {
+  @extend .text-brand;
+  &:hover {
+    color: dark(brand);
+  }
+}
+
+// defines the foreground color
+body {
+  color: pick-color(dark);
+}
+
+// mark, border

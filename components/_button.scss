@@ -1,0 +1,92 @@
+////
+/// Defines a button component
+////
+
+$prefix: 'btn';
+$border-width: rem(1);
+$border-radius: rem(3);
+$pill-radius: rem(22);
+
+///
+/// Apply a theme to button modifying its colors
+///
+@mixin btn-style($color: dark, $background: transparent, $border-color: secondary) {
+  color: pick-color($color);
+  background: pick-color($background);
+  border-color: pick-color($border-color);
+
+  &:hover, &:active {
+    background: light($border-color);
+    border-color: light($border-color);
+    color: contrast(dark($border-color));
+  }
+}
+
+///
+/// Applies button size, multiplying by some scale avalue maintaning vertical rhythm
+/// @params {String} $size [default] - one of project size names
+///
+@mixin btn-size($size-name: default) {
+  $size: size($size-name);
+  $size: if($size <= 0, 1, ceil($size/2));
+  @include padding-rhythm($size/2 $size);
+  @include text-component-rhythm($size-name);
+}
+
+// structural main styles for button
+%button {
+  @include btn-size;
+  cursor: pointer;
+  display: inline-block;
+  border: $border-width solid;
+  border-radius: $border-radius;
+}
+
+// defines the button styles
+.#{$prefix} {
+  @extend %button;
+
+  // button block
+  &.#{$prefix}-block {
+    @extend .is-block;
+    width: 100%;
+  }
+
+  &[disabled], &[disabled]:hover {
+    @include opacity(disabled);
+    cursor: not-allowed;
+  }
+
+  // button pill style
+  &.pill {
+    border-radius: $pill-radius;
+  }
+
+  // defines all button sizes
+  @each $size in map-keys($component-size) {
+    &.#{$size} {
+      @include btn-size($size);
+    }
+  }
+
+  &.#{$prefix}-default {
+    @include btn-style();
+  }
+
+  // create a button for each color scheme
+  @each $color, $value in $colors {
+    &.#{$prefix}-#{$color} {
+      @include btn-style(contrast($value), $value, $value);
+
+      &.outline {
+        @include btn-style($value, transparent, $value);
+
+        &:hover {
+          @include btn-style(contrast($value), $value, $value);
+        }
+      }
+    }
+  }
+
+
+}

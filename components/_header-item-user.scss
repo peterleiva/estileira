@@ -1,0 +1,10 @@
+////
+/// A header item for user information and fast actions a user can take
+///
+////
+
+.header-item-user {
+  .buttons {
+    @include padding-rhythm(.5);
+  }
+}

@@ -1,0 +1,25 @@
+////
+/// this files describes a list component
+////
+
+%list {
+  display: flex;
+}
+
+.inline-list {
+  @extend %list;
+  align-items: center;
+
+  &.reverse-list {
+    flex-direction: row-reverse;
+  }
+
+  & > .list-grow {
+    flex-grow: 1;
+  }
+}
+
+.list-column {
+  @extend %list;
+  flex-direction: column;
+}

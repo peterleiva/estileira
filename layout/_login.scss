@@ -1,0 +1,30 @@
+////
+/// Defines general rules for authentication page
+///
+////
+$title-color: #9e97aa;
+
+.login {
+  @include padding-rhythm(3 0);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: ". content .";
+  grid-template-rows: 1fr;
+  height: 100%;
+  text-align: center;
+  background-image: url('#{$asset-path}/bg-login.jpg');
+  background-size: cover;
+
+  .title {
+    @include margin-rhythm(2 0);
+    color: $title-color;
+  }
+
+  .form {
+    grid-area: content;
+
+    button[type="submit"] {
+      @include margin-rhythm(2 0);
+    }
+  }
+}

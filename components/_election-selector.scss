@@ -1,0 +1,28 @@
+////
+/// Represents a select box for collector
+///
+////
+
+$main-color: pick-color(primary, -3);
+$bg-color: pick-color(light);
+
+.election-selector {
+  @include text-component-rhythm(lg);
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+
+  select {
+    @include padding-rhythm(.5 3 .5 1);
+    color: $main-color;
+    border: rem(1) solid $main-color;
+    border-radius: rem(5);
+    background: $bg-color;
+  }
+
+  fa-icon {
+    position: absolute;
+    right: measure-lines-rhythm(1);
+    top: measure-lines-rhythm(.5) + rem(1);
+  }
+}

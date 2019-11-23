@@ -1,0 +1,41 @@
+////
+/// Defines a label component. A single block whith text and some color
+////
+////
+
+%label {
+  border-radius: rem(5);
+  @include padding-rhythm(.5);
+}
+
+///
+/// applies a color theme to label object
+/// @param {String} $color [brand] - color name to be applies a label theme
+///
+@mixin label-theme($color: brand) {
+  $main-color: pick-color($color);
+  background: $main-color;
+  color: contrast($main-color);
+}
+
+// applies a label theme to each feedback color
+@each $color in $feedback-colors {
+  .label.#{$color} {
+    @extend %label;
+    @include label-theme($color);
+  }
+}
+
+.label {
+  &.active {
+    @extend .success;
+  }
+
+  &.inactive {
+    @extend .danger;
+  }
+
+  &.pending {
+    @extend .warning;
+  }
+}

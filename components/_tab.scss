@@ -1,0 +1,28 @@
+////
+/// This file describe a tab component with multiple sections
+///
+////
+
+.tab {
+  .tab-nav {
+    @include padding-rhythm(0 1);
+
+    .tab-link {
+      margin-right: measure-lines-rhythm();
+      text-transform: capitalize;
+      /// it should overlap the tab section divider, so it counts the
+      /// borders, top and bottom of tab section
+      padding-bottom: measure-lines-rhythm() + rem(1) * 2;
+
+      &.is-active, &:hover {
+        color: pick-color(primary);
+        border-bottom: rem(1) solid pick-color(primary);
+      }
+    }
+  }
+
+  .tab-section {
+    margin-top: measure-lines-rhythm();
+    border-top: rem(1) solid $shadow-color;
+  }
+}

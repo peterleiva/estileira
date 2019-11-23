@@ -1,0 +1,80 @@
+////
+/// Defines a alert component which keeps sticky on layout
+///
+////
+
+$prefix: '.alert';
+
+/// alert architecture
+%alert {
+  @include padding-rhythm(.5 1);
+
+  border-radius: rem(3);
+  border-style: solid;
+  border-width: rem(1);
+  white-space: nowrap;
+
+  margin-bottom: measure-lines-rhythm(.5);
+
+  position: relative;
+  animation: slide-left 1s;
+
+  // animation
+  @keyframes slide-left {
+    from { right: -100% }
+    to { right: 0 }
+  }
+
+  > .message {
+    margin-right: measure-lines-rhythm();
+  }
+
+  // border e close sao iguais, o que muda: bg, main color
+  > .close {
+    @include text-component-rhythm;
+    float: right;
+    text-shadow: rem(0) rem(0) rem(3);
+  }
+}
+
+/// applies theme to alert component
+@mixin alert-theme($color: black, $bg: transparent, $border: shadow) {
+  color: $color;
+  background: $bg;
+  border-color: $border;
+
+  > .close {
+    background: $bg;
+    color: $border;
+  }
+}
+
+#{$prefix} {
+  @extend %alert;
+  @include alert-theme;
+}
+
+#{$prefix}-success {
+  @extend %alert;
+  @include alert-theme(pick-color(light), pick-color(success), dark(success));
+}
+
+#{$prefix}-primary {
+  @extend %alert;
+  @include alert-theme(pick-color(light), pick-color(primary), dark(primary));
+}
+
+#{$prefix}-danger {
+  @extend %alert;
+  @include alert-theme(pick-color(light), pick-color(danger), dark(danger));
+}
+
+#{$prefix}-info {
+  @extend %alert;
+  @include alert-theme(pick-color(light), pick-color(info), dark(info));
+}
+
+#{$prefix}-warning {
+  @extend %alert;
+  @include alert-theme(pick-color(light), pick-color(warning), dark(warning));
+}

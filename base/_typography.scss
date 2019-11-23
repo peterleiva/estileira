@@ -1,0 +1,70 @@
+////
+/// Defines typography related code, like heading, sizing
+///
+////
+
+$basesize: rem(14);
+
+$modularscale: (
+  base: $basesize ($basesize * $baseratio) rem(27),
+  ratio: $golden,
+);
+
+$browser-context: 14;
+
+@include type-setting;
+
+html, body {
+  @include text-component-rhythm(default);
+}
+
+h1, .main-title {
+  @include adjust-component(ms(5));
+}
+
+h2, .main-subtitle {
+  @include adjust-component(ms(4));
+}
+
+h3, .section-title {
+  @include adjust-component(ms(3));
+}
+
+h4, .section-subtitle {
+  @include adjust-component(ms(2));
+}
+
+/// defines small text components
+small, .text-sm {
+  @include adjust-component(ms(-1));
+}
+
+.text-xs {
+  @include adjust-component(ms(-2));
+}
+
+.text-jumbo {
+  @include adjust-component(ms(7));
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+/// defines quotes
+q {
+  @extend .section-subtitle;
+  font-style: italic;
+}
+
+b {
+  font-weight: bolder;
+}

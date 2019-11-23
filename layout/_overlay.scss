@@ -1,0 +1,13 @@
+////
+/// This file describe a layout overlay which is used to overlay other elements
+/// which can't be on focus
+////
+
+.overlay {
+  @include fill-content;
+  @include z('overlay');
+  @include opacity('disabled');
+  background: pick-color(dark);
+  grid-row: 1 / -1;
+  grid-column: 1 / -1;
+}
