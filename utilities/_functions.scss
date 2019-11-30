@@ -22,13 +22,13 @@
 }
 
 
-/// Get breakpoint value through its layer name
+/// Get breakpoint value by its key name on map
 /// @access public
 /// @param {String} $layer - layer name
 /// @return {String}
 /// @require $breakpoints
-@function bp($layer) {
-  @return read-map($breakpoints, $layer);
+@function breakpoint-name($breakpoint) {
+  @return read-map($breakpoints, $breakpoint);
 }
 
 /// Gets a size from map
@@ -99,137 +99,4 @@
   }
 
   @return $pixels / $context * 1rem;
-}
-
-///
-/// Gets a colors applying some tint or shade or opactity
-///
-///  Choose a color by its name, applies opacity and tint/shade to create variants
-/// Based on @link https://scotch.io/tutorials/aesthetic-sass-2-colors
-///
-///  Cada cor usada pelo projeto possui um nome por isso a função usa as
-/// variáveis globais da paleta de cores definida no partials 'base/_variables'.
-/// A função também aplica um nível de transparência definido para a plicação
-/// seguindo o mapa definido em $opacity-levels, que pode ser encontrado em
-/// 'base/_variables'. Por final aplica uma mistura de preto ou branco de acordo
-/// com um percentual definido nas variáveis por intervalos discretos.
-///
-/// @example
-///   pick-color(primary, $level: -10, $opacity: active-icon);
-///
-/// @param {String | Color} $color-name [primary] - color name
-/// @param {Number} $level [0] - applies tint or shade depending on percentage
-/// @param {Number | String} $opacity [active] - opacity level
-/// @return {Color}
-/// @requires {Map} $colors
-/// @requires {Number} $color-interval
-@function pick-color($color-name: primary, $level: 0, $opacity: active) {
-
-  // check the $color-name type, it can return a single color
-  $color: if(type-of($color-name) == 'color',
-                  $color-name, read-map($colors, $color-name));
-
-  // base color used for mixing tint or shade
-  $color-base: if($level < 0, #fff, #000);
-
-  // level is negative if base color is black
-  $level: if($level < 0, -$level, $level);
-
-  // gets the opacity level from map or use a number value
-  $alpha: opacity($opacity);
-
-  @if $color != transparent {
-    $color: rgba($color, $alpha);
-  }
-
-  // applies tint or shade according to $level
-  $color: mix($color-base, $color, $level * $color-interval);
-
-  @return $color;
-}
-
-///
-/// Applies a fix tint to color
-/// @param {Color} $color [primary] - color to be tinted
-/// @requires {Function} pick-color
-/// @returns {Color}
-///
-@function lighter($color: primary) {
-  @return pick-color($color, -4);
-}
-
-///
-/// Applies a fix tint to color
-/// @param {Color} $color [primary] - color to be tinted
-/// @requires {Function} pick-color
-/// @returns {Color}
-///
-@function light($color: primary) {
-  @return pick-color($color, -2);
-}
-
-///
-/// Applies a fix shade to color
-/// @param {Color} $color [primary] - color to be shaded
-/// @requires {Function} pick-color
-/// @returns {Color}
-///
-@function dark($color: primary) {
-  @return pick-color($color, 2);
-}
-
-///
-/// Applies a fix shade to color
-/// @param {Color} $color [primary] - color to be shaded
-/// @requires {Function} pick-color
-/// @returns {Color}
-///
-@function darker($color: primary) {
-  @return pick-color($color, 4);
-}
-
-///
-/// Gets the contrast color for foreground to a given color
-/// @param {String | Color} $color [brand] - color to get the contrast
-/// @param {Number} $threshold [65] - lightness limit
-/// @returns {Color}
-///
-@function contrast($color: brand, $threshold: 65) {
-  @return if(lightness(pick-color($color)) > $threshold, pick-color(dark), pick-color(light));
-}
-
-///
-/// Calculates the colors diff between two colors
-/// @param {Color} $a - base color
-/// @param {Color} $b - color which is diff
-/// @returns {Map} - A map to functions to be applies to get $a from $b
-///
-@function color-diff($a, $b) {
-  $sat: saturation($a) - saturation($b);
-  $lightness: lightness($a) - lightness($b);
-
-  $fn-sat: if($sat > 0, 'desaturate', 'saturate');
-  $lig-color: if($lightness > 0, #000, #fff);
-
-  @return (
-    adjust-hue: -(hue($a) - hue($b)),
-    #{fn-sat}: abs($sat),
-    mix: $lig-color
-  );
-}
-
-///
-/// Applies a diff to a color to obtain its variant
-///
-/// @param {Color} $color - color to be applies the difference
-/// @param {Map} $diff-map - a map to functions to applies the diff on color
-/// @returns {Color} color diff applied
-///
-@function apply-diff($color, $diff-map) {
-
-  @each $fun, $value in $diff-map {
-    $color: call($fun, $color, $value);
-  }
-
-  @return $color;
 }

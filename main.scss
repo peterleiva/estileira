@@ -7,9 +7,10 @@
 
 @import 'utilities/variables',
         'utilities/functions',
+        'utilities/colors',
         'utilities/mixins';
 
-@import 'vendors/modulescale',
+@import '~modularscale-sass/stylesheets/modularscale',
         '~breakpoint-sass/stylesheets/breakpoint';
 
 @import 'base/reset',
@@ -19,29 +20,29 @@
         'base/colors',
         'base/typography';
 
-@import 'layout/grid',
-        'layout/header',
-        'layout/overlay',
-        'layout/drawer',
-        'layout/content',
-        'layout/login';
-
-@import 'components/icons',
-        'components/list',
-        'components/dropdown',
-        'components/border',
-        'components/notification',
-        'components/alert',
-        'components/tab',
-        'components/button',
-        'components/widget',
-        'components/label',
-        'components/switch',
-        'components/header-item-user',
-        'components/election-selector',
-        'components/tweet-card',
-        'components/timeline',
-        'components/form';
+// @import 'layout/grid',
+//         'layout/header',
+//         'layout/overlay',
+//         'layout/drawer',
+//         'layout/content',
+//         'layout/login';
+//
+// @import 'components/icons',
+//         'components/list',
+//         'components/dropdown',
+//         'components/border',
+//         'components/notification',
+//         'components/alert',
+//         'components/tab',
+//         'components/button',
+//         'components/widget',
+//         'components/label',
+//         'components/switch',
+//         'components/header-item-user',
+//         'components/election-selector',
+//         'components/tweet-card',
+//         'components/timeline',
+//         'components/form';
 
 // @import 'pages/users',
 //         'pages/tweets',

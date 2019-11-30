@@ -21,8 +21,8 @@ $light-section-color: pick-color(metal, $opacity: divider);
   background: pick-color(light);
 
   // change the section width for small and bigger viewports
-  @include breakpoint(max-width bp(pug)) { width: measure-lines-rhythm(9) }
-  @include breakpoint(bp(saint-bernard)) { width: measure-lines-rhythm(32) }
+  // @include breakpoint(max-width bp(pug)) { width: measure-lines-rhythm(9) }
+  // @include breakpoint(bp(saint-bernard)) { width: measure-lines-rhythm(32) }
 
   .header {
     // @include margin-rhythm(1 0);
@@ -47,8 +47,8 @@ $light-section-color: pick-color(metal, $opacity: divider);
     @include padding-rhythm(.5 0);
 
     // change the section width for small and bigger viewports
-    @include breakpoint(max-width bp(pug)) { width: measure-lines-rhythm(9) }
-    @include breakpoint(bp(saint-bernard)) { width: measure-lines-rhythm(32) }
+    // @include breakpoint(max-width bp(pug)) { width: measure-lines-rhythm(9) }
+    // @include breakpoint(bp(saint-bernard)) { width: measure-lines-rhythm(32) }
   }
 
 }

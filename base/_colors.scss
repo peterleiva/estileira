@@ -5,9 +5,10 @@
 /// project color scheme
 /// @type Map
 $colors: (
-  primary: hsl(233, 66%, 61%),
-  accent: hsl(186, 100%, 43%),
-  secondary: hsl(0, 0, 92%),
+  primary: #015045,
+  accent: #020D22,
+  secondary: #F5CBB7,
+  orange: #BE3400,
 
   brand: hsl(244, 48%, 60%),
   metal: hsl(237, 18%, 80%),
@@ -33,14 +34,6 @@ $feedback-colors: (success warning info danger);
 /// @type Color
 $shadow-color: pick-color(light, 1, $opacity: divider) !default;
 
-///
-/// applies a color to text element
-///
-@mixin theme($foreground: brand, $background: secondary, $border: secondary) {
-  color: pick-color($color);
-  background: pick-color($background);
-  border-color: dark($background);
-}
 
 // define all text colors
 @each $color in map-keys($colors) {

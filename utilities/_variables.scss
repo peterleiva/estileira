@@ -20,15 +20,15 @@ $browser-context: 16 !default;
 $font-family: Poppins, sans-serif !default;
 
 /// defines the path where is stored the base path for assets
-$asset-path: '/assets';
+$asset-path: '/assets' !default;
 
 /// generic breakpoints values
 /// @type Map
 $breakpoints: (
   'Chihuahua': 200px,
   'pug': 530px,
-  'corgi': 600px,
-  'dobermann': 1190px,
+  'bulldog': 760px,
+  'dobermann': 1024px,
   'saint-bernard': 2048px
 ) !default;
 
@@ -40,7 +40,7 @@ $z-indexes: (
   'overlay': 3000,
   'dropdown': 4000,
   'default': 1,
-  'below': -1
+  'below': -100
 ) !default;
 
 /// opcatity for common components
@@ -63,6 +63,6 @@ $component-size: (
   xs: -3,
 ) !default;
 
-/// all size names
+/// List of size names
 /// @type List
 $component-size-name: map-values($component-size);
