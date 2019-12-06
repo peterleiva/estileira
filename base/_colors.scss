@@ -34,7 +34,6 @@ $feedback-colors: (success warning info danger);
 /// @type Color
 $shadow-color: pick-color(light, 1, $opacity: divider) !default;
 
-
 // define all text colors
 @each $color in map-keys($colors) {
   .text-#{$color} {

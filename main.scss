@@ -6,6 +6,7 @@
 ////
 
 @import 'utilities/variables',
+        'utilities/prefixes',
         'utilities/functions',
         'utilities/colors',
         'utilities/mixins';
@@ -18,6 +19,7 @@
         'base/states',
         'base/fonts',
         'base/colors',
+        'base/animations',
         'base/typography';
 
 // @import 'layout/grid',
