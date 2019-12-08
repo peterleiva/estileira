@@ -50,7 +50,8 @@ $opacity-levels: (
   active: 1,
   disabled: .5,
   light: .8,
-  dark: .4
+  dark: .4,
+  hidden: 0
 ) !default;
 
 /// sizes a component can have

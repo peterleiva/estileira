@@ -8,7 +8,6 @@ $colors: (
   primary: #015045,
   accent: #020D22,
   secondary: #F5CBB7,
-  orange: #BE3400,
 
   brand: hsl(244, 48%, 60%),
   metal: hsl(237, 18%, 80%),
@@ -38,6 +37,10 @@ $shadow-color: pick-color(light, 1, $opacity: divider) !default;
 @each $color in map-keys($colors) {
   .text-#{$color} {
     color: pick-color($color);
+  }
+
+  .background-#{$color} {
+    background-color: pick-color($color);
   }
 }
 

@@ -152,7 +152,7 @@
 /// @param {String} $layer - layer name
 /// @return {Number}
 /// @require $z-indexes
-@mixin z($layer) {
+@mixin z($layer: default) {
   z-index: read-map($z-indexes, $layer);
 }
 
