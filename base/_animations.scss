@@ -2,3 +2,13 @@
 /// Animations used across project
 ///
 ///
+
+@keyframes fadeIn {
+  from {
+    @include opacity(hidden);
+  }
+
+  to {
+    @include opacity(active);
+  }
+}
