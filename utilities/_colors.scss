@@ -153,7 +153,18 @@
 ///
 ///
 @mixin apply-colors {
-  @each $color-name in map-keys($colors) {
-    @content($color-name);
+  @each $color in map-keys($colors) {
+    @content($color);
   }
+}
+
+///
+/// Gets a grayscale color from its map with optional opacity
+///
+/// @require $grayscale - grayscale map
+/// @param {String} $gray - grayscale color name
+/// @param {String} $opacity [active] - opacity level defind on variables
+///
+@function gray($gray, $opacity: active) {
+  @return pick-color(read-map($grayscale, $gray), $opacity: $opacity);
 }

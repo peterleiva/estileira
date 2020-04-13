@@ -3,19 +3,20 @@
 ///
 ////
 
-$basesize: rem(14);
+$basesize: rem(14) !default;
 
 $modularscale: (
   base: $basesize ($basesize * $baseratio) rem(27),
   ratio: $golden,
 );
 
-$browser-context: 14;
+$browser-context: 14 !default;
 
 @include type-setting;
 
 html, body {
   @include text-component-rhythm(default);
+  color: gray(gray-2)
 }
 
 h1, .main-title {

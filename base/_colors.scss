@@ -1,40 +1,73 @@
 ////
-/// this files describes basic colors scheme used by whole project
+/// this files describes color scheme used by whole project
 ////
 
-/// project color scheme
+@import '../utilities/colors';
+
+/// Grayscale for nice grays to be used as shadows, dividers, background, etc...
 /// @type Map
-$colors: (
-  primary: #6AB187,
-  accent: #DE7A22,
-  secondary: #F4CC70,
+$grayscale: (
+  'gray-1': hsl(0, 0, 0),
+  'gray-2': hsl(206, 12%, 26%),
+  'gray-3': hsl(205, 12%, 42%),
+  'gray-4': hsl(206, 12%, 74%),
+  'gray-5': hsl(200, 11%, 95%),
+  'gray-6': hsl(0, 0, 100),
 
-  brand: #20948B,
-  metal: hsl(237, 18%, 80%),
-  focus: hsl(275, 91%, 52%),
-
-  success: hsl(168, 57%, 48%),
-  warning: hsl(41, 100%, 57%),
-  info: hsl(206, 92%, 59%),
-  danger: hsl(354, 70%, 54%),
-
-  light: hsl(0, 0, 100),
-  dark: hsl(0, 0, 0)
+  'dark': hsl(0, 0, 0) // gray-6 or white alias
+  'light': hsl(0, 0, 100), // gray-1 or black alias
 ) !default;
 
-// steps to be to get shade/tint of colors
+/// @type Map
+$colors: (
+  'primary': hsl(145, 56%, 56%),
+  'primary-1': hsl(145, 56%, 56%), // alias for primary
+  'primary-2': hsl(175, 56%, 56%),
+  'primary-3': hsl(205, 56%, 56%),
+
+  'accent': hsl(265, 56%, 56%),
+  'accent-1': hsl(265, 56%, 56%), // alias for accent
+  'accent-2': hsl(355, 56%, 56%),
+
+  'success': hsl(168, 57%, 48%),
+  'warning': hsl(41, 100%, 57%),
+  'info': hsl(206, 92%, 59%),
+  'danger': hsl(354, 70%, 54%),
+
+  'background-1': hsl(0, 0, 100),
+  'background-2': hsl(0, 0, 0)
+) !default;
+
+// TODO: gradients colors
+
+// incremental steps to get shade/tint color
 $color-interval: 10% !default;
 
 /// list of feedback colors
 /// @type List
-$feedback-colors: (success warning info danger);
+$feedback-colors: (
+  'success'
+  'warning'
+  'info'
+  'danger'
+);
 
 /// The default shadow color
 /// @type Color
-$shadow-color: pick-color(light, 1, $opacity: divider) !default;
+$shadow-color: gray('gray-5', divider) !default;
 
-// define all text colors
-@each $color in map-keys($colors) {
+/// Colors to be on top of regular colors
+/// @type Map
+$on-colors: (
+  'background': gray('dark')
+) !default;
+
+/// color of links
+/// @type Color
+$link-color: pick-color('accent', 5);
+
+// define all text and background colors
+@include apply-colors using ($color) {
   .text-#{$color} {
     color: pick-color($color);
   }
@@ -43,17 +76,3 @@ $shadow-color: pick-color(light, 1, $opacity: divider) !default;
     background-color: pick-color($color);
   }
 }
-
-.content a {
-  @extend .text-brand;
-  &:hover {
-    color: dark(brand);
-  }
-}
-
-// defines the foreground color
-body {
-  color: pick-color(dark);
-}
-
-// mark, border
