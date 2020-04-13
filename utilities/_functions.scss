@@ -4,10 +4,15 @@
 ///
 ////
 
+///
 /// Get value from generic map
+///
+/// @throw Not found map variable
+/// @throw Not found map value
 /// @access private
-/// @param {Map} $map - map name to be search for
-/// @param {String} $layer - value to be readed from
+///
+/// @param {Map} $map - map which search values
+/// @param {String} $layer - value to be readed
 @function read-map($map, $layer) {
   @if (type-of($map) == null) or (type-of($layer) == null) {
     @error 'Map #{map} and layer #{layer} must be defined';
@@ -20,7 +25,6 @@
         "\'$#{map}\' map.";
   }
 }
-
 
 /// Get breakpoint value by its key name on map
 /// @access public

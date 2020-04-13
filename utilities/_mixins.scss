@@ -19,7 +19,7 @@
 ///
 /// Applies vertical rhythm to text element and fill with pad to maintain rhythm
 /// @todo aplicar borda
-/// @param {String | Number} $size [default] - specified size name or number of lines
+/// @param {String | Number} $size [default] - size name or number of lines
 ///
 @mixin text-component-rhythm($size: default) {
   $text-size: if(type-of($size) == 'number', $size, ms(size($size)));
@@ -34,7 +34,6 @@
 ///
 @mixin padding-rhythm($direction: ()) {
 
-  // cria lista vazia
   $dir-list: ();
 
   @if length($direction) == 0 {
@@ -57,7 +56,7 @@
 ///   margin-rhythm(10 3 4 5)
 ///   margin-rhythm(10 5)
 /// @access public
-/// @throws error in case the list is emty
+/// @throws error in case the list is empty
 /// @param {List} $direction [()] - directions to be applied
 ///
 @mixin margin-rhythm($direction: ()) {

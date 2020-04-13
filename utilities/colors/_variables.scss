@@ -1,0 +1,96 @@
+////
+/// This file describes color scheme used by whole project
+/// TODO: gradients colors
+////
+
+@import './utilities/functions';
+
+/// Grayscale for nice grays to be used as shadows, dividers, background, etc...
+/// @type Map
+$grayscale: (
+  'gray-1': hsl(0, 0, 0),
+  'gray-2': hsl(206, 12%, 26%),
+  'gray-3': hsl(205, 12%, 42%),
+  'gray-4': hsl(206, 12%, 74%),
+  'gray-5': hsl(200, 11%, 95%),
+  'gray-6': hsl(0, 0, 100),
+
+  'dark': hsl(0, 0, 0) // alias for gray-6 or white
+  'light': hsl(0, 0, 100), // alias for gray-1 or black
+) !default;
+
+/// @type Map
+$colors: (
+  'primary': hsl(145, 56%, 56%),
+  'primary-1': hsl(145, 56%, 56%), // alias for primary
+  'primary-2': hsl(175, 56%, 56%),
+  'primary-3': hsl(205, 56%, 56%),
+
+  'accent': hsl(265, 56%, 56%),
+  'accent-1': hsl(265, 56%, 56%), // alias for accent
+  'accent-2': hsl(355, 56%, 56%),
+
+  'success': hsl(168, 57%, 48%),
+  'warning': hsl(41, 100%, 57%),
+  'info': hsl(206, 92%, 59%),
+  'danger': hsl(354, 70%, 54%),
+
+  'background-1': hsl(0, 0, 100),
+  'background-2': hsl(0, 0, 0)
+) !default;
+
+/// Color variant for base colors
+/// @type Map
+$colours-variant: (
+  'primary-1': (
+    'base': hsl(145, 56%, 56%),
+    'lighter': hsl(145, 55%, 71%),
+    'light': hsl(145, 56%, 61%),
+    'dark': hsl(145, 56%, 44%),
+    'darker': hsl(145, 56%, 25%),
+  ),
+  'primary-2': (
+    'base': hsl(175, 56%, 56%),
+    'lighter': hsl(175, 55%, 83%),
+    'light': hsl(175, 56%, 61%),
+    'dark': hsl(174, 56%, 45%),
+    'darker': hsl(175, 56%, 17%),
+  ),
+  'primary-3': (
+    'base': hsl(205, 56%, 56%),
+    'lighter': hsl(204, 55%, 83%),
+    'light': hsl(205, 56%, 61%),
+    'dark': hsl(205, 56%, 34%),
+    'darker': hsl(204, 55%, 11%),
+  ),
+
+  'accent-1': (
+    'base': hsl(265, 56%, 56%),
+    'lighter': hsl(264, 55%, 83%),
+    'light': hsl(265, 56%, 61%),
+    'dark': hsl(265, 56%, 45%),
+    'darker': hsl(265, 56%, 17%),
+  ),
+
+  'accent-2': (
+    'base': hsl(355, 56%, 56%),
+    'lighter': hsl(342, 39%, 57%),
+    'light': hsl(355, 56%, 61%),
+    'dark': hsl(355, 56%, 45%),
+    'darker': hsl(354, 57%, 23%),
+  )
+) !default;
+
+
+// incremental steps to get shade/tint color
+$color-interval: 10% !default;
+
+/// The default shadow color
+/// @type Color
+$shadow: gray('gray-5', divider) !default;
+
+/// Colors to be on top of regular colors
+/// @type Map
+$on-colors: (
+  'background': gray('dark')
+) !default;

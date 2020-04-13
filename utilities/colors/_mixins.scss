@@ -1,0 +1,26 @@
+////
+/// This file describe mixins used applying colors
+////
+///
+
+/// applies style for text
+/// 
+/// @param {Color | String} $foreground
+/// @param {Color | String} $background
+/// @param {Color | String} $border
+///
+@mixin style($foreground: brand, $background: secondary, $border: secondary) {
+  color: pick-color($color);
+  background: pick-color($background);
+  border-color: dark($background);
+}
+
+///
+/// Call a content block with each color
+///
+///
+@mixin apply-colors {
+  @each $color in map-keys($colors) {
+    @content($color);
+  }
+}

@@ -5,22 +5,25 @@
 ///
 ////
 
-@import 'utilities/variables',
-        'utilities/prefixes',
-        'utilities/functions',
-        'utilities/colors',
-        'utilities/mixins';
+@import
+  'utilities/variables',
+  'utilities/prefixes',
+  'utilities/functions',
+  'utilities/colors/all',
+  'utilities/mixins';
 
-@import '~modularscale-sass/stylesheets/modularscale',
-        '~breakpoint-sass/stylesheets/breakpoint';
+@import
+  '~modularscale-sass/stylesheets/modularscale',
+  '~breakpoint-sass/stylesheets/breakpoint';
 
-@import 'base/reset',
-        'base/base',
-        'base/states',
-        'base/fonts',
-        'base/colors',
-        'base/animations',
-        'base/typography';
+@import
+  'base/reset',
+  'base/base',
+  'base/states',
+  'base/fonts',
+  'base/styleguide',
+  'base/animations',
+  'base/typography';
 
 // @import 'layout/grid',
 //         'layout/header',
@@ -51,5 +54,3 @@
 // @import 'pages/users',
 //         'pages/tweets',
 //         'pages/dashboard';
-
-// @import 'themes/theme';

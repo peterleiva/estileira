@@ -14,9 +14,14 @@ $browser-context: 14 !default;
 
 @include type-setting;
 
+@font-face {
+  font-family: Poppins sans-serif;
+  src: url('https://fonts.googleapis.com/css?family=Poppins');
+}
+
 html, body {
   @include text-component-rhythm(default);
-  color: gray(gray-2)
+  color: gray('gray-2')
 }
 
 h1, .main-title {

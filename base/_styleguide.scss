@@ -2,3 +2,18 @@
 /// Defines classes
 ///
 ////
+
+// define all text and background colors
+@include apply-colors using ($color) {
+  .text-#{$color} {
+    color: pick-color($color);
+  }
+
+  .background-#{$color} {
+    background-color: pick-color($color);
+  }
+
+  .border-#{$color} {
+    border-color: pick-color($color);
+  }
+}
