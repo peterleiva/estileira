@@ -1,0 +1,55 @@
+////
+/// This file describe functions used for vertical rhythm
+////
+
+///
+/// Calculates the length of lines according
+///
+/// The lines is based on ratio defined by the user. The vertical rhythm
+/// library defines a root html element which is where all font-size, line
+/// is referenced by. So the calculation is converted to rem so can use
+/// this font-size of root as reference
+///
+/// @param {Number} $lines [1] - lines to be calculated
+/// @return {Number} - tamanho da linha em rem
+/// @requires $baseline
+///
+@function measure-lines-rhythm($lines: 1) {
+  @return $lines * $baseline;
+}
+
+///
+/// Transforms each list item using measure-lines-rhythm
+/// @throws property error type
+/// @requires {function} measure-lines-rhythm
+/// @param {Number} $lines - arbitrary list of lines
+///
+@function list-lines-rhythm($lines...) {
+  $list: ();
+
+  @each $item in $lines {
+    @if type-of($item) != 'number' {
+      @warn "#{$item} must be a number to calculate required lines";
+    }
+
+    $list: append($list, measure-lines-rhythm($item));
+  }
+
+  @return $list;
+}
+
+///
+/// Calculates the amount of lines required to mantain the rhythm
+///
+/// @access private
+/// @param {Number} $basesize [$basesize] - font-size in rem
+/// @return {Number}
+/// @requires {Function} measure-lines-rhythm
+///
+@function lines-required($font-size: $basesize) {
+  @if unit($font-size) != 'rem' {
+    @warn 'The unit for `lines-required` should be `rem`';
+  }
+
+  @return ceil($font-size/measure-lines-rhythm());
+}

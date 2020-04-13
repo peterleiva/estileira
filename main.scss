@@ -6,51 +6,23 @@
 ////
 
 @import
-  'utilities/variables',
-  'utilities/prefixes',
-  'utilities/functions',
-  'utilities/colors/all',
-  'utilities/mixins';
-
-@import
   '~modularscale-sass/stylesheets/modularscale',
   '~breakpoint-sass/stylesheets/breakpoint';
+
+@import
+  'utilities/variables',
+  'utilities/functions',
+  'utilities/mixins',
+  'utilities/vertical-rhythm/all',
+  'utilities/colors/all';
+
 
 @import
   'base/reset',
   'base/base',
   'base/states',
-  'base/fonts',
   'base/styleguide',
   'base/animations',
   'base/typography';
 
-// @import 'layout/grid',
-//         'layout/header',
-//         'layout/overlay',
-//         'layout/drawer',
-//         'layout/content',
-//         'layout/login';
-
 @import 'components/list';
-
-// @import 'components/icons',
-//         'components/list',
-//         'components/dropdown',
-//         'components/border',
-//         'components/notification',
-//         'components/alert',
-//         'components/tab',
-//         'components/button',
-//         'components/widget',
-//         'components/label',
-//         'components/switch',
-//         'components/header-item-user',
-//         'components/election-selector',
-//         'components/tweet-card',
-//         'components/timeline',
-//         'components/form';
-
-// @import 'pages/users',
-//         'pages/tweets',
-//         'pages/dashboard';

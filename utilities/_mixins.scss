@@ -4,136 +4,6 @@
 ////
 
 ///
-/// Adjust the component calculating the minimum length required to mantain the
-/// rhythm
-/// @access public
-/// @param {Number} $font-size - Tamanho da fonte a ser ajustado
-/// @require lines-required - to calculated the minimum lines required
-/// @require $baseratio
-///
-@mixin adjust-component($font-size: $basesize) {
-  font-size: $font-size;
-  line-height: measure-lines-rhythm(lines-required($font-size));
-}
-
-///
-/// Applies vertical rhythm to text element and fill with pad to maintain rhythm
-/// @todo aplicar borda
-/// @param {String | Number} $size [default] - size name or number of lines
-///
-@mixin text-component-rhythm($size: default) {
-  $text-size: if(type-of($size) == 'number', $size, ms(size($size)));
-  @include adjust-component($text-size);
-}
-
-///
-/// Apply vertical rhythm using padding
-/// @access public
-/// @throws Erro caso a lista esteja vazia
-/// @param {List} $direction [()] - directions to be applied
-///
-@mixin padding-rhythm($direction: ()) {
-
-  $dir-list: ();
-
-  @if length($direction) == 0 {
-    @error "List shouldn't be empty";
-  }
-
-  // aplica tamanho de lista a cada um de seus elementos
-  @each $dir in $direction {
-    $dir-list: if($dir, append($dir-list, measure-lines-rhythm($dir)), $dir);
-  }
-
-  // faz uso do framework bourbon para aplicar o direcional
-  // @include padding($dir-list);
-  padding: $dir-list;
-}
-
-///
-/// Maintain vertical rhythm applying margins
-/// @example
-///   margin-rhythm(10 3 4 5)
-///   margin-rhythm(10 5)
-/// @access public
-/// @throws error in case the list is empty
-/// @param {List} $direction [()] - directions to be applied
-///
-@mixin margin-rhythm($direction: ()) {
-  // cria lista vazia
-  $dir-list: ();
-
-  @if length($direction) == 0 {
-    @error "List shouldn't be empty";
-  }
-
-  // aplica tamanho de lista a cada um de seus elementos
-  @each $dir in $direction {
-    $dir-list: if($dir, append($dir-list, measure-lines-rhythm($dir)), $dir);
-  }
-
-  margin: $dir-list;
-}
-
-///
-/// Applies border to component keeping the vertical rhythm
-/// TODO
-/// @param {List} $border
-///
-@mixin border-rhythm($border: ()) {
-  @if not $border or length($border) == 0 {
-    @error 'the border should have at least one value';
-  }
-
-  border-width: $border;
-  $pads: ();
-
-  $i: 0;
-  @while $i < 2 {
-    $border-width: nth($border, $i) + nth($border, $i + 2);
-    $pad: abs($direction - measure-lines-vrhythm(lines-required(em($border-width))))/2;
-    $pads: append($pads, $pad);
-
-    $i: $i + 1;
-  }
-
-  padding: $pads
-
-}
-///
-/// Aplica vertical rhythm to component
-///
-/// @example
-///   a {
-///     @include vertical-rhythm(1.2rem, $use-height: true, $bottom-rows: 1);
-///   }
-///
-//// @access public
-/// @param {$font-size} - Tamanho do elemento
-///
-// @mixin vertical-rhythm($font-size: $basesize){
-//
-//   // quantidade de linhas necessárias para o tamanho da letra
-//   $min-lines: lines-required($font-size);
-//
-//   // altura que o elemento ocupa
-//   $component-height: line-rhythm($min-lines);
-//
-//   // altura, em rem, do container
-//   $height: line-rhythm(ceil($min-lines));
-//
-//   @if $use-height {
-//     // sobras para que o elemento ocupe o número inteiro de linhas verticais
-//     $leftover: $height - $component-height;
-//     $pad: $leftover/2;
-//     height: $component-height;
-//     width: $component-height;
-//     margin-top: $pad;
-//     margin-bottom:$pad;
-//   }
-// }
-
-///
 /// unstyle link elements
 ///
 @mixin unstyled-link {
@@ -211,7 +81,7 @@
 @mixin type-setting() {
 
   html, body {
-    @include adjust-component;
+    @include type-rhythm;
   }
 
   body {

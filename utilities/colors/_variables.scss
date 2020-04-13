@@ -15,8 +15,8 @@ $grayscale: (
   'gray-5': hsl(200, 11%, 95%),
   'gray-6': hsl(0, 0, 100),
 
-  'dark': hsl(0, 0, 0) // alias for gray-6 or white
-  'light': hsl(0, 0, 100), // alias for gray-1 or black
+  'dark': hsl(0, 0, 0), // alias for gray-6 or white
+  'light': hsl(0, 0, 100) // alias for gray-1 or black
 ) !default;
 
 /// @type Map
@@ -47,21 +47,21 @@ $colours-variant: (
     'lighter': hsl(145, 55%, 71%),
     'light': hsl(145, 56%, 61%),
     'dark': hsl(145, 56%, 44%),
-    'darker': hsl(145, 56%, 25%),
+    'darker': hsl(145, 56%, 25%)
   ),
   'primary-2': (
     'base': hsl(175, 56%, 56%),
     'lighter': hsl(175, 55%, 83%),
     'light': hsl(175, 56%, 61%),
     'dark': hsl(174, 56%, 45%),
-    'darker': hsl(175, 56%, 17%),
+    'darker': hsl(175, 56%, 17%)
   ),
   'primary-3': (
     'base': hsl(205, 56%, 56%),
     'lighter': hsl(204, 55%, 83%),
     'light': hsl(205, 56%, 61%),
     'dark': hsl(205, 56%, 34%),
-    'darker': hsl(204, 55%, 11%),
+    'darker': hsl(204, 55%, 11%)
   ),
 
   'accent-1': (
@@ -69,7 +69,7 @@ $colours-variant: (
     'lighter': hsl(264, 55%, 83%),
     'light': hsl(265, 56%, 61%),
     'dark': hsl(265, 56%, 45%),
-    'darker': hsl(265, 56%, 17%),
+    'darker': hsl(265, 56%, 17%)
   ),
 
   'accent-2': (
@@ -77,7 +77,7 @@ $colours-variant: (
     'lighter': hsl(342, 39%, 57%),
     'light': hsl(355, 56%, 61%),
     'dark': hsl(355, 56%, 45%),
-    'darker': hsl(354, 57%, 23%),
+    'darker': hsl(354, 57%, 23%)
   )
 ) !default;
 
@@ -87,7 +87,7 @@ $color-interval: 10% !default;
 
 /// The default shadow color
 /// @type Color
-$shadow: gray('gray-5', divider) !default;
+$shadow-color: gray('gray-5', divider) !default;
 
 /// Colors to be on top of regular colors
 /// @type Map

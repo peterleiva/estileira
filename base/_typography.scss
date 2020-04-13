@@ -3,14 +3,8 @@
 ///
 ////
 
-$basesize: rem(14) !default;
-
-$modularscale: (
-  base: $basesize ($basesize * $baseratio) rem(27),
-  ratio: $golden,
-);
-
-$browser-context: 14 !default;
+// custom $basesize
+$basesize: rem(14);
 
 @include type-setting;
 
@@ -19,39 +13,41 @@ $browser-context: 14 !default;
   src: url('https://fonts.googleapis.com/css?family=Poppins');
 }
 
-html, body {
-  @include text-component-rhythm(default);
+body {
   color: gray('gray-2')
 }
 
-h1, .main-title {
-  @include adjust-component(ms(5));
+.main-title {
+  @include type-scale(jumbo);
 }
 
-h2, .main-subtitle {
-  @include adjust-component(ms(4));
+.main-subtitle {
+  @include type-scale(xxxl);
 }
 
-h3, .section-title {
-  @include adjust-component(ms(3));
+.section-title {
+  @include type-scale(xxl);
 }
 
-h4, .section-subtitle {
-  @include adjust-component(ms(2));
+.section-subtitle {
+  @include type-scale(xl);
 }
 
-/// defines small text components
-small, .text-sm {
-  @include adjust-component(ms(-1));
+/// Creates a text class helper for each typescale
+@include type-scale-names using ($name) {
+  .text-#{$name} {
+    @include type-scale($name);
+  }
+};
+
+/// heading helpers
+@each $level in (1 2 3 4 5 6) {
+  .heading-#{$level}, h#{$level} {
+    @include type-scale(6 - $level);
+  }
 }
 
-.text-xs {
-  @include adjust-component(ms(-2));
-}
-
-.text-jumbo {
-  @include adjust-component(ms(7));
-}
+// defines heading classes
 
 .text-center {
   text-align: center;
@@ -65,7 +61,12 @@ small, .text-sm {
   text-align: left;
 }
 
-/// defines quotes
+// default small element
+small {
+  @include type-scale(sm);
+}
+
+/// default quote element
 q {
   @extend .section-subtitle;
   font-style: italic;

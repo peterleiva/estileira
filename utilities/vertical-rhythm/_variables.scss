@@ -1,0 +1,37 @@
+////
+///  This file describe variables necessary for vertical rhythm
+////
+
+/// font-size base for modular scale
+/// @type Number
+$basesize: rem(16) !default;
+
+/// the ratio to calculate the baseline length
+/// @type Number
+$baseline-ratio: 1.5 !default;
+
+/// baseline length in rem
+/// @type Number
+$baseline: $basesize * $baseline-ratio;
+
+/// Configures modular scale module. Always set the $baseline as a base
+/// @see https://github.com/modularscale/modularscale-sass
+$modularscale: (
+  base: $basesize $baseline,
+  ratio: $golden,
+);
+
+/// type scale options
+/// @type Map
+$type-scale: (
+  'jumbo': 5,
+  'xxxl': 4,
+  'xxl': 3,
+  'xl': 2,
+  'lg': 1,
+  'default': 0,
+  'sm': -1,
+  'xs': -2,
+  'xxs': -3,
+  'xxxs': -4,
+) !default;

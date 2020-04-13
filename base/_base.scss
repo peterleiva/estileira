@@ -5,6 +5,7 @@
 a {
   @include unstyled-link;
   cursor: pointer;
+  color: color-variant('accent-1', 'darker');
 }
 
 html, body {

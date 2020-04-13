@@ -3,15 +3,7 @@
 ///
 ////
 
-/// base font-size for vertical rhythm
-/// @type Number
-$basesize: 1rem !default;
-
-/// defines the ratio to calculates de baseline
-/// @type Number
-$baseratio: 1.5 !default;
-
-/// browser context in pixels
+/// browser context in pixels for calculating rem values
 /// @type Number
 $browser-context: 16 !default;
 
@@ -22,10 +14,10 @@ $font-family: Poppins, sans-serif !default;
 /// defines the path where is stored the base path for assets
 $asset-path: '/assets' !default;
 
-/// generic breakpoints values
+/// Breakpoints as dog names
 /// @type Map
-$breakpoints: (
-  'Chihuahua': 200px,
+$breakpoint-names: (
+  'chihuahua': 200px,
   'pug': 530px,
   'bulldog': 760px,
   'dobermann': 1024px,
@@ -43,7 +35,7 @@ $z-indexes: (
   'below': -100
 ) !default;
 
-/// opcatity for common components
+/// Opacity for common components
 /// @type Map
 $opacity-levels: (
   divider: .12,
@@ -63,7 +55,3 @@ $component-size: (
   sm: -2,
   xs: -3,
 ) !default;
-
-/// List of size names
-/// @type List
-$component-size-name: map-values($component-size);

@@ -5,9 +5,9 @@
 
 .overlay {
   @include fill-content;
-  @include z('overlay');
-  @include opacity('disabled');
-  background: pick-color(dark);
+  @include z(overlay);
+  @include opacity(disabled);
+  background: gray(dark);
   grid-row: 1 / -1;
   grid-column: 1 / -1;
 }

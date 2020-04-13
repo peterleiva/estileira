@@ -1,0 +1,167 @@
+////
+/// This file describe mixins for mantain vertical rhythm
+////
+
+///
+/// Adjust the component calculating the minimum length required to mantain the
+/// rhythm
+///
+/// @param {Number} $font-size - font-size to be adjusted
+/// @requires {function} lines-required - calculate the minimum lines required
+/// @requires {function} measure-lines-rhythm - calculate the line length
+///                                               required
+///
+@mixin adjust-component($font-size: $basesize) {
+  font-size: $font-size;
+  @debug "$basesize: #{$basesize}";
+  line-height: measure-lines-rhythm(lines-required($font-size));
+}
+
+///
+/// @alias adjust-component
+/// @param {Number} $font-size - font-size to be adjusted
+///
+@mixin type-rhythm($font-size: $basesize) {
+  @include adjust-component($font-size);
+}
+
+///
+/// Applies vertical rhythm to text element and fill with pad to maintain rhythm
+///
+/// @param {String | Number} $size [default] - size name or number of lines
+/// @requires
+///
+@mixin text-component-rhythm($size: default) {
+  $text-size: if(type-of($size) == 'number', $size, ms(size($size)));
+  @include adjust-component($text-size);
+}
+
+///
+/// Scale a type mantaining vertical rhythm using modular scale
+/// Uses a defined scale name in $type-scale or uses a number to be scale to
+/// both of them using ms function
+///
+/// @param {Number | String} $scale - a scale number or keyword
+///                                     defined by $type-scale
+/// @requires {Map} $type-scale - scale naming map
+/// @requires {function} ms - from modular scale library
+@mixin type-scale($scale: 0) {
+  $text-size: if(type-of($scale) == 'number', ms($scale),
+                  ms(read-map($type-scale, $scale)));
+
+  @include type-rhythm($text-size);
+}
+
+///
+/// Iterate over each type name including in content argument
+/// @requires {Map} $type-scale
+///
+@mixin type-scale-names {
+  @each $size, $scale in $type-scale {
+    @content($size);
+  }
+}
+
+///
+/// Apply vertical rhythm using padding list syntax
+/// The rhythm is mantained calculating the lines required for each item list
+///
+/// @example
+///   padding-rhythm(10 3 4 5)
+///   padding-rhythm(10 5)
+/// @param {List} $direction [()] - directions to be applied
+///
+@mixin padding-rhythm($directions: ()) {
+  @include list-rhythm($directions) using ($pads) {
+    padding: $pads;
+  }
+}
+
+///
+/// Maintain vertical rhythm applying margins using its list syntax
+/// The rhythm is mantained calculating the lines required for each item list
+///
+/// @example
+///   margin-rhythm(10 3 4 5)
+///   margin-rhythm(10 5)
+///
+/// @param {List} $direction [()] - pad direction to be applied
+///
+@mixin margin-rhythm($directions: ()) {
+  @include list-rhythm($directions) using ($margins) {
+    margin: $margins;
+  }
+}
+
+///
+/// Each direction calculates the line required for a list of
+/// @throws error in case the list is empty
+/// @access private
+/// @param {List} $direction
+///
+@mixin list-rhythm($directions: ()) {
+  @if length($directions) == 0 {
+    @error "List shouldn't be empty";
+  }
+
+  @content(list-lines-rhythm($directions...));
+}
+
+///
+/// Applies border to component keeping the vertical rhythm
+/// TODO
+/// @param {List} $border
+///
+@mixin border-rhythm($border: ()) {
+  @if not $border or length($border) == 0 {
+    @error 'the border should have at least one value';
+  }
+
+  border-width: $border;
+  $pads: ();
+
+  $i: 0;
+  @while $i < 2 {
+    $border-width: nth($border, $i) + nth($border, $i + 2);
+    $pad: abs($direction - measure-lines-vrhythm(lines-required(em($border-width))))/2;
+    $pads: append($pads, $pad);
+
+    $i: $i + 1;
+  }
+
+  padding: $pads
+
+}
+
+///
+/// Aplica vertical rhythm to component
+///
+/// @example
+///   a {
+///     @include vertical-rhythm(1.2rem, $use-height: true, $bottom-rows: 1);
+///   }
+///
+//// @access public
+/// @param {$font-size} - Tamanho do elemento
+///
+// @mixin vertical-rhythm($font-size: $basesize){
+//
+//   // quantidade de linhas necessárias para o tamanho da letra
+//   $min-lines: lines-required($font-size);
+//
+//   // altura que o elemento ocupa
+//   $component-height: line-rhythm($min-lines);
+//
+//   // altura, em rem, do container
+//   $height: line-rhythm(ceil($min-lines));
+//
+//   @if $use-height {
+//     // sobras para que o elemento ocupe o número inteiro de linhas verticais
+//     $leftover: $height - $component-height;
+//     $pad: $leftover/2;
+//     height: $component-height;
+//     width: $component-height;
+//     margin-top: $pad;
+//     margin-bottom:$pad;
+//   }
+// }

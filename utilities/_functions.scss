@@ -14,25 +14,25 @@
 /// @param {Map} $map - map which search values
 /// @param {String} $layer - value to be readed
 @function read-map($map, $layer) {
-  @if (type-of($map) == null) or (type-of($layer) == null) {
-    @error 'Map #{map} and layer #{layer} must be defined';
+  @if (type-of($map) != 'map') or (type-of($layer) == null) {
+    @error "Map #{$map} and layer #{$layer} must be defined";
   }
 
   @if map-has-key($map, $layer) {
     @return map-get($map, $layer);
   } @else {
     @error "No value found for \'#{$layer}\'. Please make sure you defined in " +
-        "\'$#{map}\' map.";
+        "\'#{$map}\'";
   }
 }
 
 /// Get breakpoint value by its key name on map
-/// @access public
+///
 /// @param {String} $layer - layer name
 /// @return {String}
-/// @require $breakpoints
-@function breakpoint-name($breakpoint) {
-  @return read-map($breakpoints, $breakpoint);
+/// @requires $breakpoints-names
+@function get-breakpoint($breakpoint) {
+  @return rem(read-map($breakpoint-names, $breakpoint));
 }
 
 /// Gets a size from map
@@ -55,43 +55,12 @@
 }
 
 ///
-/// Calculates the length of lines according
+/// Converts pixels unit to rem
 ///
-/// The lines is based on ratio defined by the user. The vertical rhythm
-/// library defines a root html element which is where all font-size, line
-/// is referenced by. So the calculation is converted to rem so can use
-/// this font-size of root as reference
-/// @access public
-/// @param {Number} $lines [1] - lines to be calculated
-/// @return {Number} - tamanho da linha em rem
-/// @requires $baseratio
-///
-@function measure-lines-rhythm($lines: 1) {
-  @return $lines * $baseratio * 1rem;
-}
-
-///
-/// Calculates the amount of lines required to mantain the rhythm
-///
-/// @access private
-/// @param {Number} $basesize [$basesize] - font-size in rem
-/// @return {Number}
-///
-@function lines-required($font-size: $basesize) {
-  @if unit($font-size) != 'rem' {
-    @warn 'The unit for `lines-required` should be `rem`';
-  }
-
-  @return ceil($font-size/measure-lines-rhythm());
-}
-
-///
-/// Converts pixels unit to em to use vertical rhythm functions
-/// @access public
 /// @param {Number} $pixels
-/// @param {Number} $context [$basesize] - context which will be converted to
+/// @param {Number} $context [$browser-context]
 /// @return {Number}
-/// @require $basesize
+/// @require {Number} $browser-context
 ///
 @function rem($pixels, $context: $browser-context) {
   @if (unitless($pixels)) {
