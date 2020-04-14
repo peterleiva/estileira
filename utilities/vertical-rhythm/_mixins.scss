@@ -113,6 +113,12 @@
     @error "The side rhythm #{$side} must be in #{$sides}";
   }
 
+  $properties: ('margin' 'padding');
+
+  @if index($properties, $property) == null {
+    @error "Property #{$property} on side-rhythm must be in #{$properties}";
+  }
+
   #{$property}-#{$side}: measure-lines-rhythm($lines);
 }
 
@@ -121,6 +127,7 @@
 /// @throws error in case the list is empty
 /// @access private
 /// @param {List} $direction
+/// @requires {function} list-lines-rhythm
 ///
 @mixin list-rhythm($directions: ()) {
   @if length($directions) == 0 {
@@ -136,6 +143,8 @@
 /// calculating the leftover between the border with and the next baseline
 ///
 /// @param {List} $sides [()] - borders side which applies the rhythm
+/// @requires {function} padding-rhythm
+/// @requires {function} baseline-rhythm
 ///
 @mixin border-rhythm($sides: ()) {
   $pads: ();
@@ -156,6 +165,7 @@
 ///
 /// @requires {function} measure-lines-rhythm
 /// @requires {function} padding-side-rhythm
+/// @requires {function} baseline-rhythm
 ///
 @mixin border-side-rhythm($side, $width) {
   $border-width: measure-lines-rhythm($width);
