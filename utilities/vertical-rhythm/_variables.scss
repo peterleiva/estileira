@@ -4,7 +4,7 @@
 
 /// font-size base for modular scale
 /// @type Number
-$basesize: rem(16) !default;
+$basesize: rem(14) !default;
 
 /// the ratio to calculate the baseline length
 /// @type Number
@@ -12,7 +12,7 @@ $baseline-ratio: 1.5 !default;
 
 /// baseline length in rem
 /// @type Number
-$baseline: $basesize * $baseline-ratio;
+$baseline: $basesize * $baseline-ratio !default;
 
 /// Configures modular scale module. Always set the $baseline as a base
 /// @see https://github.com/modularscale/modularscale-sass

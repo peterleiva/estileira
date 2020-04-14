@@ -13,7 +13,6 @@
 ///
 @mixin adjust-component($font-size: $basesize) {
   font-size: $font-size;
-  @debug "$basesize: #{$basesize}";
   line-height: measure-lines-rhythm(lines-required($font-size));
 }
 

@@ -79,12 +79,8 @@
 /// @requires $font-family
 ///
 @mixin type-setting() {
-
-  html, body {
-    @include type-rhythm;
-  }
-
   body {
+    @include type-rhythm;
     font-family: $font-family;
   }
 
