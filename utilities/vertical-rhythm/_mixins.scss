@@ -13,7 +13,7 @@
 ///
 @mixin adjust-component($font-size: $basesize) {
   font-size: $font-size;
-  line-height: measure-lines-rhythm(lines-required($font-size));
+  line-height: baseline-rhythm($font-size);
 }
 
 ///
@@ -25,23 +25,11 @@
 }
 
 ///
-/// Applies vertical rhythm to text element and fill with pad to maintain rhythm
-///
-/// @param {String | Number} $size [default] - size name or number of lines
-/// @requires
-///
-@mixin text-component-rhythm($size: default) {
-  $text-size: if(type-of($size) == 'number', $size, ms(size($size)));
-  @include adjust-component($text-size);
-}
-
-///
 /// Scale a type mantaining vertical rhythm using modular scale
 /// Uses a defined scale name in $type-scale or uses a number to be scale to
 /// both of them using ms function
 ///
-/// @param {Number | String} $scale - a scale number or keyword
-///                                     defined by $type-scale
+/// @param {Number | String} $scale - a scale or keyword defined by $type-scale
 /// @requires {Map} $type-scale - scale naming map
 /// @requires {function} ms - from modular scale library
 @mixin type-scale($scale: 0) {
@@ -70,8 +58,8 @@
 ///   padding-rhythm(10 5)
 /// @param {List} $direction [()] - directions to be applied
 ///
-@mixin padding-rhythm($directions: ()) {
-  @include list-rhythm($directions) using ($pads) {
+@mixin padding-rhythm($sides: ()) {
+  @include list-rhythm($sides) using ($pads) {
     padding: $pads;
   }
 }
@@ -86,10 +74,46 @@
 ///
 /// @param {List} $direction [()] - pad direction to be applied
 ///
-@mixin margin-rhythm($directions: ()) {
-  @include list-rhythm($directions) using ($margins) {
+@mixin margin-rhythm($sides: ()) {
+  @include list-rhythm($sides) using ($margins) {
     margin: $margins;
   }
+}
+
+///
+/// Applies rhythm for single margin side
+///
+/// @requires {function} side-rhythm
+///
+@mixin margin-side-rhythm($side, $lines: 1) {
+  @include side-rhythm('margin', $side, $lines);
+}
+
+///
+/// Applies rhythm for single padding side
+///
+/// @requires {function} side-rhythm
+///
+@mixin padding-side-rhythm($side, $lines: 1) {
+  @include side-rhythm('padding', $side, $lines);
+}
+
+///
+/// Calculates the single side line of margin or border property
+///
+/// @access private
+/// @param {margin|padding} $property - property to be applies
+/// @param {top|bottom|left|right} $side - side of property to be applies
+/// @param {Number} $lines [1]
+/// @requires {function} measure-lines-rhythm
+/// @requires {List} $sides
+///
+@mixin side-rhythm($property, $side, $lines: 1) {
+  @if index($sides, $side) == null {
+    @error "The side rhythm #{$side} must be in #{$sides}";
+  }
+
+  #{$property}-#{$side}: measure-lines-rhythm($lines);
 }
 
 ///
@@ -108,28 +132,40 @@
 
 ///
 /// Applies border to component keeping the vertical rhythm
-/// TODO
-/// @param {List} $border
+/// The rhythm is mantained for each of four border width. Padding is added
+/// calculating the leftover between the border with and the next baseline
 ///
-@mixin border-rhythm($border: ()) {
-  @if not $border or length($border) == 0 {
-    @error 'the border should have at least one value';
-  }
-
-  border-width: $border;
+/// @param {List} $sides [()] - borders side which applies the rhythm
+///
+@mixin border-rhythm($sides: ()) {
   $pads: ();
 
-  $i: 0;
-  @while $i < 2 {
-    $border-width: nth($border, $i) + nth($border, $i + 2);
-    $pad: abs($direction - measure-lines-vrhythm(lines-required(em($border-width))))/2;
-    $pads: append($pads, $pad);
+  @include list-rhythm using ($borders) {
+    border-width: $borders;
 
-    $i: $i + 1;
+    @each $border in $borders {
+      $pads: append($pads, baseline-rhythm($border) - $border);
+    }
+
+    @include padding-rhythm($pads);
   }
+}
 
-  padding: $pads
+///
+/// Applies rhythm for single padding side
+///
+/// @requires {function} measure-lines-rhythm
+/// @requires {function} padding-side-rhythm
+///
+@mixin border-side-rhythm($side, $width) {
+  $border-width: measure-lines-rhythm($width);
+  $padding: baseline-rhythm($border-width) - $border-width;
 
+  border-width-#{$side}: $border-width;
+
+  @if $padding > 0 {
+    @include padding-side-rhythm($side, $padding);
+  }
 }
 
 ///

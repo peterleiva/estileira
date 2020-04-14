@@ -55,3 +55,12 @@ $component-size: (
   sm: -2,
   xs: -3,
 ) !default;
+
+/// property sides
+/// @type List
+$sides: (
+  'top',
+  'right',
+  'bottom',
+  'left'
+)
