@@ -7,6 +7,14 @@
 /// @type Number
 $browser-context: 16 !default;
 
+/// Default touch target width
+/// @type Number
+$touchable-area: rem(48) !default;
+
+/// Default click target width
+/// @type Number
+$clickable-area: rem(24) !default;
+
 /// default font-family
 /// @type List
 $font-family: Poppins, sans-serif !default;
