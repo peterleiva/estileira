@@ -2,6 +2,8 @@
 /// This file describe functions used for vertical rhythm
 ////
 
+@use 'variables' as *;
+
 ///
 /// Calculates the length of lines according
 ///
@@ -9,11 +11,12 @@
 /// library defines a root html element which is where all font-size, line
 /// is referenced by. So the calculation is converted to rem so can use
 /// this font-size of root as reference
-/// 
+///
+/// @requires $baseline
+///
 /// @throw Warning about values with units
 /// @param {Number} $lines [1] - lines to be calculated
 /// @return {Number} - tamanho da linha em rem
-/// @requires $baseline
 ///
 @function measure-lines-rhythm($lines: 1) {
   @if is-unitless($lines) == false {
@@ -26,18 +29,21 @@
 ///
 /// Calculates the baseline length for specified font-size
 ///
-/// @param {Number} $font-size [$basesize] - $font-size
 /// @requires {function} lines-required
 /// @requires {function} measure-lines-rhythm
 ///
+/// @param {Number} $font-size [$basesize] - $font-size
+///
 @function baseline-rhythm($font-size: $basesize) {
-  @return measure-lines-rhythm(lines-required($font-size));
+  @return measure-lines-rhythm(_lines-required($font-size));
 }
 
 ///
 /// Transforms each list item using measure-lines-rhythm
+///
 /// @throws property error type
 /// @requires {function} measure-lines-rhythm
+///
 /// @param {Number} $lines - arbitrary list of lines
 ///
 @function list-lines-rhythm($lines...) {
@@ -60,11 +66,12 @@
 /// Pixel values are accepted either
 ///
 /// @access private
-/// @param {Number} $basesize [$basesize] - font-size in rem
-/// @return {Number}
 /// @requires {Function} measure-lines-rhythm
 ///
-@function lines-required($font-size: $basesize) {
+/// @param {Number} $basesize [$basesize] - font-size in rem
+/// @return {Number}
+///
+@function _lines-required($font-size: $basesize) {
   @if unit($font-size) == 'px' {
     $font-size: rem($font-size);
   }

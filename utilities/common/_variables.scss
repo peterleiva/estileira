@@ -17,14 +17,14 @@ $clickable-area: rem(24) !default;
 
 /// default font-family
 /// @type List
-$font-family: Poppins, sans-serif !default;
+$font-family: Popins, sans-serif !default;
 
 /// defines the path where is stored the base path for assets
 $asset-path: '/assets' !default;
 
 /// Breakpoints as dog names
 /// @type Map
-$breakpoint-names: (
+$breakpoints: (
   'chihuahua': 200px,
   'pug': 530px,
   'bulldog': 760px,
@@ -35,40 +35,45 @@ $breakpoint-names: (
 /// z-index for components
 /// @type Map
 $z-indexes: (
-  'drawer': 6000,
-  'modal': 5000,
+  'drawer': 5000,
+  'modal': 4000,
   'overlay': 3000,
-  'dropdown': 4000,
+  'dropdown': 2000,
   'default': 1,
   'below': -100
 ) !default;
 
-/// Opacity for common components
+/// Opacity levels for components
 /// @type Map
 $opacity-levels: (
-  divider: .12,
-  active: 1,
-  disabled: .5,
-  light: .8,
-  dark: .4,
-  hidden: 0
+  'active': 1,
+  'light': .8,
+  'disabled': .5,
+  'dark': .4,
+  'divider': .12,
+  'hidden': 0
 ) !default;
 
-/// sizes a component can have
+/// component scales
 /// @type Map
-$component-size: (
-  xl: 3,
-  lg: 2,
-  default: 0,
-  sm: -2,
-  xs: -3,
+$component-scales: (
+  'jumbo':     5,
+  'xxxl':      4,
+  'xxl':       3,
+  'xl':        2,
+  'lg':        1,
+  'default':   0,
+  'sm':       -1,
+  'xs':       -2,
+  'xxs':      -3,
+  'xxxs':     -4,
 ) !default;
 
-/// property sides
+/// Properties sides
 /// @type List
 $sides: (
   'top',
   'right',
   'bottom',
   'left'
-)
+);

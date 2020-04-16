@@ -1,0 +1,25 @@
+////
+/// Defines classes
+///
+////
+
+@use '../utilities/colors';
+
+// define all text and background colors
+@include colors.apply-colors using ($color) {
+  .text-#{$color} {
+    color: colors.pick-color($color);
+  }
+
+  .background-#{$color} {
+    background-color: colors.pick-color($color);
+  }
+
+  .border-#{$color} {
+    border-color: colors.pick-color($color);
+  }
+}
+
+a {
+  color: colors.color-variant('accent-1', 'darker');
+}

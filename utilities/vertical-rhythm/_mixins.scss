@@ -2,14 +2,37 @@
 /// This file describe mixins for mantain vertical rhythm
 ////
 
+@use 'variables' as *;
+@use 'functions' as *;
+@use '../common';
+
+///
+/// Configures the app to accept vertical rhythm framework
+///
+///
+@mixin type-setting() {
+  body {
+    @include type-rhythm;
+  }
+
+  *, *:after, *:before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+  }
+}
+
 ///
 /// Adjust the component calculating the minimum length required to mantain the
 /// rhythm
 ///
-/// @param {Number} $font-size - font-size to be adjusted
 /// @requires {function} lines-required - calculate the minimum lines required
 /// @requires {function} measure-lines-rhythm - calculate the line length
 ///                                               required
+///
+/// @param {Number} $font-size - font-size to be adjusted
 ///
 @mixin adjust-component($font-size: $basesize) {
   font-size: $font-size;
@@ -29,22 +52,23 @@
 /// Uses a defined scale name in $type-scale or uses a number to be scale to
 /// both of them using ms function
 ///
-/// @param {Number | String} $scale - a scale or keyword defined by $type-scale
 /// @requires {Map} $type-scale - scale naming map
 /// @requires {function} ms - from modular scale library
+///
+/// @param {Number | String} $scale - a scale or keyword defined by $type-scale
 @mixin type-scale($scale: 0) {
-  $text-size: if(type-of($scale) == 'number', ms($scale),
-                  ms(read-map($type-scale, $scale)));
+  $text-size: ms(common.component-scale($scale));
 
   @include type-rhythm($text-size);
 }
 
 ///
 /// Iterate over each type name including in content argument
-/// @requires {Map} $type-scale
+///
+/// @requires {Map} $component-scales
 ///
 @mixin type-scale-names {
-  @each $size, $scale in $type-scale {
+  @each $size, $scale in common.$component-scales {
     @content($size);
   }
 }

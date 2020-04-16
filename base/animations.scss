@@ -3,6 +3,8 @@
 ///
 ///
 
+@use 'utilities/common' as *;
+
 @keyframes fadeIn {
   from {
     @include opacity(hidden);

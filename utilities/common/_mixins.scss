@@ -1,0 +1,67 @@
+////
+/// Core utilities mixins
+///
+////
+
+@use 'functions' as *;
+
+///
+/// Remove all styles for link component
+///
+@mixin unstyled-link {
+  color: inherit;
+  text-decoration: inherit;
+  cursor: inherit;
+
+  &:active, &:focus {
+    outline: none;
+  }
+}
+
+///
+/// Includes a keyword z-index or a number
+///
+/// @require {Function} z-index
+///
+/// @param {String} $index
+///
+@mixin z($index: default) {
+  z-index: z-index($index);
+}
+
+///
+/// includes a opacity level
+///
+/// @requires {Function} opacity
+///
+/// @param {String} $level - opacity level
+///
+@mixin opacity($level) {
+  opacity: opacity-level($level);
+}
+
+///
+/// fill the full component relative to parent
+///
+@mixin full-content {
+  height: 100%;
+  width: 100%;
+}
+
+///
+/// Resets all style for select html element
+///
+///
+@mixin select-reset {
+  select {
+    text-decoration: none;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  select::-ms-expand {
+    display: none;
+  }
+}

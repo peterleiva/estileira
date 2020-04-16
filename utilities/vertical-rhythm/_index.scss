@@ -2,4 +2,6 @@
 /// This file imports all necessary module for vertical rhythm in correct order
 ////
 
-@import 'variables', 'functions', 'mixins';
+@forward 'variables';
+@forward 'functions';
+@forward 'mixins';

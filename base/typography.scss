@@ -3,6 +3,8 @@
 ///
 ////
 
+@use '../utilities/vertical-rhythm' as *;
+
 @include type-setting;
 
 @font-face {
@@ -11,7 +13,7 @@
 }
 
 body {
-  color: gray('gray-2')
+  color: gray('gray-2');
 }
 
 .main-title {

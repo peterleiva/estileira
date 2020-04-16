@@ -3,6 +3,9 @@
 ///
 ////
 
+@use 'variables' as *;
+@use '../common/functions' as *;
+
 ///
 /// Gets a colors applying some tint or shade or opactity
 ///
@@ -19,13 +22,16 @@
 /// @example
 ///   pick-color(primary, $level: -10, $opacity: active-icon);
 ///
+/// @requires {Map} $colors
+/// @requires {Number} $variant-interval
+/// @requires {function} opacity-level
+/// @requires {function} read-map
+///
 /// @param {String | Color} $color-name [primary] - color name
 /// @param {Number} $level [0] - applies tint or shade depending on percentage
 /// @param {Number | String} $opacity [active] - opacity level
 /// @return {Color}
 ///
-/// @requires {Map} $colors
-/// @requires {Number} $color-interval
 @function pick-color($color-name: primary, $level: 0, $opacity: active) {
 
   // check the $color-nakme type, it can return a single color
@@ -39,30 +45,31 @@
   $level: if($level < 0, -$level, $level);
 
   // gets the opacity level from map or use a number value
-  $alpha: opacity($opacity);
+  $alpha: opacity-level($opacity);
 
   @if $color != transparent {
     $color: rgba($color, $alpha);
   }
 
   // applies tint or shade according to $level
-  $color: mix($color-base, $color, $level * $color-interval);
+  $color: mix($color-base, $color, $level * $variant-interval);
 
   @return $color;
 }
 
 ///
-/// Gets a color variant from its spectrum
+/// Gets a color variant from spectrum
+///
+/// @requires {Map} $variants
+/// @requires {Function} pick-color
+/// @requires {Function} read-map
 ///
 /// @param {String} $color
 /// @param {String} $variant
-/// @requires {Map} $colours-variant
-/// @requires {Function} pick-color
 /// @returns {Color}
 ///
 @function color-variant($color: 'primary-1', $variant: 'base') {
-  // checks if the variant exists
-  $color-spectrum: read-map($colours-variant, $color);
+  $color-spectrum: read-map($variants, $color);
 
   @if $color-spectrum {
     $variant: pick-color(read-map($color-spectrum, $variant));
@@ -72,7 +79,10 @@
 }
 
 ///
-/// Applies a fix tint amount to colors
+/// Applies a fixed amount of tint to color
+///
+/// @requires {function} pick-color
+///
 /// @param {Color} $color [primary] - color to be tinted
 /// @returns {Color}
 ///
@@ -81,7 +91,10 @@
 }
 
 ///
-/// Applies a fix tint to color
+/// Applies a fixed amount of tint to color
+///
+/// @requires {function} pick-color
+///
 /// @param {Color} $color [primary] - color to be tinted
 /// @returns {Color}
 ///
@@ -90,9 +103,11 @@
 }
 
 ///
-/// Applies a fix shade to color
+/// Applies a fixed amount of shade to color
+///
+/// @requires {function} pick-color
+///
 /// @param {Color} $color [primary] - color to be shaded
-/// @requires {Function} pick-color
 /// @returns {Color}
 ///
 @function dark($color: primary) {
@@ -100,9 +115,11 @@
 }
 
 ///
-/// Applies a fix shade to color
+/// Applies a fixed amount of shade to color
+///
+/// @requires {function} pick-color
+///
 /// @param {Color} $color [primary] - color to be shaded
-/// @requires {Function} pick-color
 /// @returns {Color}
 ///
 @function darker($color: primary) {
@@ -111,16 +128,21 @@
 
 ///
 /// Gets the contrast color for foreground to a given color
+///
+/// @requires {function} pick-color
+/// @requires {function} gray
+///
 /// @param {String | Color} $color [brand] - color to get the contrast
 /// @param {Number} $threshold [65] - lightness limit
 /// @returns {Color}
 ///
 @function contrast($color: brand, $threshold: 65) {
-  @return if(lightness(pick-color($color)) > $threshold, pick-color(dark), pick-color(light));
+  @return if(lightness(pick-color($color)) > $threshold, gray(dark), gray(light));
 }
 
 ///
 /// Calculates the colors diff between two colors
+///
 /// @param {Color} $a - base color
 /// @param {Color} $b - color which is diff
 /// @returns {Map} - A map to functions to be applies to get $a from $b
@@ -158,7 +180,10 @@
 ///
 /// Gets a grayscale color from its map with optional opacity
 ///
-/// @require $grayscale - grayscale map
+/// @requires {Map} $grayscale - grayscale map
+/// @requires {function} read-map
+/// @requires {pick-color} pick-color
+///
 /// @param {String} $gray - grayscale color name
 /// @param {String} $opacity [active] - opacity level defind on variables
 ///

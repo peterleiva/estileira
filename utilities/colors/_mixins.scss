@@ -3,8 +3,14 @@
 ////
 ///
 
+@use 'variables' as *;
+@use 'functions' as *;
+
 /// applies style for text
-/// 
+///
+/// @requires {pick-color}
+/// @requires {dark}
+///
 /// @param {Color | String} $foreground
 /// @param {Color | String} $background
 /// @param {Color | String} $border
@@ -18,6 +24,7 @@
 ///
 /// Call a content block with each color
 ///
+/// @requires {$colors}
 ///
 @mixin apply-colors {
   @each $color in map-keys($colors) {

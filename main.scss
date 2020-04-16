@@ -5,23 +5,7 @@
 ///
 ////
 
-@import
-  '~modularscale-sass/stylesheets/modularscale',
-  '~breakpoint-sass/stylesheets/breakpoint';
+@use 'base';
 
 @import
-  'utilities/variables',
-  'utilities/functions',
-  'utilities/mixins',
-  'utilities/vertical-rhythm/all',
-  'utilities/colors/all';
-
-@import
-  'base/reset',
-  'base/base',
-  'base/states',
-  'base/styleguide',
-  'base/animations',
-  'base/typography';
-
-@import 'components/list';
+  'components/list';

@@ -3,7 +3,7 @@
 /// TODO: gradients colors
 ////
 
-@import './utilities/functions';
+// @use 'functions' as *;
 
 /// Grayscale for nice grays to be used as shadows, dividers, background, etc...
 /// @type Map
@@ -41,7 +41,7 @@ $colors: (
 
 /// Color variant for base colors
 /// @type Map
-$colours-variant: (
+$variants: (
   'primary-1': (
     'base': hsl(145, 56%, 56%),
     'lighter': hsl(145, 55%, 71%),
@@ -81,13 +81,13 @@ $colours-variant: (
   )
 ) !default;
 
-
-// incremental steps to get shade/tint color
-$color-interval: 10% !default;
+/// incremental steps to get colors shade/tint
+/// @type Number
+$variant-interval: 10% !default;
 
 /// The default shadow color
 /// @type Color
-$shadow-color: gray('gray-5', divider) !default;
+$shadow: gray('gray-5', divider) !default;
 
 /// Colors to be on top of regular colors
 /// @type Map

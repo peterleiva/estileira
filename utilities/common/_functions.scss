@@ -1,0 +1,116 @@
+////
+/// Defines all functions to access variables or which can be reuse or
+/// facilitates code
+///
+////
+
+@use 'variables' as *;
+
+///
+/// Get value from generic map throwing error if exists
+///
+/// @throw Not found map variable
+/// @throw Not found map value
+/// @access private
+///
+/// @param {Map} $map - map which search values
+/// @param {String} $layer - value to be read
+///
+@function read-map($map, $layer) {
+  @if (type-of($map) != 'map') or (type-of($layer) == null) {
+    @error "Map #{$map} and layer #{$layer} must be defined";
+  }
+
+  @if map-has-key($map, $layer) {
+    @return map-get($map, $layer);
+  } @else {
+    @error "No value found for \'#{$layer}\'. Please make sure you defined in " +
+        "\'#{$map}\'";
+  }
+}
+
+
+///
+/// Gets a mapped numeric value
+///
+/// @requires {Function} read-map
+///
+/// @param {Map} $map
+/// @param {String|Number} $layer
+/// @return {Number}
+///
+@function read-number-map($map, $layer) {
+  @return if(type-of($layer) == 'number', $layer, read-map($map, $layer));
+}
+
+/// Get breakpoint value by its key name on map
+///
+/// @todo check other units or conversions
+///
+/// @requires {Map} $breakpoins
+/// @requires {function} read-number-map
+///
+/// @param {String} $breakpoint - breakpoint name
+/// @return {Number}
+///
+@function breakpoints($breakpoint) {
+  @return read-number-map($breakpoints, $breakpoint);
+}
+
+/// Gets a component scale factor from its map variable
+///
+/// @requires {Map} $component-scales
+/// @requires {Function} read-number-map
+///
+/// @param {String} $scale - scale number
+/// @return {Number}
+///
+@function component-scale($scale: default) {
+  @return read-number-map($component-scales, $scale);
+}
+
+///
+/// Gets a z-index number or read its named map
+///
+/// @requires {Map} $z-indexes
+///
+/// @param {String|Number} $index [default] z-index keyword or nmber
+/// @return {Number}
+///
+@function z-index($index: default) {
+  @return read-number-map($z-indexes, $index);
+}
+
+///
+/// Gets a opacity level from map object or gets a literal number
+///
+/// @requires {Map} $opacity-levels
+/// @requires {Function} read-number-map
+///
+/// @param {String | number} $level [active] - opacity level or number
+/// @return {number}
+///
+@function opacity-level($level: active) {
+  @return read-number-map($opacity-levels, $level);
+}
+
+///
+/// Converts pixels unit to rem
+///
+/// @requires {Number} $browser-context
+///
+/// @param {Number} $pixels
+/// @param {Number} $context [$browser-context]
+/// @return {Number}
+///
+@function rem($pixels, $context: $browser-context) {
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+
+  @if (unitless($context)) {
+    $context: $context * 1px;
+  }
+
+  @return $pixels / $context * 1rem;
+}

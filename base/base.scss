@@ -2,21 +2,20 @@
 /// This file contains very basic styles
 ////
 
+@use '../utilities' as *;
+
 a {
   @include unstyled-link;
   cursor: pointer;
-  color: color-variant('accent-1', 'darker');
 }
 
 html, body {
-  @include fill-content;
-  overflow-x: hidden;
+  @include full-content;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
 input, button {
   outline: none;
-}
-
-b {
-  font-weight: bolder;
 }
