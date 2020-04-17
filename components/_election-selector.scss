@@ -22,7 +22,7 @@ $bg-color: pick-color(light);
 
   fa-icon {
     position: absolute;
-    right: measure-lines-rhythm(1);
-    top: measure-lines-rhythm(.5) + rem(1);
+    right: baseline-scale(1);
+    top: baseline-scale(.5) + rem(1);
   }
 }

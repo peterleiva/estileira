@@ -14,7 +14,7 @@ $prefix: '.alert';
   border-width: rem(1);
   white-space: nowrap;
 
-  margin-bottom: measure-lines-rhythm(.5);
+  margin-bottom: baseline-scale(.5);
 
   position: relative;
   animation: slide-left 1s;
@@ -26,7 +26,7 @@ $prefix: '.alert';
   }
 
   > .message {
-    margin-right: measure-lines-rhythm();
+    margin-right: baseline-scale();
   }
 
   // border e close sao iguais, o que muda: bg, main color

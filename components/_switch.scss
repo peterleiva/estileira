@@ -10,7 +10,7 @@ $off-color: #fff;
 .switch {
 
   .label {
-    margin-left: measure-lines-rhythm()
+    margin-left: baseline-scale()
   }
   input[type="checkbox"] {
     display: none;
@@ -23,8 +23,8 @@ $off-color: #fff;
   }
 
   label {
-    width: measure-lines-rhythm(3);
-    height: measure-lines-rhythm(1.7);
+    width: baseline-scale(3);
+    height: baseline-scale(1.7);
     @include margin-rhythm(.3 0);
     cursor: pointer;
     display: inline-block;
@@ -40,8 +40,8 @@ $off-color: #fff;
 
       left: 0;
       // this 1.1 is for fill 1.7 height
-      width: measure-lines-rhythm(1.1);
-      height: measure-lines-rhythm(1.1);
+      width: baseline-scale(1.1);
+      height: baseline-scale(1.1);
       @include margin-rhythm(.3);
       content: '';
       position: absolute;

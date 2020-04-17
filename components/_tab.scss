@@ -8,11 +8,11 @@
     @include padding-rhythm(0 1);
 
     .tab-link {
-      margin-right: measure-lines-rhythm();
+      margin-right: baseline-scale();
       text-transform: capitalize;
       /// it should overlap the tab section divider, so it counts the
       /// borders, top and bottom of tab section
-      padding-bottom: measure-lines-rhythm() + rem(1) * 2;
+      padding-bottom: baseline-scale() + rem(1) * 2;
 
       &.is-active, &:hover {
         color: pick-color(primary);
@@ -22,7 +22,7 @@
   }
 
   .tab-section {
-    margin-top: measure-lines-rhythm();
+    margin-top: baseline-scale();
     border-top: rem(1) solid $shadow-color;
   }
 }

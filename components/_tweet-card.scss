@@ -5,7 +5,7 @@
 
 $link-hover: pick-color(secondary);
 $link-color: pick-color(brand);
-$avatar-size: measure-lines-rhythm(2);
+$avatar-size: baseline-scale(2);
 $card-color: pick-color(light);
 $card-radius: rem(5);
 $tweet-name-color: pick-color(black, -3);
@@ -19,7 +19,7 @@ $keyword-weight: 900;
   border-radius: $card-radius;
 
   .card-header {
-    margin-bottom: measure-lines-rhythm(.5);
+    margin-bottom: baseline-scale(.5);
 
     .tweet-user {
 
@@ -27,7 +27,7 @@ $keyword-weight: 900;
         width: $avatar-size;
         height: $avatar-size;
         border-radius: $avatar-radius;
-        margin-right: measure-lines-rhythm(.5);
+        margin-right: baseline-scale(.5);
       }
 
       .tweet-name {
@@ -39,7 +39,7 @@ $keyword-weight: 900;
 
     .tweet-engagement {
       > .tweet-engagement-item {
-        margin-right: measure-lines-rhythm();
+        margin-right: baseline-scale();
       }
     }
 
@@ -73,12 +73,12 @@ $keyword-weight: 900;
       @include margin-rhythm(.5 0);
 
       b {
-        margin-right: measure-lines-rhythm(.5)
+        margin-right: baseline-scale(.5)
       }
       .keyword {
-        padding-bottom: measure-lines-rhythm(.3);
+        padding-bottom: baseline-scale(.3);
         border-bottom: rem(1) solid $keyword-color;
-        margin-right: measure-lines-rhythm(1);
+        margin-right: baseline-scale(1);
       }
     }
   }

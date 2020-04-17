@@ -5,12 +5,12 @@
 
 $link-hover: pick-color(secondary);
 $link-color: pick-color(brand);
-$avatar-size: measure-lines-rhythm(2);
+$avatar-size: baseline-scale(2);
 
 .timeline {
 
   // single tweet on timeline
   .tweet-card {
-    margin-bottom: measure-lines-rhythm(1.5);
+    margin-bottom: baseline-scale(1.5);
   }
 }

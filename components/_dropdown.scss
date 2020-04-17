@@ -4,8 +4,8 @@
 ////
 $border-radius: rem(4);
 $shadow-blur: rem(3);
-$section-width: measure-lines-rhythm(16);
-$section-height: measure-lines-rhythm(10);
+$section-width: baseline-scale(16);
+$section-height: baseline-scale(10);
 $light-section-color: pick-color(metal, $opacity: divider);
 
 .dropdown {
@@ -21,8 +21,8 @@ $light-section-color: pick-color(metal, $opacity: divider);
   background: pick-color(light);
 
   // change the section width for small and bigger viewports
-  // @include breakpoint(max-width bp(pug)) { width: measure-lines-rhythm(9) }
-  // @include breakpoint(bp(saint-bernard)) { width: measure-lines-rhythm(32) }
+  // @include breakpoint(max-width bp(pug)) { width: baseline-scale(9) }
+  // @include breakpoint(bp(saint-bernard)) { width: baseline-scale(32) }
 
   .header {
     // @include margin-rhythm(1 0);
@@ -47,8 +47,8 @@ $light-section-color: pick-color(metal, $opacity: divider);
     @include padding-rhythm(.5 0);
 
     // change the section width for small and bigger viewports
-    // @include breakpoint(max-width bp(pug)) { width: measure-lines-rhythm(9) }
-    // @include breakpoint(bp(saint-bernard)) { width: measure-lines-rhythm(32) }
+    // @include breakpoint(max-width bp(pug)) { width: baseline-scale(9) }
+    // @include breakpoint(bp(saint-bernard)) { width: baseline-scale(32) }
   }
 
 }

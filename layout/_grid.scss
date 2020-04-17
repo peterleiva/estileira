@@ -2,14 +2,14 @@
 /// This file describe the grid system and its main layout rules
 ////
 
-$header-size: measure-lines-rhythm(3);
+$header-size: baseline-scale(3);
 
 /// the main wrapper which bootstrap the layout
 #wrapper {
   @include fill-content;
   position: relative;
   display: grid;
-  grid-template-columns: measure-lines-rhythm(2) 4fr repeat(7, [col] 2fr);
+  grid-template-columns: baseline-scale(2) 4fr repeat(7, [col] 2fr);
   grid-template-rows: $header-size 1fr;
   grid-template-areas:
       'header header header header header header header header header'

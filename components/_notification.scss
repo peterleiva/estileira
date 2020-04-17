@@ -9,8 +9,8 @@ $link-color: pick-color(primary);
 
   .notification-indicator {
     position: absolute;
-    top: measure-lines-rhythm(-.5);
-    right: measure-lines-rhythm(.67);
+    top: baseline-scale(-.5);
+    right: baseline-scale(.67);
   }
 
   // represets a single notification item message from a list of notifications
