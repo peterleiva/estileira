@@ -8,18 +8,18 @@
 // define all text and background colors
 @include colors.apply-colors using ($color) {
   .text-#{$color} {
-    color: colors.pick-color($color);
+    color: colors.pick($color);
   }
 
   .background-#{$color} {
-    background-color: colors.pick-color($color);
+    background-color: colors.pick($color);
   }
 
   .border-#{$color} {
-    border-color: colors.pick-color($color);
+    border-color: colors.pick($color);
   }
 }
 
 a {
-  color: colors.color-variant('accent-1', 'darker');
+  color: colors.variant('accent-1', 'darker');
 }

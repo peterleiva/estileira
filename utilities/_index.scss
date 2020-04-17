@@ -3,5 +3,5 @@
 ///
 
 @forward 'common' hide read-map;
-@forward 'vertical-rhythm';
-@forward 'colors';
+@forward 'vertical-rhythm' as rhythm-*;
+@forward 'colors' as color-*;

@@ -3,6 +3,7 @@
 ///
 ////
 
+@use 'variables' as *;
 @use 'functions' as *;
 
 ///
@@ -46,6 +47,18 @@
 @mixin full-content {
   height: 100%;
   width: 100%;
+}
+
+///
+/// For each component scales returns its value
+///
+/// @requires {Map} $component-scales
+/// @requires {Function} component-scale
+///
+@mixin component-scale() {
+  @each $name, $scale in $component-scales {
+    @content(component-scale($name));
+  }
 }
 
 ///

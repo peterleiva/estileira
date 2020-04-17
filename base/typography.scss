@@ -3,9 +3,9 @@
 ///
 ////
 
-@use '../utilities/vertical-rhythm' as *;
+@use '../utilities' as *;
 
-@include type-setting;
+@include rhythm-bootstrap;
 
 @font-face {
   font-family: Poppins sans-serif;
@@ -13,36 +13,36 @@
 }
 
 body {
-  color: gray('gray-2');
+  color: color-gray('gray-2');
 }
 
 .main-title {
-  @include type-scale(jumbo);
+  @include rhythm-type-scale(jumbo);
 }
 
 .main-subtitle {
-  @include type-scale(xxxl);
+  @include rhythm-type-scale(xxxl);
 }
 
 .section-title {
-  @include type-scale(xxl);
+  @include rhythm-type-scale(xxl);
 }
 
 .section-subtitle {
-  @include type-scale(xl);
+  @include rhythm-type-scale(xl);
 }
 
 /// Creates a text class helper for each typescale
-@include type-scale-names using ($name) {
+@include component-scale using ($name) {
   .text-#{$name} {
-    @include type-scale($name);
+    @include rhythm-type-scale($name);
   }
 };
 
 /// heading helpers
 @each $level in (1 2 3 4 5 6) {
   .heading-#{$level}, h#{$level} {
-    @include type-scale(6 - $level);
+    @include rhythm-type-scale(6 - $level);
   }
 }
 
@@ -62,7 +62,7 @@ body {
 
 // default small element
 small {
-  @include type-scale(sm);
+  @include rhythm-type-scale(sm);
 }
 
 /// default quote element
