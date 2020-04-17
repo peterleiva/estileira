@@ -42,7 +42,7 @@
 ///
 @mixin type-setting($font-size: $basesize) {
   font-size: $font-size;
-  line-height: leading($font-size)/$basesize;
+  line-height: leading($font-size);
 }
 
 ///
