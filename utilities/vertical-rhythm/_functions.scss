@@ -18,7 +18,7 @@
 /// @param {Number} $lines [1] - lines to be calculated
 /// @return {Number} - tamanho da linha em rem
 ///
-@function measure-lines-rhythm($lines: 1) {
+@function baseline-scale($lines: 1) {
   @if is-unitless($lines) == false {
     @warn "The lines should be a unitless value. Instead it were #{$lines}";
   }
@@ -27,26 +27,29 @@
 }
 
 ///
-/// Calculates the baseline length for specified font-size
+/// Calculates the specific leading for font-size.
 ///
 /// @requires {function} lines-required
-/// @requires {function} measure-lines-rhythm
+/// @requires {function} baseline-scale
 ///
 /// @param {Number} $font-size [$basesize] - $font-size
+/// @return {Number}
 ///
-@function baseline-rhythm($font-size: $basesize) {
-  @return measure-lines-rhythm(_lines-required($font-size));
+@function leading($font-size: $basesize) {
+  @return baseline-scale(_lines-required($font-size));
 }
 
 ///
-/// Transforms each list item using measure-lines-rhythm
+/// Transforms each line using baseline-scale
 ///
 /// @throws property error type
-/// @requires {function} measure-lines-rhythm
+/// @access private
+/// @requires {function} baseline-scale
 ///
 /// @param {Number} $lines - arbitrary list of lines
+/// @return {List} list of transformed lines
 ///
-@function list-lines-rhythm($lines...) {
+@function list-baseline($lines...) {
   $list: ();
 
   @each $item in $lines {
@@ -54,7 +57,7 @@
       @warn "#{$item} must be a number to calculate required lines";
     }
 
-    $list: append($list, measure-lines-rhythm($item));
+    $list: append($list, baseline-scale($item));
   }
 
   @return $list;
@@ -66,7 +69,7 @@
 /// Pixel values are accepted either
 ///
 /// @access private
-/// @requires {Function} measure-lines-rhythm
+/// @requires {Function} baseline-scale
 ///
 /// @param {Number} $basesize [$basesize] - font-size in rem
 /// @return {Number}
@@ -80,5 +83,5 @@
     @warn 'The unit for `lines-required` should be `rem`';
   }
 
-  @return ceil($font-size/measure-lines-rhythm());
+  @return ceil($font-size/baseline-scale());
 }

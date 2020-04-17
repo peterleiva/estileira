@@ -8,7 +8,7 @@
 
 /// applies style for text
 ///
-/// @requires {pick-color}
+/// @requires {pick}
 /// @requires {dark}
 ///
 /// @param {Color | String} $foreground
@@ -16,14 +16,14 @@
 /// @param {Color | String} $border
 ///
 @mixin style($foreground: brand, $background: secondary, $border: secondary) {
-  color: pick-color($color);
-  background: pick-color($background);
+  color: pick($color);
+  background: pick($background);
   border-color: dark($background);
 }
 
 ///
 /// Call a content block with each color
-///
+/// @todo mudar nome do mixin
 /// @requires {$colors}
 ///
 @mixin apply-colors {

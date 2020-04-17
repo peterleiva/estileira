@@ -20,7 +20,7 @@
 /// com um pkercentual definido nas variáveis por intervalos discretos.
 ///
 /// @example
-///   pick-color(primary, $level: -10, $opacity: active-icon);
+///   pick(primary, $level: -10, $opacity: active-icon);
 ///
 /// @requires {Map} $colors
 /// @requires {Number} $variant-interval
@@ -32,7 +32,7 @@
 /// @param {Number | String} $opacity [active] - opacity level
 /// @return {Color}
 ///
-@function pick-color($color-name: primary, $level: 0, $opacity: active) {
+@function pick($color-name: primary, $level: 0, $opacity: active) {
 
   // check the $color-nakme type, it can return a single color
   $color: if(type-of($color-name) == 'color',
@@ -61,18 +61,18 @@
 /// Gets a color variant from spectrum
 ///
 /// @requires {Map} $variants
-/// @requires {Function} pick-color
+/// @requires {Function} pick
 /// @requires {Function} read-map
 ///
 /// @param {String} $color
 /// @param {String} $variant
 /// @returns {Color}
 ///
-@function color-variant($color: 'primary-1', $variant: 'base') {
+@function variant($color: 'primary-1', $variant: 'base') {
   $color-spectrum: read-map($variants, $color);
 
   @if $color-spectrum {
-    $variant: pick-color(read-map($color-spectrum, $variant));
+    $variant: pick(read-map($color-spectrum, $variant));
   }
 
   @return $variant;
@@ -81,55 +81,55 @@
 ///
 /// Applies a fixed amount of tint to color
 ///
-/// @requires {function} pick-color
+/// @requires {function} pick
 ///
 /// @param {Color} $color [primary] - color to be tinted
 /// @returns {Color}
 ///
 @function lighter($color: primary) {
-  @return pick-color($color, -4);
+  @return pick($color, -4);
 }
 
 ///
 /// Applies a fixed amount of tint to color
 ///
-/// @requires {function} pick-color
+/// @requires {function} pick
 ///
 /// @param {Color} $color [primary] - color to be tinted
 /// @returns {Color}
 ///
 @function light($color: primary) {
-  @return pick-color($color, -2);
+  @return pick($color, -2);
 }
 
 ///
 /// Applies a fixed amount of shade to color
 ///
-/// @requires {function} pick-color
+/// @requires {function} pick
 ///
 /// @param {Color} $color [primary] - color to be shaded
 /// @returns {Color}
 ///
 @function dark($color: primary) {
-  @return pick-color($color, 2);
+  @return pick($color, 2);
 }
 
 ///
 /// Applies a fixed amount of shade to color
 ///
-/// @requires {function} pick-color
+/// @requires {function} pick
 ///
 /// @param {Color} $color [primary] - color to be shaded
 /// @returns {Color}
 ///
 @function darker($color: primary) {
-  @return pick-color($color, 4);
+  @return pick($color, 4);
 }
 
 ///
 /// Gets the contrast color for foreground to a given color
 ///
-/// @requires {function} pick-color
+/// @requires {function} pick
 /// @requires {function} gray
 ///
 /// @param {String | Color} $color [brand] - color to get the contrast
@@ -137,7 +137,7 @@
 /// @returns {Color}
 ///
 @function contrast($color: brand, $threshold: 65) {
-  @return if(lightness(pick-color($color)) > $threshold, gray(dark), gray(light));
+  @return if(lightness(pick($color)) > $threshold, gray(dark), gray(light));
 }
 
 ///
@@ -147,7 +147,7 @@
 /// @param {Color} $b - color which is diff
 /// @returns {Map} - A map to functions to be applies to get $a from $b
 ///
-@function color-diff($a, $b) {
+@function diff($a, $b) {
   $sat: saturation($a) - saturation($b);
   $lightness: lightness($a) - lightness($b);
 
@@ -182,11 +182,11 @@
 ///
 /// @requires {Map} $grayscale - grayscale map
 /// @requires {function} read-map
-/// @requires {pick-color} pick-color
+/// @requires {pick} pick
 ///
 /// @param {String} $gray - grayscale color name
 /// @param {String} $opacity [active] - opacity level defind on variables
 ///
 @function gray($gray, $opacity: active) {
-  @return pick-color(read-map($grayscale, $gray), $opacity: $opacity);
+  @return pick(read-map($grayscale, $gray), $opacity: $opacity);
 }

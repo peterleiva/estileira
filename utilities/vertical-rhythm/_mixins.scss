@@ -1,5 +1,8 @@
 ////
 /// This file describe mixins for mantain vertical rhythm
+///
+/// TODO mudar nome dos mixins
+/// IDEA rearquitear ritmo vertical para um ou mais módulos
 ////
 
 @use 'variables' as *;
@@ -10,9 +13,9 @@
 /// Configures the app to accept vertical rhythm framework
 ///
 ///
-@mixin type-setting() {
+@mixin bootstrap() {
   body {
-    @include type-rhythm;
+    @include type-setting;
   }
 
   *, *:after, *:before {
@@ -25,26 +28,21 @@
 }
 
 ///
-/// Adjust the component calculating the minimum length required to mantain the
-/// rhythm
+/// Adjust the component calculating leading to mantain the rhythm
 ///
-/// @requires {function} lines-required - calculate the minimum lines required
-/// @requires {function} measure-lines-rhythm - calculate the line length
+/// Calculate the leading of font-size and only sets a unitless value based
+/// TODO usar line-height sem unidade
+///
+/// @requires {function} baseline-scale - calculate the line length
 ///                                               required
+/// @requires {Function} leading
+/// @requires {Number} $basesize
 ///
-/// @param {Number} $font-size - font-size to be adjusted
+/// @param {Number} $font-size [$basesize]
 ///
-@mixin adjust-component($font-size: $basesize) {
+@mixin type-setting($font-size: $basesize) {
   font-size: $font-size;
-  line-height: baseline-rhythm($font-size);
-}
-
-///
-/// @alias adjust-component
-/// @param {Number} $font-size - font-size to be adjusted
-///
-@mixin type-rhythm($font-size: $basesize) {
-  @include adjust-component($font-size);
+  line-height: leading($font-size)/$basesize;
 }
 
 ///
@@ -53,24 +51,15 @@
 /// both of them using ms function
 ///
 /// @requires {Map} $type-scale - scale naming map
+/// @requires {Function} common.component-scale - scale naming map
+/// @requires {Function} type-setting - scale naming map
 /// @requires {function} ms - from modular scale library
 ///
 /// @param {Number | String} $scale - a scale or keyword defined by $type-scale
 @mixin type-scale($scale: 0) {
   $text-size: ms(common.component-scale($scale));
 
-  @include type-rhythm($text-size);
-}
-
-///
-/// Iterate over each type name including in content argument
-///
-/// @requires {Map} $component-scales
-///
-@mixin type-scale-names {
-  @each $size, $scale in common.$component-scales {
-    @content($size);
-  }
+  @include type-setting($text-size);
 }
 
 ///
@@ -82,10 +71,19 @@
 ///   padding-rhythm(10 5)
 /// @param {List} $direction [()] - directions to be applied
 ///
-@mixin padding-rhythm($sides: ()) {
-  @include list-rhythm($sides) using ($pads) {
+@mixin padding($sides: ()) {
+  @include _list-sides($sides) using ($pads) {
     padding: $pads;
   }
+}
+
+///
+/// Applies rhythm for single padding side
+///
+/// @requires {function} _side
+///
+@mixin padding-side($side, $lines: 1) {
+  @include _side-baseline('padding', $side, $lines);
 }
 
 ///
@@ -98,8 +96,8 @@
 ///
 /// @param {List} $direction [()] - pad direction to be applied
 ///
-@mixin margin-rhythm($sides: ()) {
-  @include list-rhythm($sides) using ($margins) {
+@mixin margin($sides: ()) {
+  @include _list-sides($sides) using ($margins) {
     margin: $margins;
   }
 }
@@ -107,58 +105,10 @@
 ///
 /// Applies rhythm for single margin side
 ///
-/// @requires {function} side-rhythm
+/// @requires {function} _side
 ///
-@mixin margin-side-rhythm($side, $lines: 1) {
-  @include side-rhythm('margin', $side, $lines);
-}
-
-///
-/// Applies rhythm for single padding side
-///
-/// @requires {function} side-rhythm
-///
-@mixin padding-side-rhythm($side, $lines: 1) {
-  @include side-rhythm('padding', $side, $lines);
-}
-
-///
-/// Calculates the single side line of margin or border property
-///
-/// @access private
-/// @param {margin|padding} $property - property to be applies
-/// @param {top|bottom|left|right} $side - side of property to be applies
-/// @param {Number} $lines [1]
-/// @requires {function} measure-lines-rhythm
-/// @requires {List} $sides
-///
-@mixin side-rhythm($property, $side, $lines: 1) {
-  @if index($sides, $side) == null {
-    @error "The side rhythm #{$side} must be in #{$sides}";
-  }
-
-  $properties: ('margin' 'padding');
-
-  @if index($properties, $property) == null {
-    @error "Property #{$property} on side-rhythm must be in #{$properties}";
-  }
-
-  #{$property}-#{$side}: measure-lines-rhythm($lines);
-}
-
-///
-/// Each direction calculates the line required for a list of
-/// @throws error in case the list is empty
-/// @access private
-/// @param {List} $direction
-/// @requires {function} list-lines-rhythm
-///
-@mixin list-rhythm($directions: ()) {
-  @if length($directions) == 0 {
-    @error "List shouldn't be empty";
-  }
-
-  @content(list-lines-rhythm($directions...));
+@mixin margin-side($side, $lines: 1) {
+  @include _side-baseline('margin', $side, $lines);
 }
 
 ///
@@ -168,37 +118,79 @@
 ///
 /// @param {List} $sides [()] - borders side which applies the rhythm
 /// @requires {function} padding-rhythm
-/// @requires {function} baseline-rhythm
+/// @requires {function} leading
 ///
-@mixin border-rhythm($sides: ()) {
+@mixin border($sides: ()) {
   $pads: ();
 
-  @include list-rhythm using ($borders) {
+  @include _list-sides using ($borders) {
     border-width: $borders;
 
     @each $border in $borders {
-      $pads: append($pads, baseline-rhythm($border) - $border);
+      $pads: append($pads, leading($border) - $border);
     }
 
     @include padding-rhythm($pads);
   }
 }
 
+
+///
+/// Calculates the single side line of margin or border property
+///
+/// @access private
+/// @param {margin|padding} $property - property to be applies
+/// @param {top|bottom|left|right} $side - side of property to be applies
+/// @param {Number} $lines [1]
+/// @requires {function} baseline-scale
+/// @requires {List} $sides
+///
+@mixin _side-baseline($property, $side, $lines: 1) {
+  @if index($sides, $side) == null {
+    @error "Property #{$side} must be in #{$sides}";
+  }
+
+  $properties: ('margin' 'padding');
+
+  @if index($properties, $property) == null {
+    @error "Property #{$property} must be in #{$properties}";
+  }
+
+  #{$property}-#{$side}: baseline-scale($lines);
+}
+
+///
+/// Each direction calculates the line required for a list of
+///
+/// @throws error in case the list is empty
+/// @access private
+/// @requires {function} list-baseline
+///
+/// @param {List} $sides
+///
+@mixin _list-sides($sides: ()) {
+  @if length($sides) == 0 {
+    @error "List shouldn't be empty";
+  }
+
+  @content(list-baseline($sides...));
+}
+
 ///
 /// Applies rhythm for single padding side
 ///
-/// @requires {function} measure-lines-rhythm
-/// @requires {function} padding-side-rhythm
-/// @requires {function} baseline-rhythm
+/// @requires {function} baseline-scale
+/// @requires {function} padding-_side
+/// @requires {function} leading
 ///
-@mixin border-side-rhythm($side, $width) {
-  $border-width: measure-lines-rhythm($width);
-  $padding: baseline-rhythm($border-width) - $border-width;
+@mixin border-side($side, $width) {
+  $border-width: baseline-scale($width);
+  $padding: leading($border-width) - $border-width;
 
   border-width-#{$side}: $border-width;
 
   @if $padding > 0 {
-    @include padding-side-rhythm($side, $padding);
+    @include padding-side($side, $padding);
   }
 }
 
