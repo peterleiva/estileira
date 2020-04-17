@@ -9,11 +9,11 @@ $browser-context: 16 !default;
 
 /// Default touch target width
 /// @type Number
-$touchable-area: rem(48) !default;
+$touchable-area: 48px !default;
 
 /// Default click target width
 /// @type Number
-$clickable-area: rem(24) !default;
+$clickable-area: 24px !default;
 
 /// default font-family
 /// @type List
