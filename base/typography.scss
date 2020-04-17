@@ -4,15 +4,23 @@
 ////
 
 @use '../utilities' as *;
+@use 'sass:map';
 
 @include rhythm-bootstrap;
 
+// TODO usar local como src em vez de url
+$font: (
+  family: ('Comfortaa', cursive),
+  src: url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap')
+) !default;
+
 @font-face {
-  font-family: Poppins sans-serif;
-  src: url('https://fonts.googleapis.com/css?family=Poppins');
+  font-family: map.get($font, 'family');
+  src: map.get($font, 'src')
 }
 
 body {
+  font-family: map.get($font, 'family');
   color: color-gray('gray-2');
 }
 
