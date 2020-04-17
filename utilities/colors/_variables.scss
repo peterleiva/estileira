@@ -81,6 +81,16 @@ $variants: (
   )
 ) !default;
 
+$gradients: (
+  'background-1': radial-gradient(
+                      115vw 125vh at 100vw 50vh,
+                      #BAD7EB 0,
+                      #52CEC3 10%,
+                      #52CE86 75%,
+                      #31AF65 85%,
+                      #5E6D78 95%)
+) !default;
+
 /// incremental steps to get colors shade/tint
 /// @type Number
 $variant-interval: 10% !default;

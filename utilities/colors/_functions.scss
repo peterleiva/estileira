@@ -79,6 +79,17 @@
 }
 
 ///
+/// Gets a gradient color mapped by a name
+///
+/// @requires {Map} $gradients
+///
+/// @param {String} $color [background-1]
+///
+@function gradient($color: 'background-1') {
+  @return read-map($gradients, $color);
+}
+
+///
 /// Applies a fixed amount of tint to color
 ///
 /// @requires {function} pick
