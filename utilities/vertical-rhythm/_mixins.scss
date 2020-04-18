@@ -139,15 +139,16 @@
 /// Calculates the single side line of margin or border property
 ///
 /// @access private
+/// @requires {function} baseline-scale
+/// @requires {List} common.$sides
+///
 /// @param {margin|padding} $property - property to be applies
 /// @param {top|bottom|left|right} $side - side of property to be applies
 /// @param {Number} $lines [1]
-/// @requires {function} baseline-scale
-/// @requires {List} $sides
 ///
 @mixin _side-baseline($property, $side, $lines: 1) {
-  @if index($sides, $side) == null {
-    @error "Property #{$side} must be in #{$sides}";
+  @if index(common.$sides, $side) == null {
+    @error "Property #{$side} must be in #{common.$sides}";
   }
 
   $properties: ('margin' 'padding');
