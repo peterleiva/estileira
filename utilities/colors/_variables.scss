@@ -83,12 +83,12 @@ $variants: (
 
 $gradients: (
   'background-1': radial-gradient(
-                      115vw 125vh at 100vw 50vh,
-                      #BAD7EB 0,
-                      #52CEC3 10%,
-                      #52CE86 75%,
-                      #31AF65 85%,
-                      #5E6D78 95%)
+                      110vw 90vh at 110vw 50vh,
+                      hsl(175, 55%, 83%) -5%,
+                      hsl(175, 56%, 61%) 7%,
+                      hsl(145, 56%, 61%) 100%,
+                      hsl(205, 56%, 34%) 115%
+                  )
 ) !default;
 
 /// incremental steps to get colors shade/tint
