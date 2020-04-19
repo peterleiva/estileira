@@ -57,7 +57,7 @@
 ///
 @mixin component-scale() {
   @each $name, $scale in $component-scales {
-    @content(component-scale($name));
+    @content($name);
   }
 }
 

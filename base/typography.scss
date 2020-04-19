@@ -37,7 +37,7 @@ body {
 }
 
 .section-subtitle {
-  @include rhythm-type-scale(xl);
+  @include rhythm-type-scale(xl)
 }
 
 /// Creates a text class helper for each typescale
