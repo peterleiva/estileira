@@ -1,0 +1,35 @@
+////
+/// This file describe a icon component
+///
+////
+
+@use '../utilities' as *;
+$pad: 4px;
+
+///
+/// Sets icon size using height and width to touchable area
+/// All icons is touchable, then uses a default pad for icon and
+/// calculate its visible area with its scale using a component scale
+///
+/// @todo testar aspect-ratio
+/// @requires {Function} component-scale
+/// @requires {Function} $touchable-area
+/// @requires {Function} $pad
+///
+@mixin icon($size: 1, $aspect-ratio: 1) {
+  $size: component-scale($size) * $touchable-area;
+
+  width: rem($size);
+  height: rem($size)/$aspect-ratio;
+  padding: rem($pad);
+}
+
+%icon {
+  cursor: pointer;
+  @include icon;
+}
+
+// TODO: outras opções de tamanhos (lg, sm, ...)
+.icon {
+  @extend %icon;
+}
