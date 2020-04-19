@@ -68,11 +68,11 @@
 /// @param {String} $variant
 /// @returns {Color}
 ///
-@function variant($color: 'primary-1', $variant: 'base') {
+@function variant($color: 'primary-1', $variant: 'base', $opacity: active) {
   $color-spectrum: read-map($variants, $color);
 
   @if $color-spectrum {
-    $variant: pick(read-map($color-spectrum, $variant));
+    $variant: pick(read-map($color-spectrum, $variant), $opacity: $opacity);
   }
 
   @return $variant;

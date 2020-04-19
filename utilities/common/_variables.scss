@@ -13,7 +13,7 @@ $touchable-area: 63px !default;
 
 /// Default click target width
 /// @type Number
-$clickable-area: 24px !default;
+$clickable-area: 21px !default;
 
 /// default font-family
 /// @type List
@@ -77,3 +77,6 @@ $sides: (
   'bottom',
   'left'
 );
+
+// default border radius
+$border-radius: 2px !default;

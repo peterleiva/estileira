@@ -79,6 +79,10 @@ q {
   font-style: italic;
 }
 
-b {
+b, .text-bold {
   font-weight: bolder;
+}
+
+.text-italic {
+  font-style: italic;
 }
