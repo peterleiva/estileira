@@ -9,7 +9,7 @@ $browser-context: 16 !default;
 
 /// Default touch target width
 /// @type Number
-$touchable-area: 63px !default;
+$touchable-area: 42px !default;
 
 /// Default click target width
 /// @type Number
@@ -25,7 +25,7 @@ $asset-path: '/assets' !default;
 /// Breakpoints as dog names
 /// @type Map
 $breakpoints: (
-  'chihuahua': 200px,
+  'chihuahua': 320px,
   'pug': 530px,
   'bulldog': 760px,
   'dobermann': 1024px,
