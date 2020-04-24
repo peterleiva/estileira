@@ -69,7 +69,7 @@ $variants: (
     'lighter': hsl(264, 55%, 83%),
     'light': hsl(265, 56%, 61%),
     'dark': hsl(265, 56%, 45%),
-    'darker': hsl(265, 56%, 17%)
+    'darker': hsl(265 56% 17%)
   ),
 
   'accent-2': (
@@ -83,12 +83,17 @@ $variants: (
 
 $gradients: (
   'background-1': radial-gradient(
-                      115vw 80vh at 110vw 50vh,
-                      hsl(175, 55%, 83%) -5%,
-                      hsl(175, 56%, 61%) 7%,
-                      hsl(145, 56%, 61%) 100%,
-                      hsl(205, 56%, 34%) 115%
-                  )
+                    115vw 80vh at 110vw 50vh,
+                    hsl(175 55% 83%) -5%,
+                    hsl(175 56% 61%) 7%,
+                    hsl(145 56% 61%) 100%,
+                    hsl(205 56% 34%) 115%
+                  ),
+  'accent-1': linear-gradient(
+                to right,
+                hsl(265 56% 45%) -20%,
+                hsl(265 56% 17%) 100%
+              )
 ) !default;
 
 /// incremental steps to get colors shade/tint
