@@ -1,8 +1,9 @@
-/* Reset.scss
- * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an
- * adapted version here	that cuts out some of the reset HTML elements we will
- * never need here (i.e., dfn, samp, etc).
- * -------------------------------------------------------------------------- */
+////
+/// Reset.scss
+/// Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an
+/// adapted version here	that cuts out some of the reset HTML elements we will
+/// never need here (i.e., dfn, samp, etc).
+////
 
 
 // ERIC MEYER RESET
@@ -25,7 +26,7 @@ q:before, q:after, blockquote:before, blockquote:after { content: ""; }
 
 // Display in IE6-9 and FF3
 // -------------------------
-// Source: http://github.com/necolas/normalize.css
+// @see http://github.com/necolas/normalize.css
 html {
   overflow-y: scroll;
   font-size: 100%;
@@ -39,7 +40,7 @@ a:focus {
 
 // Display in IE6-9 and FF3
 // -------------------------
-// Source: http://github.com/necolas/normalize.css
+// @see http://github.com/necolas/normalize.css
 article,
 aside,
 details,
