@@ -78,3 +78,50 @@
     display: none;
   }
 }
+
+///
+/// Mixin to prefix several properties at once
+///
+/// @see https://css-tricks.com/snippets/sass/mixin-prefix-properties/
+/// @param {Map} $declarations - Declarations to prefix
+/// @param {List} $prefixes (()) - List of prefixes to print
+///
+@mixin prefix($declarations, $prefixes: (webkit moz ms o)) {
+  @each $property, $value in $declarations {
+    @each $prefix in $prefixes {
+      #{'-' + $prefix + '-' + $property}: $value;
+    }
+
+    // Output standard non-prefixed declaration
+    #{$property}: $value;
+  }
+}
+
+///
+/// @see https://css-tricks.com/snippets/sass/custom-scrollbars-mixin/
+/// @param {Number} $size
+/// @param {Color} $foreground-color
+/// @param {Color} $background-color (())
+///
+@mixin scrollbars($size, $foreground-color,
+  $background-color: mix($foreground-color, white,  50%)) {
+  // For Google Chrome
+  &::-webkit-scrollbar {
+    width:  $size;
+    height: $size;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $foreground-color;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $background-color;
+  }
+
+  // For Internet Explorer
+  & {
+    scrollbar-face-color: $foreground-color;
+    scrollbar-track-color: $background-color;
+  }
+}

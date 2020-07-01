@@ -7,11 +7,11 @@
 /// @type Number
 $browser-context: 16 !default;
 
-/// Default touch target width
+/// Default touchable target width in pixels
 /// @type Number
 $touchable-area: 42px !default;
 
-/// Default click target width
+/// Default clickable target width in pixels
 /// @type Number
 $clickable-area: 21px !default;
 
@@ -19,7 +19,12 @@ $clickable-area: 21px !default;
 /// @type List
 $font-family: Popins, sans-serif !default;
 
+/// default border radius
+/// @type Number
+$border-radius: 2px !default;
+
 /// defines the path where is stored the base path for assets
+/// @type String
 $asset-path: '/assets' !default;
 
 /// Breakpoints as dog names
@@ -54,7 +59,7 @@ $opacity-levels: (
   'hidden': 0
 ) !default;
 
-/// component scales
+/// Component scale sizing
 /// @type Map
 $component-scales: (
   'jumbo':     5,
@@ -69,7 +74,7 @@ $component-scales: (
   'xxxs':     -4,
 ) !default;
 
-/// Properties sides
+/// Side css properties
 /// @type List
 $sides: (
   'top',
@@ -78,5 +83,3 @@ $sides: (
   'left'
 );
 
-// default border radius
-$border-radius: 2px !default;

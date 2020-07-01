@@ -1,63 +1,67 @@
 ////
-/// Defines all functions to access variables or which can be reuse or
-/// facilitates code
-///
+/// Defines all functions to access variables or which can be reuse or 
+///   facilitates code
 ////
 
+@use 'sass:map';
 @use 'variables' as *;
 
 ///
-/// Get value from generic map throwing error if exists
+/// Get a value from generic map throwing error if exists
 ///
 /// @throw Not found map variable
 /// @throw Not found map value
 /// @access private
 ///
-/// @param {Map} $map - map which search values
-/// @param {String} $layer - value to be read
+/// @param {Map} $map - map to be search on
+/// @param {String} $layer - map key
 ///
 @function read-map($map, $layer) {
-  @if (type-of($map) != 'map') or (type-of($layer) == null) {
-    @error "Map #{$map} and layer #{$layer} must be defined";
+  @if (type-of($map) != 'map') {
+    @error "Map #{$map} must be defined";
   }
 
-  @if map-has-key($map, $layer) {
-    @return map-get($map, $layer);
-  } @else {
-    @error "No value found for \'#{$layer}\'. Please make sure you defined in " +
-        "\'#{$map}\'";
+  @if not map.has-key($map, $layer) {
+    @warn "No value found for \'#{$layer}\'. Please make sure to define the" + 
+      "key #{$layer} in map: #{$map}";
   }
+
+  @return map.get($map, $layer);
 }
 
 
 ///
-/// Gets a mapped numeric value
+/// Gets a numeric value or read the map value
+/// There's function which can returns a numeric (and maybe other types) value
+/// or read the the layer from the map
 ///
+/// @access private
 /// @requires {Function} read-map
 ///
 /// @param {Map} $map
 /// @param {String|Number} $layer
-/// @return {Number}
 ///
 @function read-number-map($map, $layer) {
   @return if(type-of($layer) == 'number', $layer, read-map($map, $layer));
 }
 
-/// Get breakpoint value by its key name on map
+///
+/// Get breakpoint by its name on map structure defined in variables/
 ///
 /// @todo check other units or conversions
 ///
 /// @requires {Map} $breakpoins
 /// @requires {function} read-number-map
 ///
-/// @param {String} $breakpoint - breakpoint name
+/// @param {String} $name - breakpoint name
 /// @return {Number}
 ///
-@function breakpoints($breakpoint) {
-  @return read-number-map($breakpoints, $breakpoint);
+@function breakpoints($name) {
+  @return read-number-map($breakpoints, $name);
 }
 
-/// Gets a component scale factor from its map variable
+///
+/// Gets a component scale factor from its map
 ///
 /// @requires {Map} $component-scales
 /// @requires {Function} read-number-map
@@ -95,7 +99,7 @@
 }
 
 ///
-/// Converts pixels unit to rem
+/// Converts pixel unit to rem
 ///
 /// @requires {Number} $browser-context
 ///
