@@ -2,8 +2,8 @@
 ///  This file describe variables necessary for vertical rhythm
 ////
 
+// OPTIMIZE: Reestruturar modular scale dentro do próprio pacote sass
 @use '~modularscale-sass/stylesheets/modularscale' as *;
-
 @use '../common' as common;
 
 /// font-size base for modular scale

@@ -1,14 +1,13 @@
 ////
-/// Defines typography related code, like heading, sizing
-///
+/// Configure typography related code and define regular elements like heading
+/// level, body, and others
 ////
 
 @use '../utilities' as *;
 @use 'sass:map';
 
-@include rhythm-bootstrap;
-
-// TODO usar local como src em vez de url
+/// TODO: usar local como src em vez de url
+/// TODO: Tornar configurável para diferentes tipos
 $font: (
   family: ('Comfortaa', cursive),
   src: url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap')

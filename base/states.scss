@@ -1,5 +1,5 @@
 ////
-/// This file describes states rules applies globally, which all elements can
+/// This file describes states rules applied globally, which all elements can
 /// like change component display option
 ////
 
@@ -13,6 +13,7 @@
   opacity: 0 !important;
 }
 
+/// make it visible
 .is-visible {
   opacity: 1 !important;
 }
