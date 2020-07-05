@@ -18,6 +18,8 @@ $font: (
   src: map.get($font, 'src')
 }
 
+@include rhythm-bootstrap();
+
 body {
   font-family: map.get($font, 'family');
   color: color-gray('gray-2');

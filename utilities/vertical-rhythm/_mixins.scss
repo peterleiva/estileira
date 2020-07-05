@@ -18,6 +18,7 @@
     @include type-setting;
   }
 
+  // TODO: usar mixin para vendors
   *, *:after, *:before {
     margin: 0;
     padding: 0;

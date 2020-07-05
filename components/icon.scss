@@ -7,6 +7,13 @@
 $pad: 4px;
 
 ///
+/// Basic icon structure
+///
+%icon {
+  cursor: pointer;
+}
+
+///
 /// Sets icon size using height and width to touchable area
 /// All icons is touchable, then uses a default pad for icon and
 /// calculate its visible area with its scale using a component scale
@@ -15,21 +22,18 @@ $pad: 4px;
 /// @requires {Function} component-scale
 /// @requires {Function} $touchable-area
 /// @requires {Function} $pad
+/// @param {String | Number} $size [1] - One of components sizing
+/// @param {Number} $aspect-ratio [1]
 ///
 @mixin icon($size: 1, $aspect-ratio: 1) {
   $size: component-scale($size) * $touchable-area;
 
   width: rem($size);
   height: rem($size)/$aspect-ratio;
-  padding: rem($pad);
-}
-
-%icon {
-  cursor: pointer;
-  @include icon;
+  @extend %icon;
 }
 
 // TODO: outras opções de tamanhos (lg, sm, ...)
 .icon {
-  @extend %icon;
+  @include icon;
 }
