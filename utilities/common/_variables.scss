@@ -1,9 +1,11 @@
+@charset 'utf-8';
+
 ////
 /// This files defines all variables used by the framework
 ///
 ////
 
-/// browser context in pixels for calculating rem values
+/// Browser context in pixels for calculating rem values
 /// @type Number
 $browser-context: 16 !default;
 
@@ -23,10 +25,6 @@ $font-family: Popins, sans-serif !default;
 /// @type Number
 $border-radius: 2px !default;
 
-/// defines the path where is stored the base path for assets
-/// @type String
-$asset-path: '/assets' !default;
-
 /// Breakpoints as dog names
 /// @type Map
 $breakpoints: (
@@ -37,7 +35,7 @@ $breakpoints: (
   'saint-bernard': 2048px
 ) !default;
 
-/// z-index for components
+/// Named z-index
 /// @type Map
 $z-indexes: (
   'drawer': 5000,
@@ -45,10 +43,10 @@ $z-indexes: (
   'overlay': 3000,
   'dropdown': 2000,
   'default': 1,
-  'below': -100
+  'below': -1
 ) !default;
 
-/// Opacity levels for components
+/// Opacity levels
 /// @type Map
 $opacity-levels: (
   'active': 1,
@@ -74,12 +72,7 @@ $component-scales: (
   'xxxs':     -4,
 ) !default;
 
-/// Side css properties
+/// Side css properties list
 /// @type List
-$sides: (
-  'top',
-  'right',
-  'bottom',
-  'left'
-);
+$sides: (top, right, bottom, left);
 

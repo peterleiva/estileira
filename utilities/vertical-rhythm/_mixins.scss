@@ -1,8 +1,8 @@
+@charset 'utf-8';
+
 ////
 /// This file describe mixins for mantain vertical rhythm
 ///
-/// TODO mudar nome dos mixins
-/// IDEA rearquitear ritmo vertical para um ou mais módulos
 ////
 
 @use 'variables' as *;
@@ -12,6 +12,9 @@
 ///
 /// Configures the app to accept vertical rhythm framework
 ///
+/// Bootstrap must be specified on top of application to make the vertical 
+/// rhyhthm to work. This mixin defines a box model and typesetting for root 
+/// element which will be used as a base for text elements
 ///
 @mixin bootstrap() {
   body {
@@ -26,17 +29,11 @@
 }
 
 ///
-/// Adjust the component calculating leading to mantain the rhythm
+/// Adjust font-size leading to maintain the rhythm
 ///
-/// Calculate the leading of font-size and only sets a unitless value based
-/// TODO usar line-height sem unidade
-///
-/// @requires {function} baseline-scale - calculate the line length
-///                                               required
 /// @requires {Function} leading
 /// @requires {Number} $basesize
-///
-/// @param {Number} $font-size [$basesize]
+/// @param {Number} $font-size [$basesize] - Size in pixels or rem unit
 ///
 @mixin type-setting($font-size: $basesize) {
   font-size: $font-size;
@@ -44,19 +41,20 @@
 }
 
 ///
-/// Scale a type mantaining vertical rhythm using modular scale
+/// Scale a type mantaining vertical rhythm choosing a modular scale
+///
 /// Uses a defined scale name in $type-scale or uses a number to be scale to
 /// both of them using ms function
 ///
 /// @requires {Map} $type-scale - scale naming map
 /// @requires {Function} common.component-scale - scale naming map
 /// @requires {Function} type-setting - scale naming map
-/// @requires {function} ms - from modular scale library
+/// @requires {function} ms - Modular scale function library
+/// @param {Number | String} $scale [0] - scale or keyword defined in
+///                                         $type-scale
 ///
-/// @param {Number | String} $scale - a scale or keyword defined by $type-scale
 @mixin type-scale($scale: 0) {
   $text-size: ms(common.component-scale($scale));
-
   @include type-setting($text-size);
 }
 
@@ -67,6 +65,7 @@
 /// @example
 ///   padding-rhythm(10 3 4 5)
 ///   padding-rhythm(10 5)
+///
 /// @param {List} $direction [()] - directions to be applied
 ///
 @mixin padding($sides: ()) {
@@ -162,6 +161,7 @@
 /// Each direction calculates the line required for a list of
 ///
 /// @throws error in case the list is empty
+/// @content TODO: descrever
 /// @access private
 /// @requires {function} list-baseline
 ///

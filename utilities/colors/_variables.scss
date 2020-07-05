@@ -1,12 +1,14 @@
+@charset 'utf-8';
+
 ////
 /// This file describes color scheme used by whole project
-/// TODO: gradients colors
+/// TODO gradients colors
 ////
 
-// @use 'functions' as *;
-
+///
 /// Grayscale for nice grays to be used as shadows, dividers, background, etc...
 /// @type Map
+///
 $grayscale: (
   'gray-1': hsl(0, 0, 0),
   'gray-2': hsl(206, 12%, 26%),
@@ -19,7 +21,10 @@ $grayscale: (
   'light': hsl(0, 0, 100) // alias for gray-1 or black
 ) !default;
 
+///
+/// Application colors
 /// @type Map
+///
 $colors: (
   'primary': hsl(145, 56%, 56%),
   'primary-1': hsl(145, 56%, 56%), // alias for primary
@@ -39,8 +44,10 @@ $colors: (
   'background-2': hsl(0, 0, 0)
 ) !default;
 
+///
 /// Color variant for base colors
 /// @type Map
+///
 $variants: (
   'primary-1': (
     'base': hsl(145, 56%, 56%),
@@ -81,6 +88,10 @@ $variants: (
   )
 ) !default;
 
+///
+/// Gradient colors
+/// @type Map
+/// 
 $gradients: (
   'background-1': radial-gradient(
                     115vw 80vh at 110vw 50vh,
@@ -96,12 +107,17 @@ $gradients: (
               )
 ) !default;
 
-/// incremental steps to get colors shade/tint
+///
+/// Incremental percentange step to get color shade/tint
 /// @type Number
+///
 $variant-interval: 10% !default;
 
+///
 /// The default shadow color
+/// TODO shadow pode ter diversas cores
 /// @type Color
+///
 $shadow: gray('gray-5', divider) !default;
 
 /// Colors to be on top of regular colors

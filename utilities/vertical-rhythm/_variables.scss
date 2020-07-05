@@ -1,8 +1,10 @@
+@charset 'utf-8';
+
 ////
 ///  This file describe variables necessary for vertical rhythm
 ////
 
-// OPTIMIZE: Reestruturar modular scale dentro do próprio pacote sass
+// TODO Reestruturar modular scale dentro do próprio pacote sass
 @use '~modularscale-sass/stylesheets/modularscale' as *;
 @use '../common' as common;
 
@@ -18,7 +20,7 @@ $baseline-ratio: 1.5 !default;
 /// @type Number
 $baseline: $basesize * $baseline-ratio !default;
 
-/// Configures modular scale module. Always set the $baseline as a base
+/// Configures modular scale module. Always setting the $baseline as a base
 /// @see https://github.com/modularscale/modularscale-sass
 $modularscale: (
   base: $basesize $baseline,

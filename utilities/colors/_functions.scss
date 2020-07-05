@@ -1,3 +1,5 @@
+@charset 'utf-8';
+
 ////
 /// This file describe functions get colors from map or manipulate new ones
 ///
@@ -20,7 +22,7 @@
 /// com um pkercentual definido nas variáveis por intervalos discretos.
 ///
 /// @example
-///   pick(primary, $level: -10, $opacity: active-icon);
+///   pick(primary, $level: -10, $opacity: active);
 ///
 /// @requires {Map} $colors
 /// @requires {Number} $variant-interval
@@ -173,7 +175,7 @@
 }
 
 ///
-/// Applies a diff to a color to obtain its variant
+/// Applies a diff to a color to obtain a variant
 ///
 /// @param {Color} $color - color to be applies the difference
 /// @param {Map} $diff-map - a map to functions to applies the diff on color
@@ -189,14 +191,15 @@
 }
 
 ///
-/// Gets a grayscale color from its map with optional opacity
+/// Gets a gray color from its grayscale map with optional opacity
 ///
-/// @requires {Map} $grayscale - grayscale map
+/// @requires {Map} $grayscale
 /// @requires {function} read-map
 /// @requires {pick} pick
 ///
-/// @param {String} $gray - grayscale color name
-/// @param {String} $opacity [active] - opacity level defind on variables
+/// @param {String} $gray - Gray color name
+/// @param {String} $opacity [active] - opacity level
+/// @return {Color}
 ///
 @function gray($gray, $opacity: active) {
   @return pick(read-map($grayscale, $gray), $opacity: $opacity);
