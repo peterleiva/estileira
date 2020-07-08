@@ -6,12 +6,18 @@
 
 @use '../utilities' as *;
 
+@include css-vars($breakpoints);
+@include css-vars($z-indexes, 'z');
+@include css-vars($color-grayscale);
+@include css-vars($color-colors, 'color');
+@include css-vars($color-gradients, 'gradient');
+
 a {
   @include unstyled-link;
   cursor: pointer;
 }
 
-html, body {
+:root, body {
   width: 100vw;
   height: 100vh;
   overflow: hidden;

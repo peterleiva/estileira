@@ -7,6 +7,8 @@
 
 @use 'variables' as *;
 @use 'functions' as *;
+@use 'sass:meta';
+@use 'sass:string';
 
 ///
 /// Remove all styles for link component
@@ -125,5 +127,32 @@
   & {
     scrollbar-face-color: $foreground-color;
     scrollbar-track-color: $background-color;
+  }
+}
+
+///
+/// Define css custom properties from map structure
+///   Take a map data structure and convert to css custom properties with
+/// a optional prefix. Also the css vars can be set to any selector, if there's
+/// none the :root is used by default
+///
+/// @example
+///   set-vars((gray-1: #ccc), color) => --color-gray-1: #ccc
+///   set-vars((gray-1: #ccc))        => --gray-1: #ccc
+/// @output A list of prefixed css custom properties
+/// @param {Map} $vars - A map to construct the custom properties
+/// @param {String} $prefix - A custom property property
+///
+@mixin css-vars($vars, $prefix: '') {
+  @if not (meta.type-of($vars) == 'map') {
+    @error "You must supply a map to create CSS custom properties instead " + 
+      "the value #{$vars}";
+  }
+
+  #{if(&, '&', ':root')} {
+    @each $variable, $property in $vars {
+      $custom-property: if(string.length($prefix) == 0, '', "#{$prefix}-");
+      --#{$custom-property}#{$variable}: #{$property};
+    }
   }
 }

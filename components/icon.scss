@@ -8,6 +8,9 @@
 @use '../utilities' as *;
 $pad: 4px;
 
+/// 1. tamanhos em múltiplos do baseline e proporção quadrada
+/// 2. tamanhos personalizados podem existem porém talvez precise adicionar pad
+///  (para ícones desenvolvidos para diversos tamanhos)
 ///
 /// Basic icon structure
 ///
