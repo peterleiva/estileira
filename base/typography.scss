@@ -49,6 +49,13 @@ $font: (
   #{$var}: rhythm-baseline-scale(if($value >= 0, 1 + $value/2, 1 + $value/4));
 }
 
+:root {
+  --space-1-line: #{rhythm-baseline-scale(1)};
+  --space-3-lines: #{rhythm-baseline-scale(3)};
+  --space-2-lines: #{rhythm-baseline-scale(2)};
+  --space-4-lines: #{rhythm-baseline-scale(4)};
+}
+
 body {
   font-family: map.get($font, 'family');
   color: color-gray('gray-2');
