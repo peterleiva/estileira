@@ -18,8 +18,7 @@ a {
 }
 
 :root, body {
-  width: 100vw;
-  height: 100vh;
+  @include full-content;
   overflow: hidden;
 }
 

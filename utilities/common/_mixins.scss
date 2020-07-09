@@ -25,7 +25,7 @@
 
 ///
 /// Includes a keyword z-index or a number
-///
+/// TODO pensar em remover em favor de apenas css vars
 /// @require {Function} z-index
 ///
 /// @param {String} $index
@@ -136,9 +136,12 @@
 /// a optional prefix. Also the css vars can be set to any selector, if there's
 /// none the :root is used by default
 ///
+/// @content Pass the variable and its value as the first and second argument
+///           respectively only if a content exists
 /// @example
 ///   set-vars((gray-1: #ccc), color) => --color-gray-1: #ccc
 ///   set-vars((gray-1: #ccc))        => --gray-1: #ccc
+///
 /// @output A list of prefixed css custom properties
 /// @param {Map} $vars - A map to construct the custom properties
 /// @param {String} $prefix - A custom property property
@@ -151,8 +154,14 @@
 
   #{if(&, '&', ':root')} {
     @each $variable, $property in $vars {
-      $custom-property: if(string.length($prefix) == 0, '', "#{$prefix}-");
-      --#{$custom-property}#{$variable}: #{$property};
+      $var-prefix: if(string.length($prefix) == 0, '', "#{$prefix}-");
+      $custom-property: --#{$var-prefix}#{$variable};
+
+      @if meta.content-exists() {
+        @content($custom-property, $property);
+      } @else {
+        #{$custom-property}: #{$property};
+      }
     }
   }
 }

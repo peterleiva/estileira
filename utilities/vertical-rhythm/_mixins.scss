@@ -45,7 +45,7 @@
 ///
 /// Uses a defined scale name in $type-scale or uses a number to be scale to
 /// both of them using ms function
-///
+/// TODO para números pode falhar - ver isso
 /// @requires {Map} $type-scale - scale naming map
 /// @requires {Function} common.component-scale - scale naming map
 /// @requires {Function} type-setting - scale naming map
