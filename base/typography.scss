@@ -7,6 +7,7 @@
 
 @use '../utilities' as *;
 @use 'sass:map';
+@use 'sass:math';
 
 /// TODO: usar local como src em vez de url
 /// TODO: Tornar configurável para diferentes tipos
@@ -17,10 +18,36 @@ $font: (
 
 @font-face {
   font-family: map.get($font, 'family');
-  src: map.get($font, 'src')
+  src: map.get($font, 'src');
 }
 
-@include rhythm-bootstrap();
+/// bootstrap vertical rhythm tool
+@include rhythm-bootstrap;
+
+///
+/// css variables for vertical rhythm
+///
+@include css-vars((
+  'baseline': $rhythm-baseline,
+  'basesize': $rhythm-basesize
+));
+
+/// Define space variables, All of them in respect with baseline
+///
+/// --space-jumbo : 3,5 baseline
+/// --space-xxxl : 3 baseline
+/// --space-xxl : 2,5 baseline
+/// --space-xl : 2 baseline
+/// --space-lg : 1,5 baseline
+/// --space-default : 1 baseline
+/// --space-sm : 0,75 baseline
+/// --space-xs : 0,5 baseline
+/// --space-xxs : 0,25 baseline
+/// --space-xxxs : 0 baseline
+///
+@include css-vars($component-scales, 'space') using ($var, $value) {
+  #{$var}: rhythm-baseline-scale(if($value >= 0, 1 + $value/2, 1 + $value/4));
+}
 
 body {
   font-family: map.get($font, 'family');
