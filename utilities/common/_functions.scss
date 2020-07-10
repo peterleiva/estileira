@@ -63,12 +63,12 @@
 }
 
 ///
-/// Gets a component scale factor from its map
+/// Gets a component scale factor from its map or a number
 ///
 /// @requires {Map} $component-scales
 /// @requires {Function} read-number-map
 ///
-/// @param {String} $scale - scale number
+/// @param {String | Number} $scale [default] - number or string of scale
 /// @return {Number}
 ///
 @function component-scale($scale: default) {

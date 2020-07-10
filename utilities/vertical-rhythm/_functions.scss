@@ -5,6 +5,7 @@
 ////
 
 @use 'variables' as *;
+@use 'sass:math';
 
 ///
 /// Calculates the according lines length
@@ -87,11 +88,11 @@
 /// @return {Number}
 ///
 @function _lines-required($size) {
-  @if unit($size) == 'px' {
+  @if math.unit($size) == 'px' {
     $size: rem($size);
   }
 
-  @if unit($size) != 'rem' {
+  @if math.unit($size) != 'rem' {
     @error 'The unit must be in px or rem';
   }
 

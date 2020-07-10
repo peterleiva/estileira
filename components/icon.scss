@@ -6,39 +6,50 @@
 ////
 
 @use '../utilities' as *;
-$pad: 4px;
+@use 'sass:math';
+@use 'sass:meta';
 
-/// 1. tamanhos em múltiplos do baseline e proporção quadrada
-/// 2. tamanhos personalizados podem existem porém talvez precise adicionar pad
-///  (para ícones desenvolvidos para diversos tamanhos)
+// 2 lines as a default icon size
+$icon-size: rhythm-baseline-scale(2);
+
 ///
-/// Basic icon structure
+/// Basic icon required structure. The proportion is square
 ///
 %icon {
+  --size: #{$icon-size};
   cursor: pointer;
+  width: var(--size);
+  height: var(--size);
 }
 
 ///
-/// Sets icon size using height and width to touchable area
-/// All icons is touchable, then uses a default pad for icon and
-/// calculate its visible area with its scale using a component scale
+/// Sets icon size using height and width
+/// Uses one of keyword component (sm, lg, jumbo, default, ...) or a length in
+///   pixel or rem to calculate the component height and width. Also fill the 
+///   remaining size with padding to keep the vertical rhythm
 ///
-/// @todo testar aspect-ratio
-/// @requires {Function} component-scale
-/// @requires {Function} $touchable-area
-/// @requires {Function} $pad
-/// @param {String | Number} $size [1] - One of components sizing
-/// @param {Number} $aspect-ratio [1]
+/// @throw When the $size isn't px, rem or one of component strings
+/// @output icon width, height and padding to keep rhythm
+/// @param {Number | String} $size [$icon-size] - Component size in pixel or 
+///                                                a string
 ///
-@mixin icon($size: 1, $aspect-ratio: 1) {
-  $size: component-scale($size) * $touchable-area;
+@mixin icon($size: $icon-size) {
+  $scale: $size;
+  @if meta.type-of($size) == 'string' {
+    $scale: rhythm-baseline-scale(component-scale($size));
+  } @else {
+    @if math.unit($size) == 'px' {
+      $scale: rem($size);
+    } @else if math.unit($size) != 'rem' {
+      @error "Icon size must be pixel, rem or component string";
+    }
+  }
 
-  width: rem($size);
-  height: rem($size)/$aspect-ratio;
+  // keep the size as the minimium required line to maintain the rhythm 
+  --size: #{rhythm-leading($scale)};
   @extend %icon;
+
+  // fill with padding the extra to keep rhythm
+  padding: calc((var(--size) - #{$scale})/2);
 }
 
-// TODO: outras opções de tamanhos (lg, sm, ...)
-.icon {
-  @include icon;
-}
