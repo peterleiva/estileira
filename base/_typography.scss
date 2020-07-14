@@ -9,17 +9,13 @@
 @use 'sass:map';
 @use 'sass:math';
 
-/// TODO: usar local como src em vez de url
-/// TODO: Tornar configurável para diferentes tipos
-$font: (
-  family: ('Comfortaa', cursive),
-  src: url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap')
-) !default;
+@import 'https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap';
 
-@font-face {
-  font-family: map.get($font, 'family');
-  src: map.get($font, 'src');
-}
+/// TODO usar apenas font-face como alternativa padrão
+/// TODO Tornar configurável para diferentes tipos
+$font: (
+  family: ('Comfortaa', 'Open Sans', cursive)
+) !default;
 
 /// bootstrap vertical rhythm tool
 @include rhythm-bootstrap;

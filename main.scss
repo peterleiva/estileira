@@ -8,9 +8,8 @@
 ////
 
 @use 'base';
+@use 'base/shame';
 
-@import
-  'components/list',
-  'components/icon';
+@use 'components/list';
+@use 'components/icon';
 
-@import 'shame';

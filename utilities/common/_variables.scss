@@ -25,6 +25,10 @@ $font-family: Popins, sans-serif !default;
 /// @type Number
 $border-radius: 2px !default;
 
+/// Path to url assets
+/// @type string
+$assets-path: '/assets';
+
 /// Breakpoints as dog names
 /// @type Map
 $breakpoints: (
