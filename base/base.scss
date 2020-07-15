@@ -18,7 +18,7 @@ a {
 }
 
 :root, body {
-  @include full-content;
+  @include full-viewport;
   overflow: hidden;
 }
 

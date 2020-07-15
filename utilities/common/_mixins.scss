@@ -47,10 +47,20 @@
 
 ///
 /// fill the full component relative to parent
+/// @output height and width with 100%
 ///
 @mixin full-content {
-  height: 100vh;
+  width: 100%;
+  height: 100%;
+}
+
+///
+/// Fill the component dimensions with whole parent height and width
+/// @output height and width with 100vw(vh)
+///
+@mixin full-viewport {
   width: 100vw;
+  height: 100vh;
 }
 
 ///
