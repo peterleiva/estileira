@@ -102,12 +102,12 @@ body {
 }
 
 // default small element
-small {
+small, .small {
   @include rhythm-type-scale(sm);
 }
 
 /// default quote element
-q {
+q, .quote {
   @extend .section-subtitle;
   font-style: italic;
 }
@@ -116,6 +116,6 @@ b, .text-bold {
   font-weight: bolder;
 }
 
-.text-italic {
+i, .text-italic {
   font-style: italic;
 }
