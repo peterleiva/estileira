@@ -5,7 +5,8 @@
 ////
 
 // TODO Reestruturar modular scale dentro do próprio pacote sass
-@use '~modularscale-sass/stylesheets/modularscale' as *;
+@use 'modularscale-sass' as *;
+
 @use '../common' as common;
 
 /// font-size base for modular scale
@@ -27,4 +28,4 @@ $modularscale: (
   ratio: $golden
 );
 
-@forward '~modularscale-sass/stylesheets/modularscale'
+@forward 'modularscale-sass';
