@@ -5,3 +5,5 @@
 
 # system files
 .DS_Store
+
+node_modules/
