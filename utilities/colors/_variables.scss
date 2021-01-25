@@ -10,15 +10,15 @@
 /// @type Map
 ///
 $grayscale: (
-  'gray-1': hsl(0, 0, 0),
+  'gray-1': hsl(0, 0%, 0%),
   'gray-2': hsl(206, 12%, 26%),
   'gray-3': hsl(205, 12%, 42%),
   'gray-4': hsl(206, 12%, 74%),
   'gray-5': hsl(200, 11%, 95%),
-  'gray-6': hsl(0, 0, 100),
+  'gray-6': hsl(0, 0%, 100%),
 
-  'dark': hsl(0, 0, 0), // alias for gray-6 or white
-  'light': hsl(0, 0, 100) // alias for gray-1 or black
+  'dark': hsl(0, 0%, 0%), // alias for gray-6 or white
+  'light': hsl(0, 0%, 100%) // alias for gray-1 or black
 ) !default;
 
 ///
@@ -40,8 +40,8 @@ $colors: (
   'info': hsl(206, 92%, 59%),
   'danger': hsl(354, 70%, 54%),
 
-  'background-1': hsl(0, 0, 100),
-  'background-2': hsl(0, 0, 0)
+  'background-1': hsl(0, 0%, 100%),
+  'background-2': hsl(0, 0%, 0%)
 ) !default;
 
 ///
