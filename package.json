@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "description": "Uma arquitetura simples usando Dart Sass definindo uma estrutura de um projeto de folhas de estilos bem definido. A arquitetura também serve como uma biblioteca com ferramentas e utilitários necessários para construção de estilos usando normas de design para diferentes projetos.",
   "main": "main.scss",
+  "engines": {
+    "node": ">=12"
+  },
   "scripts": {
     "lint": "stylelint \"**.scss\"",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -26,12 +29,9 @@
     "breakpoint-sass": "^2.7.1",
     "modularscale-sass": "^3.0.10",
     "prettier": "^2.2.1",
-    "stylelint": "^13.11.0",
-    "stylelint-config-prettier": "^8.0.2",
-    "stylelint-config-recommended": "^3.0.0",
-    "stylelint-config-sass-guidelines": "^8.0.0",
-    "stylelint-config-standard": "^20.0.0",
-    "stylelint-order": "^4.1.0",
-    "stylelint-scss": "^3.19.0"
+    "stylelint": "^14.1.0",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-sass-guidelines": "^9.0.1",
+    "stylelint-config-standard-scss": "^3.0.0"
   }
 }

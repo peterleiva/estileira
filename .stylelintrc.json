@@ -1,10 +1,8 @@
 {
   "extends": [
-    "stylelint-config-standard",
-    "stylelint-config-prettier",
+    "stylelint-config-standard-scss",
     "stylelint-config-sass-guidelines",
-    "stylelint-config-recommended"
+    "stylelint-config-prettier"
   ],
-  "plugins": ["stylelint-scss", "stylelint-order"],
   "ignoreFiles": ["node_modules/**"]
 }
