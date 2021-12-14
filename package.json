@@ -1,7 +1,7 @@
 {
-  "name": "scss-framework",
+  "name": "styles-rhythm",
   "version": "0.1.0",
-  "description": "Uma arquitetura simples usando Dart Sass definindo uma estrutura de um projeto de folhas de estilos bem definido. A arquitetura também serve como uma biblioteca com ferramentas e utilitários necessários para construção de estilos usando normas de design para diferentes projetos.",
+  "description": "Very simple css library writen in scss with utilities and helpers for mainting your styles rhythm, color schema and so on",
   "main": "main.scss",
   "engines": {
     "node": ">=12"
@@ -15,19 +15,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/peterleiva/scss-framework.git"
+    "url": "git+https://github.com/pherval/scss-framework.git"
   },
   "keywords": [
     "framework sass",
     "scss",
     "sass"
   ],
-  "author": "Peter Leiva <pleiva@id.uff.br>",
+  "author": "Peter <npmjs@peter.dev.br>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/peterleiva/scss-framework/issues"
+    "url": "https://github.com/pherval/scss-framework/issues"
   },
-  "homepage": "https://github.com/peterleiva/scss-framework#readme",
+  "homepage": "https://github.com/pherval/scss-framework#readme",
   "devDependencies": {
     "breakpoint-sass": "^2.7.1",
     "modularscale-sass": "^3.0.10",
