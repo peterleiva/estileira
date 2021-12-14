@@ -4,5 +4,9 @@
     "stylelint-config-sass-guidelines",
     "stylelint-config-prettier"
   ],
-  "ignoreFiles": ["node_modules/**"]
+  "ignoreFiles": ["node_modules/**"],
+  "rules": {
+    "scss/at-mixin-pattern": null,
+    "scss/at-function-pattern": null
+  }
 }
