@@ -4,9 +4,9 @@
 // This file defines functions used for vertical rhythm
 ///
 
-@use 'variables' as *;
 @use 'sass:math';
 @use "sass:list";
+@use 'variables' as *;
 
 ///
 /// Calculates the according lines length

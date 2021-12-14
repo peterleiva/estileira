@@ -4,10 +4,10 @@
 // Core utilities mixins
 ///
 
-@use 'variables' as *;
-@use 'functions' as *;
 @use 'sass:meta';
 @use 'sass:string';
+@use 'variables' as *;
+@use 'functions' as *;
 
 ///
 /// Remove all styles for link component

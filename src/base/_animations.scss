@@ -4,7 +4,7 @@
 // Animations used across project
 ///
 
-@use 'utilities/common' as *;
+@use '../utilities/common' as *;
 
 $easings: (
   'back-ease-out': cubic-bezier(0.34, 1.56, 0.64, 1)

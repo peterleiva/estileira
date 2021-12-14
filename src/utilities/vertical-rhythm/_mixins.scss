@@ -4,10 +4,10 @@
 // This file describe mixins for mantain vertical rhythm
 ///
 
+@use "sass:list";
 @use 'variables' as *;
 @use 'functions' as *;
 @use '../common';
-@use "sass:list";
 
 ///
 /// Configures the app to accept vertical rhythm framework
