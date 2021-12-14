@@ -1,8 +1,7 @@
 @charset 'utf-8';
 
-////
-/// Animations used across project
 ///
+// Animations used across project
 ///
 
 @use 'utilities/common' as *;
@@ -11,7 +10,7 @@ $easings: (
   'back-ease-out': cubic-bezier(0.34, 1.56, 0.64, 1)
 );
 
-@keyframes fadeIn {
+@keyframes fade-in {
   from {
     @include opacity(hidden);
   }

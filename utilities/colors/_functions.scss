@@ -1,10 +1,11 @@
 @charset 'utf-8';
 
-////
-/// This file describe functions get colors from map or manipulate new ones
 ///
-////
+// This file describe functions get colors from map or manipulate new ones
+///
 
+@use "sass:meta";
+@use "sass:color";
 @use 'variables' as *;
 @use '../common/functions' as *;
 
@@ -35,9 +36,8 @@
 /// @return {Color}
 ///
 @function pick($color-name: primary, $level: 0, $opacity: active) {
-
   // check the $color-nakme type, it can return a single color
-  $color: if(type-of($color-name) == 'color',
+  $color: if(meta.type-of($color-name) == 'color',
                   $color-name, read-map($colors, $color-name));
 
   // base color used for mixing tint or shade
@@ -50,11 +50,11 @@
   $alpha: opacity-level($opacity);
 
   @if $color != transparent {
-    $color: rgba($color, $alpha);
+    $color: rgba($color / $alpha);
   }
 
   // applies tint or shade according to $level
-  $color: mix($color-base, $color, $level * $variant-interval);
+  $color: color.mix($color-base, $color, $level * $variant-interval);
 
   @return $color;
 }
@@ -161,14 +161,13 @@
 /// @returns {Map} - A map to functions to be applies to get $a from $b
 ///
 @function diff($a, $b) {
-  $sat: saturation($a) - saturation($b);
-  $lightness: lightness($a) - lightness($b);
-
+  $sat: color.saturation($a) - color.saturation($b);
+  $lightness: color.lightness($a) - color.lightness($b);
   $fn-sat: if($sat > 0, 'desaturate', 'saturate');
   $lig-color: if($lightness > 0, #000, #fff);
 
   @return (
-    adjust-hue: -(hue($a) - hue($b)),
+    adjust-hue: - (hue($a) - hue($b)),
     #{fn-sat}: abs($sat),
     mix: $lig-color
   );
@@ -184,7 +183,7 @@
 @function apply-diff($color, $diff-map) {
 
   @each $fun, $value in $diff-map {
-    $color: call($fun, $color, $value);
+    $color: meta.call($fun, $color, $value);
   }
 
   @return $color;

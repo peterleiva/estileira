@@ -1,9 +1,9 @@
 @charset 'utf-8';
 
-////
-/// Defines all functions to access variables or which can be reuse or 
-///   facilitates code
-////
+///
+// Defines all functions to access variables or which can be reuse or 
+//   facilitates code
+///
 
 @use 'sass:map';
 @use 'variables' as *;
@@ -19,13 +19,12 @@
 /// @param {String} $layer - map key
 ///
 @function read-map($map, $layer) {
-  @if (type-of($map) != 'map') {
+  @if type-of($map) != 'map' {
     @error "Map #{$map} must be defined";
   }
 
   @if not map.has-key($map, $layer) {
-    @warn "No value found for \'#{$layer}\'. Please make sure to define the" + 
-      "key #{$layer} in map: #{$map}";
+    @warn "No value found for \'#{$layer}\'. Please make sure to define the key #{$layer} in map: #{$map}";
   }
 
   @return map.get($map, $layer);
@@ -110,13 +109,13 @@
 /// @return {Number}
 ///
 @function rem($pixels, $context: $browser-context) {
-  @if (unitless($pixels)) {
+  @if unitless($pixels) {
     $pixels: $pixels * 1px;
   }
 
-  @if (unitless($context)) {
+  @if unitless($context) {
     $context: $context * 1px;
   }
 
-  @return $pixels / $context * 1rem;
+  @return calc($pixels / $context) * 1rem;
 }

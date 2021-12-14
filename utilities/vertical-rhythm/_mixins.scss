@@ -1,13 +1,13 @@
 @charset 'utf-8';
 
-////
-/// This file describe mixins for mantain vertical rhythm
 ///
-////
+// This file describe mixins for mantain vertical rhythm
+///
 
 @use 'variables' as *;
 @use 'functions' as *;
 @use '../common';
+@use "sass:list";
 
 ///
 /// Configures the app to accept vertical rhythm framework
@@ -21,10 +21,11 @@
     @include type-setting;
   }
 
-  *, *:after, *:before {
+  *, *::after, *::before {
+    @include common.prefix((box-sizing: border-box));
+
     margin: 0;
     padding: 0;
-    @include common.prefix((box-sizing: border-box));
   }
 }
 
@@ -121,13 +122,13 @@
   $pads: ();
 
   @include _list-sides using ($borders) {
+    @include padding-rhythm($pads);
+
     border-width: $borders;
 
     @each $border in $borders {
-      $pads: append($pads, leading($border) - $border);
+      $pads: list.append($pads, leading($border) - $border);
     }
-
-    @include padding-rhythm($pads);
   }
 }
 
@@ -144,13 +145,13 @@
 /// @param {Number} $lines [1]
 ///
 @mixin _side-baseline($property, $side, $lines: 1) {
-  @if index(common.$sides, $side) == null {
+  @if index(common.$sides, $side) {
     @error "Property #{$side} must be in #{common.$sides}";
   }
 
   $properties: ('margin' 'padding');
 
-  @if index($properties, $property) == null {
+  @if index($properties, $property) {
     @error "Property #{$property} must be in #{$properties}";
   }
 
@@ -201,22 +202,18 @@
 ///     @include vertical-rhythm(1.2rem, $use-height: true, $bottom-rows: 1);
 ///   }
 ///
-//// @access public
+// @access public
 /// @param {$font-size} - Tamanho do elemento
 ///
 // @mixin vertical-rhythm($font-size: $basesize){
-//
-//   // quantidade de linhas necessárias para o tamanho da letra
+//   quantidade de linhas necessárias para o tamanho da letra
 //   $min-lines: lines-required($font-size);
-//
-//   // altura que o elemento ocupa
+//   altura que o elemento ocupa
 //   $component-height: line-rhythm($min-lines);
-//
-//   // altura, em rem, do container
+// altura, em rem, do container
 //   $height: line-rhythm(ceil($min-lines));
-//
 //   @if $use-height {
-//     // sobras para que o elemento ocupe o número inteiro de linhas verticais
+// sobras para que o elemento ocupe o número inteiro de linhas verticais
 //     $leftover: $height - $component-height;
 //     $pad: $leftover/2;
 //     height: $component-height;

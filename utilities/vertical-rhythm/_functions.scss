@@ -1,11 +1,12 @@
 @charset 'utf-8';
 
-////
-/// This file defines functions used for vertical rhythm
-////
+///
+// This file defines functions used for vertical rhythm
+///
 
 @use 'variables' as *;
 @use 'sass:math';
+@use "sass:list";
 
 ///
 /// Calculates the according lines length
@@ -69,7 +70,7 @@
       @warn "#{$item} must be a number to calculate required lines";
     }
 
-    $list: append($list, baseline-scale($item));
+    $list: list.append($list, baseline-scale($item));
   }
 
   @return $list;
@@ -96,5 +97,5 @@
     @error 'The unit must be in px or rem. You value is ' + #{$size};
   }
 
-  @return ceil($size/baseline-scale());
+  @return ceil($size / baseline-scale());
 }

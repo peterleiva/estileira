@@ -1,9 +1,8 @@
 @charset 'utf-8';
 
-////
-/// This files defines all variables used by the framework
 ///
-////
+// This files defines all variables used by the framework
+///
 
 /// Browser context in pixels for calculating rem values
 /// @type Number
@@ -19,7 +18,7 @@ $clickable-area: 21px !default;
 
 /// default font-family
 /// @type List
-$font-family: Popins, sans-serif !default;
+$font-family: popins, sans-serif !default;
 
 /// default border radius
 /// @type Number

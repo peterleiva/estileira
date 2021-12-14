@@ -1,9 +1,8 @@
 @charset 'utf-8';
 
-////
-/// This file describe mixins used applying colors
 ///
-////
+// This file describe mixins used applying colors
+///
 
 @use 'variables' as *;
 @use 'functions' as *;
@@ -18,9 +17,9 @@
 /// @param {Color | String} $border
 ///
 @mixin style($foreground: brand, $background: secondary, $border: secondary) {
-  color: pick($color);
   background: pick($background);
   border-color: dark($background);
+  color: pick($color);
 }
 
 ///

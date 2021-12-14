@@ -1,24 +1,24 @@
 @charset 'utf-8';
 
-////
-/// This file describes color scheme used by whole project
-/// TODO gradients colors
-////
+///
+// This file describes color scheme used by whole project
+// TODO gradients colors
+///
 
 ///
 /// Grayscale for nice grays to be used as shadows, dividers, background, etc...
 /// @type Map
 ///
 $grayscale: (
-  'gray-1': hsl(0, 0%, 0%),
-  'gray-2': hsl(206, 12%, 26%),
-  'gray-3': hsl(205, 12%, 42%),
-  'gray-4': hsl(206, 12%, 74%),
-  'gray-5': hsl(200, 11%, 95%),
-  'gray-6': hsl(0, 0%, 100%),
+  'gray-1': hsl(0deg 0% 0%),
+  'gray-2': hsl(206deg 12% 26%),
+  'gray-3': hsl(205deg 12% 42%),
+  'gray-4': hsl(206deg 12% 74%),
+  'gray-5': hsl(200deg 11% 95%),
+  'gray-6': hsl(0deg 0% 100%),
 
-  'dark': hsl(0, 0%, 0%), // alias for gray-6 or white
-  'light': hsl(0, 0%, 100%) // alias for gray-1 or black
+  'dark': hsl(0deg 0% 0%), // alias for gray-6 or white
+  'light': hsl(0deg 0% 100%) // alias for gray-1 or black
 ) !default;
 
 ///
@@ -26,22 +26,22 @@ $grayscale: (
 /// @type Map
 ///
 $colors: (
-  'primary': hsl(145, 56%, 56%),
-  'primary-1': hsl(145, 56%, 56%), // alias for primary
-  'primary-2': hsl(175, 56%, 56%),
-  'primary-3': hsl(205, 56%, 56%),
+  'primary': hsl(145deg 56% 56%),
+  'primary-1': hsl(145deg 56% 56%), // alias for primary
+  'primary-2': hsl(175deg 56% 56%),
+  'primary-3': hsl(205deg 56% 56%),
 
-  'accent': hsl(265, 56%, 56%),
-  'accent-1': hsl(265, 56%, 56%), // alias for accent
-  'accent-2': hsl(355, 56%, 56%),
+  'accent': hsl(265deg 56% 56%),
+  'accent-1': hsl(265deg 56% 56%), // alia for accent
+  'accent-2': hsl(355deg 56% 56%),
 
-  'success': hsl(168, 57%, 48%),
-  'warning': hsl(41, 100%, 57%),
-  'info': hsl(206, 92%, 59%),
-  'danger': hsl(354, 70%, 54%),
+  'success': hsl(168deg 57% 48%),
+  'warning': hsl(41deg 100% 57%),
+  'info': hsl(206deg 92% 59%),
+  'danger': hsl(354deg 70% 54%),
 
-  'background-1': hsl(0, 0%, 100%),
-  'background-2': hsl(0, 0%, 0%)
+  'background-1': hsl(0deg 0% 100%),
+  'background-2': hsl(0deg 0% 0%)
 ) !default;
 
 ///
@@ -50,41 +50,41 @@ $colors: (
 ///
 $variants: (
   'primary-1': (
-    'base': hsl(145, 56%, 56%),
-    'lighter': hsl(145, 55%, 71%),
-    'light': hsl(145, 56%, 61%),
-    'dark': hsl(145, 56%, 44%),
-    'darker': hsl(145, 56%, 25%)
+    'base': hsl(145deg 56% 56%),
+    'lighter': hsl(145deg 55% 71%),
+    'light': hsl(145deg 56% 61%),
+    'dark': hsl(145deg 56% 44%),
+    'darker': hsl(145deg 56% 25%)
   ),
   'primary-2': (
-    'base': hsl(175, 56%, 56%),
-    'lighter': hsl(175, 55%, 83%),
-    'light': hsl(175, 56%, 61%),
-    'dark': hsl(174, 56%, 45%),
-    'darker': hsl(175, 56%, 17%)
+    'base': hsl(175deg 56% 56%),
+    'lighter': hsl(175deg 55% 83%),
+    'light': hsl(175deg 56% 61%),
+    'dark': hsl(174deg 56% 45%),
+    'darker': hsl(175deg 56% 17%)
   ),
   'primary-3': (
-    'base': hsl(205, 56%, 56%),
-    'lighter': hsl(204, 55%, 83%),
-    'light': hsl(205, 56%, 61%),
-    'dark': hsl(205, 56%, 34%),
-    'darker': hsl(204, 55%, 11%)
+    'base': hsl(205deg 56% 56%),
+    'lighter': hsl(204deg 55% 83%),
+    'light': hsl(205deg 56% 61%),
+    'dark': hsl(205deg 56% 34%),
+    'darker': hsl(204deg 55% 11%)
   ),
 
   'accent-1': (
-    'base': hsl(265, 56%, 56%),
-    'lighter': hsl(264, 55%, 83%),
-    'light': hsl(265, 56%, 61%),
-    'dark': hsl(265, 56%, 45%),
-    'darker': hsl(265 56% 17%)
+    'base': hsl(265deg 56% 56%),
+    'lighter': hsl(264deg 55% 83%),
+    'light': hsl(265deg 56% 61%),
+    'dark': hsl(265deg 56% 45%),
+    'darker': hsl(265deg 56% 17%)
   ),
 
   'accent-2': (
-    'base': hsl(355, 56%, 56%),
-    'lighter': hsl(342, 39%, 57%),
-    'light': hsl(355, 56%, 61%),
-    'dark': hsl(355, 56%, 45%),
-    'darker': hsl(354, 57%, 23%)
+    'base': hsl(355deg 56% 56%),
+    'lighter': hsl(342deg 39% 57%),
+    'light': hsl(355deg 56% 61%),
+    'dark': hsl(355deg 56% 45%),
+    'darker': hsl(354deg 57% 23%)
   )
 ) !default;
 
@@ -95,15 +95,15 @@ $variants: (
 $gradients: (
   'background-1': radial-gradient(
                     115vw 80vh at 110vw 50vh,
-                    hsl(175 55% 83%) -5%,
-                    hsl(175 56% 61%) 7%,
-                    hsl(145 56% 61%) 100%,
-                    hsl(205 56% 34%) 115%
+                    hsl(175deg 55% 83%) -5%,
+                    hsl(175deg 56% 61%) 7%,
+                    hsl(145deg 56% 61%) 100%,
+                    hsl(205deg 56% 34%) 115%
                   ),
   'accent-1': linear-gradient(
                 to right,
-                hsl(265 56% 45%) -20%,
-                hsl(265 56% 17%) 100%
+                hsl(265deg 56% 45%) -20%,
+                hsl(265deg 56% 17%) 100%
               )
 ) !default;
 

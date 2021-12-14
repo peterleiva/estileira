@@ -1,13 +1,9 @@
 @charset 'utf-8';
 
-////
-///
-///
-////
+@use "normalize.css";
 
-@forward 'base/reset';
-@forward 'base/base';
-@forward 'base/states';
-@forward 'base/styleguide';
-@forward 'base/animations';
-@forward 'base/typography';
+@forward 'base';
+@forward 'states';
+@forward 'styleguide';
+@forward 'animations';
+@forward 'typography';
