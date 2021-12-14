@@ -2,7 +2,7 @@
   "name": "styles-rhythm",
   "version": "0.1.0",
   "description": "Very simple css library writen in scss with utilities and helpers for mainting your styles rhythm, color schema and so on",
-  "main": "main.scss",
+  "main": "src/main.scss",
   "engines": {
     "node": ">=12"
   },
@@ -29,12 +29,16 @@
   },
   "homepage": "https://github.com/pherval/scss-framework#readme",
   "devDependencies": {
-    "breakpoint-sass": "^2.7.1",
-    "modularscale-sass": "^3.0.10",
+    "node-sass": "^7.0.0",
     "prettier": "^2.2.1",
+    "sass": "^1.45.0",
     "stylelint": "^14.1.0",
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-sass-guidelines": "^9.0.1",
     "stylelint-config-standard-scss": "^3.0.0"
+  },
+  "dependencies": {
+    "modularscale-sass": "^3.0.10",
+    "normalize.css": "^8.0.1"
   }
 }
