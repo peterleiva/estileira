@@ -36,7 +36,7 @@
 /// @return {Color}
 ///
 @function pick($color-name: primary, $level: 0, $opacity: active) {
-  // check the $color-nakme type, it can return a single color
+  // check the $color-name type, it can return a single color
   $color: if(
     meta.type-of($color-name) == "color",
     $color-name,
@@ -53,7 +53,7 @@
   $alpha: opacity-level($opacity);
 
   @if $color != transparent {
-    $color: rgba($color / $alpha);
+    $color: color.adjust($color, $alpha: $alpha);
   }
 
   // applies tint or shade according to $level
