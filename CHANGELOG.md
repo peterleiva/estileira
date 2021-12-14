@@ -10,6 +10,10 @@ Each log entry can be in the following kind: **Added**[^1], **Changed**[^2], **D
 ### Added
 
 - Linter ([stylelint](https://stylelint.io/))
+- npm scripts:
+  - `format` - fix code styles with prettier
+  - `format:check` - print code styles warns to stdout without fixing them
+  - `lint` - run stylelint
 
 [unreleased]: https://github.com/pherval/scss-framework/compare/v1.0.0...HEAD
 [0.1.0]: https://github.com/pherval/scss-framework/releases/tag/v0.1.0
