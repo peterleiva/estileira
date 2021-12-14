@@ -1,6 +1,6 @@
 {
   "name": "styles-rhythm",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Very simple css library writen in scss with utilities and helpers for mainting your styles rhythm, color schema and so on",
   "main": "src/main.scss",
   "engines": {
