@@ -97,5 +97,5 @@
     @error 'The unit must be in px or rem. You value is ' + #{$size};
   }
 
-  @return ceil($size / baseline-scale());
+  @return ceil(math.div($size, baseline-scale()));
 }

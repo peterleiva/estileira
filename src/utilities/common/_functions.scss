@@ -6,6 +6,7 @@
 ///
 
 @use 'sass:map';
+@use 'sass:math';
 @use 'variables' as *;
 
 ///
@@ -116,5 +117,5 @@
     $context: $context * 1px;
   }
 
-  @return calc($pixels / $context) * 1rem;
+  @return math.div($pixels, $context) * 1rem;
 }

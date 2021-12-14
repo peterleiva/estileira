@@ -49,7 +49,7 @@ $font: (
 ///
 @include css-vars($component-scales, "space") using ($var, $value) {
   #{$var}: rhythm-baseline-scale(
-    if($value >= 0, 1 + $value / 2, 1 + $value / 4)
+    if($value >= 0, 1 + math.div($value, 2), 1 + math.div($value, 4))
   );
 }
 
