@@ -7,6 +7,10 @@ Each log entry can be in the following kind: **Added**[^1], **Changed**[^2], **D
 
 ## [Unreleased]
 
+### Added
+
+- pre-commit hook lint code
+
 ## [0.2.0] - 2021-12-14
 
 ### Added
