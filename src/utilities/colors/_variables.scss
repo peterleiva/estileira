@@ -10,15 +10,15 @@
 /// @type Map
 ///
 $grayscale: (
-  'gray-1': hsl(0deg 0% 0%),
-  'gray-2': hsl(206deg 12% 26%),
-  'gray-3': hsl(205deg 12% 42%),
-  'gray-4': hsl(206deg 12% 74%),
-  'gray-5': hsl(200deg 11% 95%),
-  'gray-6': hsl(0deg 0% 100%),
-
-  'dark': hsl(0deg 0% 0%), // alias for gray-6 or white
-  'light': hsl(0deg 0% 100%) // alias for gray-1 or black
+  "gray-1": hsl(0deg 0% 0%),
+  "gray-2": hsl(206deg 12% 26%),
+  "gray-3": hsl(205deg 12% 42%),
+  "gray-4": hsl(206deg 12% 74%),
+  "gray-5": hsl(200deg 11% 95%),
+  "gray-6": hsl(0deg 0% 100%),
+  "dark": hsl(0deg 0% 0%),
+  // alias for gray-6 or white
+  "light": hsl(0deg 0% 100%) // alias for gray-1 or black,
 ) !default;
 
 ///
@@ -26,22 +26,21 @@ $grayscale: (
 /// @type Map
 ///
 $colors: (
-  'primary': hsl(145deg 56% 56%),
-  'primary-1': hsl(145deg 56% 56%), // alias for primary
-  'primary-2': hsl(175deg 56% 56%),
-  'primary-3': hsl(205deg 56% 56%),
-
-  'accent': hsl(265deg 56% 56%),
-  'accent-1': hsl(265deg 56% 56%), // alia for accent
-  'accent-2': hsl(355deg 56% 56%),
-
-  'success': hsl(168deg 57% 48%),
-  'warning': hsl(41deg 100% 57%),
-  'info': hsl(206deg 92% 59%),
-  'danger': hsl(354deg 70% 54%),
-
-  'background-1': hsl(0deg 0% 100%),
-  'background-2': hsl(0deg 0% 0%)
+  "primary": hsl(145deg 56% 56%),
+  "primary-1": hsl(145deg 56% 56%),
+  // alias for primary
+  "primary-2": hsl(175deg 56% 56%),
+  "primary-3": hsl(205deg 56% 56%),
+  "accent": hsl(265deg 56% 56%),
+  "accent-1": hsl(265deg 56% 56%),
+  // alia for accent
+  "accent-2": hsl(355deg 56% 56%),
+  "success": hsl(168deg 57% 48%),
+  "warning": hsl(41deg 100% 57%),
+  "info": hsl(206deg 92% 59%),
+  "danger": hsl(354deg 70% 54%),
+  "background-1": hsl(0deg 0% 100%),
+  "background-2": hsl(0deg 0% 0%),
 ) !default;
 
 ///
@@ -49,62 +48,62 @@ $colors: (
 /// @type Map
 ///
 $variants: (
-  'primary-1': (
-    'base': hsl(145deg 56% 56%),
-    'lighter': hsl(145deg 55% 71%),
-    'light': hsl(145deg 56% 61%),
-    'dark': hsl(145deg 56% 44%),
-    'darker': hsl(145deg 56% 25%)
+  "primary-1": (
+    "base": hsl(145deg 56% 56%),
+    "lighter": hsl(145deg 55% 71%),
+    "light": hsl(145deg 56% 61%),
+    "dark": hsl(145deg 56% 44%),
+    "darker": hsl(145deg 56% 25%),
   ),
-  'primary-2': (
-    'base': hsl(175deg 56% 56%),
-    'lighter': hsl(175deg 55% 83%),
-    'light': hsl(175deg 56% 61%),
-    'dark': hsl(174deg 56% 45%),
-    'darker': hsl(175deg 56% 17%)
+  "primary-2": (
+    "base": hsl(175deg 56% 56%),
+    "lighter": hsl(175deg 55% 83%),
+    "light": hsl(175deg 56% 61%),
+    "dark": hsl(174deg 56% 45%),
+    "darker": hsl(175deg 56% 17%),
   ),
-  'primary-3': (
-    'base': hsl(205deg 56% 56%),
-    'lighter': hsl(204deg 55% 83%),
-    'light': hsl(205deg 56% 61%),
-    'dark': hsl(205deg 56% 34%),
-    'darker': hsl(204deg 55% 11%)
+  "primary-3": (
+    "base": hsl(205deg 56% 56%),
+    "lighter": hsl(204deg 55% 83%),
+    "light": hsl(205deg 56% 61%),
+    "dark": hsl(205deg 56% 34%),
+    "darker": hsl(204deg 55% 11%),
   ),
-
-  'accent-1': (
-    'base': hsl(265deg 56% 56%),
-    'lighter': hsl(264deg 55% 83%),
-    'light': hsl(265deg 56% 61%),
-    'dark': hsl(265deg 56% 45%),
-    'darker': hsl(265deg 56% 17%)
+  "accent-1": (
+    "base": hsl(265deg 56% 56%),
+    "lighter": hsl(264deg 55% 83%),
+    "light": hsl(265deg 56% 61%),
+    "dark": hsl(265deg 56% 45%),
+    "darker": hsl(265deg 56% 17%),
   ),
-
-  'accent-2': (
-    'base': hsl(355deg 56% 56%),
-    'lighter': hsl(342deg 39% 57%),
-    'light': hsl(355deg 56% 61%),
-    'dark': hsl(355deg 56% 45%),
-    'darker': hsl(354deg 57% 23%)
-  )
+  "accent-2": (
+    "base": hsl(355deg 56% 56%),
+    "lighter": hsl(342deg 39% 57%),
+    "light": hsl(355deg 56% 61%),
+    "dark": hsl(355deg 56% 45%),
+    "darker": hsl(354deg 57% 23%),
+  ),
 ) !default;
 
 ///
 /// Gradient colors
 /// @type Map
-/// 
+///
 $gradients: (
-  'background-1': radial-gradient(
-                    115vw 80vh at 110vw 50vh,
-                    hsl(175deg 55% 83%) -5%,
-                    hsl(175deg 56% 61%) 7%,
-                    hsl(145deg 56% 61%) 100%,
-                    hsl(205deg 56% 34%) 115%
-                  ),
-  'accent-1': linear-gradient(
-                to right,
-                hsl(265deg 56% 45%) -20%,
-                hsl(265deg 56% 17%) 100%
-              )
+  "background-1":
+    radial-gradient(
+      115vw 80vh at 110vw 50vh,
+      hsl(175deg 55% 83%) -5%,
+      hsl(175deg 56% 61%) 7%,
+      hsl(145deg 56% 61%) 100%,
+      hsl(205deg 56% 34%) 115%
+    ),
+  "accent-1":
+    linear-gradient(
+      to right,
+      hsl(265deg 56% 45%) -20%,
+      hsl(265deg 56% 17%) 100%
+    ),
 ) !default;
 
 ///
@@ -118,10 +117,10 @@ $variant-interval: 10% !default;
 /// TODO shadow pode ter diversas cores
 /// @type Color
 ///
-$shadow: gray('gray-5', divider) !default;
+$shadow: gray("gray-5", divider) !default;
 
 /// Colors to be on top of regular colors
 /// @type Map
 $on-colors: (
-  'background': gray('dark')
+  "background": gray("dark"),
 ) !default;

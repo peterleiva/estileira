@@ -1,4 +1,5 @@
 # Arquitetura SASS
+
 Uma arquitetura simples usando Dart Sass definindo uma estrutura de um projeto
 de folhas de estilos bem definido.
 A arquitetura também serve como uma biblioteca com ferramentas e utilitários

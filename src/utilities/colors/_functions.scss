@@ -37,8 +37,11 @@
 ///
 @function pick($color-name: primary, $level: 0, $opacity: active) {
   // check the $color-nakme type, it can return a single color
-  $color: if(meta.type-of($color-name) == 'color',
-                  $color-name, read-map($colors, $color-name));
+  $color: if(
+    meta.type-of($color-name) == "color",
+    $color-name,
+    read-map($colors, $color-name)
+  );
 
   // base color used for mixing tint or shade
   $color-base: if($level < 0, #fff, #000);
@@ -70,7 +73,7 @@
 /// @param {String} $variant
 /// @returns {Color}
 ///
-@function variant($color: 'primary-1', $variant: 'base', $opacity: active) {
+@function variant($color: "primary-1", $variant: "base", $opacity: active) {
   $color-spectrum: read-map($variants, $color);
 
   @if $color-spectrum {
@@ -87,7 +90,7 @@
 ///
 /// @param {String} $color [background-1]
 ///
-@function gradient($color: 'background-1') {
+@function gradient($color: "background-1") {
   @return read-map($gradients, $color);
 }
 
@@ -163,11 +166,13 @@
 @function diff($a, $b) {
   $sat: color.saturation($a) - color.saturation($b);
   $lightness: color.lightness($a) - color.lightness($b);
-  $fn-sat: if($sat > 0, 'desaturate', 'saturate');
+  $fn-sat: if($sat > 0, "desaturate", "saturate");
   $lig-color: if($lightness > 0, #000, #fff);
 
   @return (
-    adjust-hue: - (hue($a) - hue($b)),
+    adjust-hue: (
+      hue($b) - hue($a),
+    ),
     #{fn-sat}: abs($sat),
     mix: $lig-color
   );
@@ -181,7 +186,6 @@
 /// @returns {Color} color diff applied
 ///
 @function apply-diff($color, $diff-map) {
-
   @each $fun, $value in $diff-map {
     $color: meta.call($fun, $color, $value);
   }

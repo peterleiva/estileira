@@ -26,54 +26,54 @@ $border-radius: 2px !default;
 
 /// Path to url assets
 /// @type string
-$assets-path: '/assets';
+$assets-path: "/assets";
 
 /// Breakpoints as dog names
 /// @type Map
 $breakpoints: (
-  'chihuahua': 320px,
-  'pug': 530px,
-  'bulldog': 760px,
-  'dobermann': 1024px,
-  'saint-bernard': 2048px
+  "chihuahua": 320px,
+  "pug": 530px,
+  "bulldog": 760px,
+  "dobermann": 1024px,
+  "saint-bernard": 2048px,
 ) !default;
 
 /// Named z-index
 /// @type Map
 $z-indexes: (
-  'drawer': 5000,
-  'modal': 4000,
-  'overlay': 3000,
-  'dropdown': 2000,
-  'default': 1,
-  'below': -1
+  "drawer": 5000,
+  "modal": 4000,
+  "overlay": 3000,
+  "dropdown": 2000,
+  "default": 1,
+  "below": -1,
 ) !default;
 
 /// Opacity levels
 /// @type Map
 $opacity-levels: (
-  'active': 1,
-  'shadow': .82,
-  'light': .8,
-  'disabled': .5,
-  'dark': .4,
-  'divider': .12,
-  'hidden': 0
+  "active": 1,
+  "shadow": 0.82,
+  "light": 0.8,
+  "disabled": 0.5,
+  "dark": 0.4,
+  "divider": 0.12,
+  "hidden": 0,
 ) !default;
 
 /// Component scale sizing
 /// @type Map
 $component-scales: (
-  'jumbo':     5,
-  'xxxl':      4,
-  'xxl':       3,
-  'xl':        2,
-  'lg':        1,
-  'default':   0,
-  'sm':       -1,
-  'xs':       -2,
-  'xxs':      -3,
-  'xxxs':     -4,
+  "jumbo": 5,
+  "xxxl": 4,
+  "xxl": 3,
+  "xl": 2,
+  "lg": 1,
+  "default": 0,
+  "sm": -1,
+  "xs": -2,
+  "xxs": -3,
+  "xxxs": -4,
 ) !default;
 
 /// Side css properties list

@@ -2,7 +2,6 @@
 
 ///
 // Defines classes
-//
 ///
 
 @use '../utilities/colors';
@@ -23,5 +22,5 @@
 }
 
 a {
-  color: colors.variant('accent-1', 'darker');
+  color: colors.variant("accent-1", "darker");
 }

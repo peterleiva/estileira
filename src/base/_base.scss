@@ -7,10 +7,10 @@
 @use '../utilities' as *;
 
 @include css-vars($breakpoints);
-@include css-vars($z-indexes, 'z');
+@include css-vars($z-indexes, "z");
 @include css-vars($color-grayscale);
-@include css-vars($color-colors, 'color');
-@include css-vars($color-gradients, 'gradient');
+@include css-vars($color-colors, "color");
+@include css-vars($color-gradients, "gradient");
 
 a {
   @include unstyled-link;
@@ -18,12 +18,14 @@ a {
   cursor: pointer;
 }
 
-:root, body {
+:root,
+body {
   @include full-viewport;
 
   overflow: hidden;
 }
 
-input, button {
+input,
+button {
   outline: none;
 }

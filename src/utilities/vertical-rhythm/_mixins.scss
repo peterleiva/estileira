@@ -12,8 +12,8 @@
 ///
 /// Configures the app to accept vertical rhythm framework
 ///
-/// Bootstrap must be specified on top of application to make the vertical 
-/// rhyhthm to work. This mixin defines a box model and typesetting for root 
+/// Bootstrap must be specified on top of application to make the vertical
+/// rhyhthm to work. This mixin defines a box model and typesetting for root
 /// element which will be used as a base for text elements
 ///
 @mixin bootstrap() {
@@ -21,8 +21,14 @@
     @include type-setting;
   }
 
-  *, *::after, *::before {
-    @include common.prefix((box-sizing: border-box));
+  *,
+  *::after,
+  *::before {
+    @include common.prefix(
+      (
+        box-sizing: border-box,
+      )
+    );
 
     margin: 0;
     padding: 0;
@@ -81,7 +87,7 @@
 /// @requires {function} _side
 ///
 @mixin padding-side($side, $lines: 1) {
-  @include _side-baseline('padding', $side, $lines);
+  @include _side-baseline("padding", $side, $lines);
 }
 
 ///
@@ -106,7 +112,7 @@
 /// @requires {function} _side
 ///
 @mixin margin-side($side, $lines: 1) {
-  @include _side-baseline('margin', $side, $lines);
+  @include _side-baseline("margin", $side, $lines);
 }
 
 ///
@@ -132,7 +138,6 @@
   }
 }
 
-
 ///
 /// Calculates the single side line of margin or border property
 ///
@@ -149,7 +154,7 @@
     @error "Property #{$side} must be in #{common.$sides}";
   }
 
-  $properties: ('margin' 'padding');
+  $properties: ("margin" "padding");
 
   @if index($properties, $property) {
     @error "Property #{$property} must be in #{$properties}";
@@ -173,7 +178,7 @@
     @error "List shouldn't be empty";
   }
 
-  @content(list-baseline($sides...));
+  @content (list-baseline($sides...));
 }
 
 ///

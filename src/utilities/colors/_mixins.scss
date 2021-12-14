@@ -29,6 +29,6 @@
 ///
 @mixin apply-colors {
   @each $color in map-keys($colors) {
-    @content($color);
+    @content ($color);
   }
 }

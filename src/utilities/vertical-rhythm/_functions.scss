@@ -66,7 +66,7 @@
   $list: ();
 
   @each $item in $lines {
-    @if type-of($item) != 'number' {
+    @if type-of($item) != "number" {
       @warn "#{$item} must be a number to calculate required lines";
     }
 
@@ -79,7 +79,7 @@
 ///
 /// Calculates the amount of lines required to mantain the rhythm for length
 ///
-/// Uses a length value in pixels or rem to calculate the minimium required 
+/// Uses a length value in pixels or rem to calculate the minimium required
 /// lines for size
 ///
 /// @access private
@@ -89,11 +89,11 @@
 /// @return {Number}
 ///
 @function _lines-required($size) {
-  @if math.unit($size) == 'px' {
+  @if math.unit($size) == "px" {
     $size: rem($size);
   }
 
-  @if math.unit($size) != 'rem' {
+  @if math.unit($size) != "rem" {
     @error 'The unit must be in px or rem. You value is ' + #{$size};
   }
 

@@ -1,7 +1,7 @@
 @charset 'utf-8';
 
 ///
-// Defines all functions to access variables or which can be reuse or 
+// Defines all functions to access variables or which can be reuse or
 //   facilitates code
 ///
 
@@ -19,7 +19,7 @@
 /// @param {String} $layer - map key
 ///
 @function read-map($map, $layer) {
-  @if type-of($map) != 'map' {
+  @if type-of($map) != "map" {
     @error "Map #{$map} must be defined";
   }
 
@@ -29,7 +29,6 @@
 
   @return map.get($map, $layer);
 }
-
 
 ///
 /// Gets a numeric value or read the map value
@@ -43,7 +42,7 @@
 /// @param {String|Number} $layer
 ///
 @function read-number-map($map, $layer) {
-  @return if(type-of($layer) == 'number', $layer, read-map($map, $layer));
+  @return if(type-of($layer) == "number", $layer, read-map($map, $layer));
 }
 
 ///

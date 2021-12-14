@@ -17,7 +17,8 @@
   cursor: inherit;
   text-decoration: inherit;
 
-  &:active, &:focus {
+  &:active,
+  &:focus {
     outline: none;
   }
 }
@@ -70,7 +71,7 @@
 ///
 @mixin component-scale() {
   @each $name, $scale in $component-scales {
-    @content($name);
+    @content ($name);
   }
 }
 
@@ -114,15 +115,18 @@
 /// @param {Color} $foreground-color
 /// @param {Color} $background-color (())
 ///
-@mixin scrollbars($size, $foreground-color,
-  $background-color: mix($foreground-color, white,  50%)) {
+@mixin scrollbars(
+  $size,
+  $foreground-color,
+  $background-color: mix($foreground-color, white, 50%)
+) {
   scrollbar-face-color: $foreground-color;
   scrollbar-track-color: $background-color;
 
   // For Google Chrome
   &::-webkit-scrollbar {
     height: $size;
-    width:  $size;
+    width: $size;
   }
 
   &::-webkit-scrollbar-thumb {
@@ -150,18 +154,18 @@
 /// @param {Map} $vars - A map to construct the custom properties
 /// @param {String} $prefix - A custom property property
 ///
-@mixin css-vars($vars, $prefix: '') {
-  @if not (meta.type-of($vars) == 'map') {
+@mixin css-vars($vars, $prefix: "") {
+  @if not(meta.type-of($vars) == "map") {
     @error "You must supply a map to create CSS custom properties instead the value #{$vars}";
   }
 
   #{if(&, '&', ':root')} {
     @each $variable, $property in $vars {
-      $var-prefix: if(string.length($prefix) == 0, '', "#{$prefix}-");
+      $var-prefix: if(string.length($prefix) == 0, "", "#{$prefix}-");
       $custom-property: --#{$var-prefix}#{$variable};
 
       @if meta.content-exists() {
-        @content($custom-property, $property);
+        @content ($custom-property, $property);
       } @else {
         #{$custom-property}: #{$property};
       }

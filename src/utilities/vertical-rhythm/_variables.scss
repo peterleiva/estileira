@@ -24,7 +24,7 @@ $baseline: $basesize * $baseline-ratio !default;
 /// @see https://github.com/modularscale/modularscale-sass
 $modularscale: (
   base: $basesize $baseline,
-  ratio: $golden
+  ratio: $golden,
 );
 
 @forward 'modularscale-sass';
