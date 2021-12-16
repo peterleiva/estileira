@@ -7,6 +7,24 @@ Each log entry can be in the following kind: **Added**[^1], **Changed**[^2], **D
 
 ## [Unreleased]
 
+## [0.4.0] - 2021-12-16
+
+### Added
+
+- Publish to npm using GitHub Actions
+
+### Changed
+
+- Package name to `estileira`
+
+### Fixed
+
+- Only prepare husky on non-ci environment
+
+### Security
+
+- fix vulnerabilities
+
 ## [0.3.0] - 2021-12-14
 
 ### Added
@@ -27,7 +45,8 @@ Each log entry can be in the following kind: **Added**[^1], **Changed**[^2], **D
   - `format:check` - print code styles warns to stdout without fixing them
   - `lint` - run stylelint
 
-[unreleased]: https://github.com/pherval/scss-framework/compare/v0.3.0...HEAD
+[unreleased]: https://github.com/pherval/scss-framework/compare/v0.4.0...HEAD
+[0.4.0]: https://github.com/pherval/scss-framework/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/pherval/scss-framework/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/pherval/scss-framework/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/pherval/scss-framework/releases/tag/v0.1.0
