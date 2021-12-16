@@ -15,7 +15,7 @@ jobs:
           - ubuntu-latest
         node:
           - 12
-    name: Node v${{matrix.node}} on ${{matrix.os}}
+    name: Linting
     steps:
       - uses: actions/checkout@v2
       - name: Setup node ${{matrix.node}} on ${{matrix.os}}
@@ -37,7 +37,7 @@ jobs:
           - ubuntu-latest
         node:
           - 12
-    name: Node v${{matrix.node}} on ${{matrix.os}}
+    name: Publishing to npm
     steps:
       - uses: actions/checkout@v2
       - name: Setup node ${{matrix.node}} on ${{matrix.os}}
