@@ -1,6 +1,6 @@
 {
   "name": "estileira",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Very simple css library writen in scss with utilities and helpers for mainting your styles rhythm, color schema and so on",
   "main": "src/main.scss",
   "engines": {
