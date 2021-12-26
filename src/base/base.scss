@@ -18,13 +18,6 @@ a {
   cursor: pointer;
 }
 
-:root,
-body {
-  @include full-viewport;
-
-  overflow: hidden;
-}
-
 input,
 button {
   outline: none;
