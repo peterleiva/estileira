@@ -7,6 +7,11 @@ Each log entry can be in the following kind: **Added**[^1], **Changed**[^2], **D
 
 ## [Unreleased]
 
+## [0.5.0] - 2021-12-26
+
+### Changed
+- Remove full-viewport height and width utility for root html element by default
+
 ## [0.4.0] - 2021-12-16
 
 ### Added
@@ -45,7 +50,8 @@ Each log entry can be in the following kind: **Added**[^1], **Changed**[^2], **D
   - `format:check` - print code styles warns to stdout without fixing them
   - `lint` - run stylelint
 
-[unreleased]: https://github.com/pherval/scss-framework/compare/v0.4.0...HEAD
+[unreleased]: https://github.com/pherval/scss-framework/compare/v0.5.0...HEAD
+[0.5.0]: https://github.com/pherval/scss-framework/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/pherval/scss-framework/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/pherval/scss-framework/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/pherval/scss-framework/compare/v0.1.0...v0.2.0
