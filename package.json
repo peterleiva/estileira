@@ -23,7 +23,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pherval/scss-framework.git"
+    "url": "git+https://github.com/pherval/estileira.git"
   },
   "keywords": [
     "framework sass",
@@ -36,9 +36,9 @@
   "author": "Peter <npmjs@peter.dev.br>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/pherval/scss-framework/issues"
+    "url": "https://github.com/pherval/estileira/issues"
   },
-  "homepage": "https://github.com/pherval/scss-framework#readme",
+  "homepage": "https://github.com/pherval/estileira#readme",
   "devDependencies": {
     "husky": "^7.0.0",
     "is-ci": "^3.0.1",
