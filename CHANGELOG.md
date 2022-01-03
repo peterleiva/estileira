@@ -7,9 +7,14 @@ Each log entry can be in the following kind: **Added**[^1], **Changed**[^2], **D
 
 ## [Unreleased]
 
+### Changed
+
+- Remove global style for anchor element
+
 ## [0.5.0] - 2021-12-26
 
 ### Changed
+
 - Remove full-viewport height and width utility for root html element by default
 
 ## [0.4.0] - 2021-12-16
