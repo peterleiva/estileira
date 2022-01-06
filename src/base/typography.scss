@@ -9,17 +9,22 @@
 @use 'sass:math';
 @use '../utilities' as *;
 
-@import "https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap";
-
 /// TODO usar apenas font-face como alternativa padrão
 /// TODO Tornar configurável para diferentes tipos
 $font: (
-  family: (
-    "Comfortaa",
-    "Open Sans",
-    cursive,
-  ),
+  "family": "Comfortaa",
+  "src": "../assets/",
 ) !default;
+
+@font-face {
+  font-display: swap;
+  font-family: map.get($font, family);
+  font-style: normal;
+  font-variation-settings: wght;
+  font-weight: 300;
+  src: url("#{map.get($font, src)}/Comfortaa-VariableFont_wght.ttf")
+    format("truetype");
+}
 
 /// bootstrap vertical rhythm tool
 @include rhythm-bootstrap;

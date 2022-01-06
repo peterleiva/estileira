@@ -11,6 +11,10 @@ Each log entry can be in the following kind: **Added**[^1], **Changed**[^2], **D
 
 - Remove global style for anchor element
 
+### Fixed
+
+- Use font asset with `font-face` #2
+
 ## [0.5.0] - 2021-12-26
 
 ### Changed
