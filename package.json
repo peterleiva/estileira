@@ -50,6 +50,6 @@
   },
   "dependencies": {
     "modularscale-sass": "^3.0.10",
-    "reset-css": "^5.0.1"
+    "reset-css": "^5.0.2"
   }
 }
